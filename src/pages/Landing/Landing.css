@@ -1,0 +1,94 @@
+.shoe {
+      position: relative;
+      width: 18.75rem;
+      height: 12.5rem;
+    }
+    
+    .text 
+    {
+      position: relative;
+      top: 6.25rem;
+      text-align: center;
+      width: 18.75rem;
+      background-color: var(--white-color);
+    }
+    
+    .hero 
+    {
+      margin: 0px 2.2rem;
+    }
+    
+    .image-card 
+    {
+      margin: 3.2rem 1rem;
+    }
+    
+    .template 
+    {
+      position: absolute;
+      height: 31.25rem;
+      width: 89%;
+      top: 20.5rem;
+      left: 1.5rem; 
+      margin: 10px 3.2rem;
+    }
+    
+    .btn 
+    {
+      text-align: center;
+      text-decoration: none;
+    }
+    
+    .body-cart 
+    {
+      margin-bottom: 3.2rem;
+      /* margin-top: 42.5rem; */
+      justify-content: space-around;
+    }
+    
+    .body-cart-container 
+    {
+      padding: 5px;
+      margin: 2rem 0px;
+      /* width: 31.25rem;
+      height: 18.75rem;
+      border: solid black; */
+    }
+    
+    .body-cart-image 
+    {
+      height: 100%;
+      width: 16rem;
+    }
+    
+    .body-cart-heading 
+    {
+      text-align: center;
+      margin-top: 1rem;
+      display: block;
+      margin-right: auto;
+    }
+    
+    .para-description 
+    {
+      margin-top: 1.25rem;
+      text-align: center;
+    }
+    
+    .btn-class 
+    {
+      margin-top: 1.25rem;
+      text-align: center;
+    }
+    
+    .round-button-1
+    {
+      background-color: #337ab7;
+      color: var(--white-color);
+    }
+    
+    .round-button-1:hover
+    {
+      background-color: #004085;
+      color: var(--white-color);
+    }

@@ -49,3 +49,146 @@
   font-size: 1.2rem;
   margin: 1rem;
 }
+
+:root{
+  --primary-color: #1264bb;
+  --SEARCH-BAR-BG: #f0ecec;
+  --red-color: red;
+  --bg-color: rgba(128, 128, 128, 0.363);
+  --white-color: white;
+  --black-color: black;
+  --light-blue-color: #3498db;
+  --dark-blue-color: #145a8a;
+  --light-gray-color: lightgray;
+  --gray-color: #efefef;
+}
+
+body
+{
+font-weight: 400;
+margin: 0%;
+
+}
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: var(--primary-color);
+}
+
+.search-bar{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 4px;
+  padding-left: 5px;
+  width: 40%;
+  background: var(--SEARCH-BAR-BG);
+}
+
+.search-submit{
+  text-align: center;
+  padding-top: 5px;
+}
+
+.search-submit:hover{
+  cursor: pointer;
+}
+
+.search-input{
+  border: none;
+  background: transparent;
+}
+
+.search-input:focus{
+  outline: none;
+}
+
+.header-actions{
+  display: flex;
+  padding: 0px 5px;
+  gap: 2rem;
+}
+
+.nav-item {
+background-color: var(--primary-color);
+}
+
+.flex {
+display: flex;
+}
+
+.btn {
+cursor: pointer;
+padding: 12px;
+min-width: 100px;
+border: 0px;
+margin-right: 1rem;
+}
+
+.btn-badge {
+position: relative;
+color: var(--black-color);
+background-color: transparent;
+border: none;
+outline: none;
+border-radius: 50%;
+}
+
+.badge-lg {
+width: 4.5rem;
+height: 4.5rem;
+}
+
+.round-button {
+border-radius: 8px;
+}
+
+.center {
+align-items: center;
+justify-content: center;
+}
+
+.icon-xl {
+width: 1.2rem;
+height: 1.2rem;
+font-size: 0.8rem;
+}
+
+.icon-button-badge {
+position: absolute;
+top: 0.9rem;
+right: 0.8rem;
+background-color: var(--red-color);
+color: var(--white-color);
+border-radius: 50%;
+border: 2px solid var(--white-color);
+}
+
+.search-bar {
+padding: 8px 15px;
+border-radius: 10px;
+border: 1px solid var(--black-color);
+}
+
+.nav-heading {
+font-size: 1.25rem;
+text-decoration: none;
+color: var(--white-color);
+font-weight: 800;
+padding-left: 3.75rem;
+}
+
+.right-nav {
+align-items: center;
+justify-content: space-around;
+width: 30%;
+}
+.left-nav {
+align-items: center;
+justify-content: space-between;
+width: 70%;
+padding-right: 12em;
+}
