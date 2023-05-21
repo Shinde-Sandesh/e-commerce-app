@@ -5,6 +5,7 @@ import CartManagement from './pages/cartManagement/cartManagement';
 import ProductListing from './pages/productListing/productListing';
 import Wishlist from './pages/wishlistPage/Wishlist';
 import Signup from './pages/signup/signup';
+import Login from './pages/login/login';
 import "./App.css";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path = "/product" element = {<ProductListing />} />
         <Route path = "/wishlist" element = {<Wishlist />} />
         <Route path = "/signup" element = {<Signup />} />
+        <Route path = "/login" element = {<Login />} />
         <Route path = "/mockman" element = {<Mockman />} />
       </Routes>
     </div>
