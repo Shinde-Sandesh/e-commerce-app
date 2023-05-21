@@ -1,0 +1,50 @@
+.form-link-group {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.form h2 {
+  text-align: center;
+}
+
+.form-group > a {
+  text-decoration: none;
+}
+
+.btn1
+{
+  background-color: var(--gray-color);
+  text-align: center;
+  text-decoration: none;
+  border: none;
+}
+
+.login-container {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  background-color: var(--white-color);
+  transform: translate(-50%, -50%);
+  width: 410px;
+  height: max-content;
+  padding: 30px;
+  border: solid var(--black-color);
+  font-weight: 800;
+}
+
+.login-button{
+width: 100%;
+background-color: var(--light-blue-color);
+color: var(--white-color);
+padding: 10px;
+margin-top: 20px;
+}
+
+.login-button:hover{
+width: 100%;
+background-color: var(--dark-blue-color);
+color: var(--white-color);
+padding: 10px;
+margin-top: 20px;
+}
