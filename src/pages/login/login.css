@@ -1,0 +1,103 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 1rem;
+  line-height: 1.3rem;
+}
+
+.login-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: var(--white-color);
+  transform: translate(-50%, -50%);
+  width: 410px;
+  height: 450px;
+  padding: 30px;
+  border: solid var(--black-color);
+  font-weight: 800;
+}
+.login-container .login-heading {
+  font-size: 35px;
+}
+.login-container form .data {
+  height: 45px;
+  width: 100%;
+  margin: 40px 0;
+}
+form .data input {
+  height: 100%;
+  width: 100%;
+}
+
+form .btn button {
+  padding: 10px;
+  width: 100%;
+  background-color: var(--light-blue-color);
+  color: var(--white-color);
+  border: none;
+}
+
+button:hover 
+{
+  cursor: pointer;
+}
+
+.remember-me 
+{
+  margin-right: 70px;
+  justify-content: space-between;
+  width: 100%;
+}
+
+a 
+{
+  color: var(--light-blue-color);
+  text-decoration: none;
+}
+
+.create-account 
+{
+  text-align: center;
+  padding: 20px;
+}
+
+.create-account a 
+{
+  color: var(--black-color);
+}
+
+input 
+{
+  border: 1px solid var(--light-gray-color);
+  margin-top: 5px;
+}
+
+.label-class 
+{
+  float: left;
+  color: var(--black-color);
+}
+
+.btn1 {
+  background-color: var(--gray-color);
+  text-align: center;
+  text-decoration: none;
+}
+.login-button{
+  width: 100%;
+  background-color: var(--light-blue-color);
+  color: var(--white-color);
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.login-button:hover{
+  width: 100%;
+  background-color: var(--dark-blue-color);
+  color: var(--white-color);
+  padding: 10px;
+  margin-top: 20px;
+}
