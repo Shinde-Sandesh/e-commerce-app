@@ -1,0 +1,116 @@
+.cart-image {
+      height: 17.5rem;
+      width: 14.3rem;
+    }
+    
+    .cart-heading {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 2rem;
+    }
+    
+    .cart-container {
+      display: flex;
+      width: 28rem;
+      height: 17.5rem;
+      background-color: var(--white-color);
+      border: solid var(--black-color);
+      position: absolute;
+      top: 25%;
+      left: 20%;
+      padding: 0;
+    }
+    
+    .plus-minus {
+      text-decoration: none;
+      color: var(--black-color);
+      border: 1px solid var(--black-color);
+      border-radius: 100%;
+      padding: 5px;
+    }
+    
+    .number-of-items {
+      width: 20%;
+      text-align: center;
+      border-radius: 5px;
+    }
+    
+    .btn-remove {
+      padding: 5px;
+      width: 90%;
+      background-color: var(--light-gray-color);
+      border: 1px solid;
+      color: var(--black-color);
+      text-align: center;
+      margin-left: 5px;
+      margin-top: 10px;
+      border-radius: 5px;
+    }
+    
+    .btn-wishlist {
+      border-radius: 5px;
+      padding: 5px;
+      width: 90%;
+      background-color: var(--white-color);
+      border: 1px solid var(--black-color);
+      color: var(--black-color);
+      text-align: center;
+      margin-left: 5px;
+      margin-top: 10px;
+    }
+    
+    .off-price {
+      color: var(--gray-color);
+    }
+    
+    .cart-description {
+      align-self: center;
+      padding: 0px 10px;
+    }
+    
+    .price-container {
+      background-color: var(--white-color);
+      width: 20rem;
+      border: solid var(--black-color);
+      position: absolute;
+      top: 25%;
+      left: 55%;
+    }
+    
+    .price-details-heading {
+      text-align: center;
+    }
+    
+    .list {
+      display: inline;
+      padding: 10px;
+      margin: 10px;
+    }
+    
+    .price-items {
+      padding-right: 10px;
+      text-align: right;
+      float: right;
+    }
+    
+    .item {
+      padding: 10px;
+    }
+    
+    .saved-money {
+      color: var(--gray-color);
+    }
+    
+    .description {
+      padding-left: 5px;
+    }
+  
+    .btn-place-order {
+      text-align: center;
+      width: 100%;
+      padding: 10px;
+      background-color: var(--light-blue-color);
+      border: var(--black-color);
+      color: var(--white-color);
+      cursor: pointer;
+  }
