@@ -4,6 +4,7 @@ import LandingPage from './pages/Landing/Landing'
 import CartManagement from './pages/cartManagement/cartManagement';
 import ProductListing from './pages/productListing/productListing';
 import Wishlist from './pages/wishlistPage/Wishlist';
+import Signup from './pages/signup/signup';
 import "./App.css";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Route path = "/cart" element = {<CartManagement />} />
         <Route path = "/product" element = {<ProductListing />} />
         <Route path = "/wishlist" element = {<Wishlist />} />
+        <Route path = "/signup" element = {<Signup />} />
         <Route path = "/mockman" element = {<Mockman />} />
       </Routes>
     </div>
