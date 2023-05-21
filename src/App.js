@@ -2,6 +2,7 @@ import {Route, Routes} from 'react-router-dom'
 import Mockman from "mockman-js";
 import LandingPage from './pages/Landing/Landing'
 import CartManagement from './pages/cartManagement/cartManagement';
+import ProductListing from './pages/productListing/productListing';
 import "./App.css";
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
       <Routes>
         <Route path = "/" element = {<LandingPage />} />
         <Route path = "/cart" element = {<CartManagement />} />
+        <Route path = "/product" element = {<ProductListing />} />
         <Route path = "/mockman" element = {<Mockman />} />
       </Routes>
     </div>

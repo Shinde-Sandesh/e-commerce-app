@@ -1,0 +1,160 @@
+.main-body-sec 
+{
+      height: 100%;
+      overflow-y: auto;
+      width: 100%;
+      display: flex;
+      background-color: var(--white-color);
+}
+
+.filter-sidebar 
+{
+      height: 700px;
+      width: 20%;
+      background-color: var(--white-color);
+      border: 1px solid lightgray;
+}
+    
+.filter-sidebar-heading {
+      display: flex;
+      align-items: center;
+      font: 1.2em sans-serif;
+      padding: 0.5rem 1rem;
+      justify-content: space-between;
+}
+
+.filter-price 
+{
+      padding: 2rem 1rem;
+      font-weight: bolder;
+      padding-left: 0;
+}
+
+.price-heading 
+{
+      padding: 1rem 2rem;
+}
+
+.filter-price span 
+{
+      padding: 1rem 2rem;
+      font-weight: bolder;
+      font: 1.2em sans-serif;
+}
+    
+.range 
+{
+      display: flex;
+      justify-content: space-around;
+      font: 1em sans-serif;
+      color: rgb(92, 90, 90);
+}
+
+.price-range 
+{
+      margin-left: 2rem;
+      margin-top: 1rem;
+      width: 80%;
+}
+    
+.filter-cat span 
+{
+      font: 1.5em sans-serif;
+      padding: 1rem 2rem;
+    
+}
+
+    
+.filter-item {
+      padding: 0.5rem 0;
+      display: flex;
+      font: 1em sans-serif;
+      font-weight: 500;
+      align-items: center;
+      justify-content: space-around;
+}
+
+.filter-cat 
+{
+      padding: 0.5rem 0;
+}
+    
+.filter-item input 
+{
+      height: 1rem;
+      width: 1rem;
+}
+    
+.showing-heading 
+{
+      padding: 10px;
+}
+    
+.right-body-section {
+      width: 70%;
+      height: 100%;
+      padding-left: 100px;
+    }
+
+.product-flex {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: center;
+      row-gap: 10px;
+}
+
+.card-container {
+      width: 12.5rem;
+      background-color: var(--white-color);
+      border: 0.5px solid var(--light-gray-colo);
+      text-align: center;
+      position: relative;
+  }
+
+  .card-with-badge {
+    display: inline;
+    color: var(--red-color);
+    padding: 4px;
+    position: absolute;
+    right: 10px;
+    margin: 0;
+}
+
+img {
+  height: 12.5rem;
+  width: 12.5rem;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.description {
+  background-color: rgba(128, 128, 128, 0.363);
+  padding-top: 2.2px;
+  margin: 0;
+}
+
+.add-cart-btn {
+  width: 12.5rem;
+  background-color: #3498db;
+  padding: 6px;
+  border: 0;
+  color: var(--white-color);
+}
+
+.price {
+  font-weight: bolder;
+}
+
+div 
+{
+  display: block;
+}
+
+p {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
