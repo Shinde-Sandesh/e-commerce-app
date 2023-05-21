@@ -1,31 +1,34 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export const Navigation = () => {
   return (
     <div>
       <nav class="flex nav-item">
             <div class="left-nav flex">
-                  <a href="/" class="nav-heading">Sports Cart</a>
+                  <Link to="/" className="btn round-button" type="button">Sports Cart</Link>
                   <input class="search-bar" placeholder="Search" />
             </div>
             <div class="right-nav flex position">
-                  <button class="btn round-button"><a href="login.html">Login</a></button>
-                  <button class="btn round-button"><a href="signup.html">Signup</a></button>
+                  <Link to="/login" className="btn round-button" type="button">Login</Link>
+                  <Link to="/signup" className="btn round-button" type="button">Signup</Link>
                   <button  class="btn-badge badge-lg ">
-                        <a href="wishlist.html">
+                        {/* <a href="wishlist.html">
                               <i class="fas fa-heart fa-2x" style={{color: "beige"}}></i>
-                        </a>
+                        </a> */}
+                        <Link to="/wishlist" className="btn round-button" type="button">Wishlist</Link>
                         <span class="icon-button-badge flex center icon-xl">10</span>
                   </button>
                   <button  class="btn-badge badge-lg">
-                        <a href="cart.html">
+                        {/* <a href="cart.html">
                         <i class="fas fa-shopping-cart fa-2x" style={{color: "beige"}}></i>
                         <i className="material-icons">favorite_border</i>
-                        </a>
+                        </a> */}
+                        <Link to="/cart" className="btn round-button" type="button">Cart</Link>
                         <span class="icon-button-badge flex center icon-xl">10</span>
                   </button>
             </div>
-    </nav>
+      </nav>
     </div>
   )
 }
