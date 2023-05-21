@@ -66,7 +66,7 @@ export default function LandingPage() {
                 The adidas range of men's shoes has got you covered, if you're striving to be the best or you just want the best fit for your daily life. With iconic designs and high-performance technologies, you can be sure that your shoes won't let you down.
               </p>
               <div class="btn-class">
-                <Link to="/" className="btn round-button-1" type="button">Click here</Link>
+                <Link to="product" className="btn round-button-1" type="button">Shop Now</Link>
               </div>
             </div>
           </div>
