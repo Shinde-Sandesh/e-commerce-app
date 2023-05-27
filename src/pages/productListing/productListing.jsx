@@ -4,7 +4,7 @@ import img1 from '../../assets/sneakers-shoes-adidas-shoes.jpg';
 import img2 from '../../assets/backpack.jpg';
 import img3 from '../../assets/cycles.png';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const products = [
   {
@@ -12,7 +12,7 @@ const products = [
     title: "You Can WIN",
     author: "Shiv Khera",
     price: "5000",
-    categoryName: "non-fiction",
+    categoryName: "men",
     image : img1
   },
   {
@@ -20,55 +20,55 @@ const products = [
     title: "You are Winner",
     author: "Junaid Qureshi",
     price: "3000",
-    categoryName: "horror",
+    categoryName: "women",
     image : img2
   },
   {
     _id: 3,
-    title: "Think and Grow Rich",
+    title: "3",
     author: "Shiv Khera",
     price: "1000",
-    categoryName: "fiction",
+    categoryName: "kids",
     image : img2
   },
   {
     _id: 4,
-    title: "Think and Grow Rich",
+    title: "4",
     author: "Shiv Khera",
     price: "1000",
-    categoryName: "fiction",
+    categoryName: "kids",
     image : img2
   },
   {
     _id: 5,
-    title: "Think and Grow Rich",
+    title: "5",
     author: "Shiv Khera",
     price: "1000",
-    categoryName: "fiction",
+    categoryName: "women",
     image : img1
   },
   {
     _id: 6,
-    title: "Think and Grow Rich",
+    title: "6",
     author: "Shiv Khera",
     price: "1000",
-    categoryName: "fiction",
+    categoryName: "men",
     image : img1
   },
   {
     _id: 7,
-    title: "Think and Grow Rich",
+    title: "7",
     author: "Shiv Khera",
     price: "1000",
-    categoryName: "fiction",
+    categoryName: "kids",
     image : img3
   },
   {
     _id: 8,
-    title: "Think and Grow Rich",
+    title: "8",
     author: "Shiv Khera",
     price: "1000",
-    categoryName: "fiction",
+    categoryName: "kids",
     image : img2
   },
 ];
@@ -97,14 +97,18 @@ function ProductCards() {
 }
 
 export default function ProductListingPage (){
+
+  const[productRange, setProductRange] = useState(0)
+  const [category, setCategory] = useState("men");
+
 return (
   <>
   <Navigation />
   <div className="main-body-sec">
     <div className="filter-sidebar">
       <div className="filter-sidebar-heading">
-        <span><b>Filters</b></span>
-        <span>clear</span>
+        <p><b>Filters</b></p>
+        <p>clear</p>
       </div>
       <div className="filter-price">
         <h2 className="price-heading">Price</h2>
@@ -113,40 +117,36 @@ return (
           <span>2500</span>
           <span>5000</span>
         </div>
-        <input type="range" min="1" max="100" value="50" className="price-range" />
+        <input type="range" min="0" max="5000" value={productRange} className="price-range" onChange={(event) => setProductRange(event.target.value)} />{productRange}
       </div>
       <div className="filter-cat">
-        <span><b>Category</b></span>
+        <p><b>Category</b></p>
         <div className="filter-item">
-          <input type="checkbox" />
-            Men
+          <input type="radio" value="men" name="category" />
+          <label name="men">Men</label>
         </div>
         <div className="filter-item">
-          <input type="checkbox" />
-            Women
+          <input type="radio" value="women" name="category" />
+          <label for="women">Women</label>
+        </div>
+        <div className="filter-item">
+          <input type="radio" value="kids" name="category" />
+          <label for="women">Kids</label>
         </div>
       </div>
       <div className="filter-cat">
         <span><b>Rating</b></span>
         <div className="filter-item">
           <input type="checkbox" />
-            5stars
+          <label>5stars</label>
         </div>
         <div className="filter-item">
           <input type="checkbox" />
-          4stars & above
+          <label>4stars and above</label>
         </div>
         <div className="filter-item">
           <input type="checkbox" />
-          3stars & above
-        </div>
-        <div className="filter-item">
-          <input type="checkbox" />
-          2stars & above
-        </div>
-        <div className="filter-item">
-          <input type="checkbox" />
-          1star & above
+          <label>3stars and above</label>
         </div>
       </div>
       <div className="filter-cat">
