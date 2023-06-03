@@ -8,6 +8,7 @@ export const Navigation = () => {
             <div class="left-nav flex">
                   <Link to="/" className="btn round-button" type="button">Sports Cart</Link>
                   <input class="search-bar" placeholder="Search" />
+                  <button>Search</button>
             </div>
             <div class="right-nav flex position">
                   <Link to="/login" className="btn round-button" type="button">Login</Link>

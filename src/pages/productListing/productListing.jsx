@@ -4,107 +4,61 @@ import img1 from '../../assets/sneakers-shoes-adidas-shoes.jpg';
 import img2 from '../../assets/backpack.jpg';
 import img3 from '../../assets/cycles.png';
 
-import { useState } from 'react';
-
-const products = [
-  {
-    _id: 1,
-    title: "You Can WIN",
-    author: "Shiv Khera",
-    price: "5000",
-    categoryName: "non-fiction",
-    image : img1
-  },
-  {
-    _id: 2,
-    title: "You are Winner",
-    author: "Junaid Qureshi",
-    price: "3000",
-    categoryName: "horror",
-    image : img2
-  },
-  {
-    _id: 3,
-    title: "Think and Grow Rich",
-    author: "Shiv Khera",
-    price: "1000",
-    categoryName: "fiction",
-    image : img2
-  },
-  {
-    _id: 4,
-    title: "Think and Grow Rich",
-    author: "Shiv Khera",
-    price: "1000",
-    categoryName: "fiction",
-    image : img2
-  },
-  {
-    _id: 5,
-    title: "Think and Grow Rich",
-    author: "Shiv Khera",
-    price: "1000",
-    categoryName: "fiction",
-    image : img1
-  },
-  {
-    _id: 6,
-    title: "Think and Grow Rich",
-    author: "Shiv Khera",
-    price: "1000",
-    categoryName: "fiction",
-    image : img1
-  },
-  {
-    _id: 7,
-    title: "Think and Grow Rich",
-    author: "Shiv Khera",
-    price: "1000",
-    categoryName: "fiction",
-    image : img3
-  },
-  {
-    _id: 8,
-    title: "Think and Grow Rich",
-    author: "Shiv Khera",
-    price: "1000",
-    categoryName: "fiction",
-    image : img2
-  },
-];
-
-function ProductCards() {
-  const[addToCart, setAddToCart] = useState(true);
-  return (
-    <div className="product-flex">
-    {
-      products.map((product) => ( 
-        <>
-          <div className="card-container">
-            <h4 className="card-with-badge"><i className="fas fa-heart"></i></h4>
-            <img className="card-image" src={product.image} alt="Adidas Shoe" />
-            <div className="description">
-              <p className="card-heading">{product.author}</p>
-              <p className="price">{product.price}</p>
-              <button className="add-cart-btn" onClick={() => setAddToCart(!addToCart)}>{addToCart ? "Add to Cart" : "Added to Cart"}</button>
-            </div>
-            </div>
-          </>
-        )
-      )}
-    </div>
-  )
-}
+import { useEffect, useState} from 'react';
 
 export default function ProductListingPage (){
+
+  const[productData, setData] = useState([])
+  const[productRange, setProductRange] = useState(0)
+  const[addToCart, setAddToCart] = useState(true)
+  const [category, setCategory] = useState("all");
+  const [rating, setRating] = useState("all");
+
+  const fetchData = async () => {
+    const response = await fetch("/api/products")
+    const data = await response.json()
+    console.log(data)
+    setData(data.products)
+  }
+
+    useEffect(() => {
+      fetchData();
+  }, []);
+
+  function HandleCategories(event) {
+    const category = event.target.value;
+    setCategory(category);
+    filterProducts(category, rating);
+  }
+
+  function HandleRatings(event) {
+    const rating = event.target.value;
+    setRating(!rating);
+    filterProducts(category, rating);
+  }
+
+  function filterProducts(category, rating) {
+    let filteredData = productData;
+    if (category !== "all") {
+      filteredData = filteredData.filter(
+        (product) => product.categoryName === category);
+    }
+    if (rating !== "all") {
+      filteredData = filteredData.filter(
+        (product) => product.rating >= Number(rating)
+      );
+    }
+    setData(filteredData);
+  }
+
 return (
   <>
   <Navigation />
   <div className="main-body-sec">
     <div className="filter-sidebar">
       <div className="filter-sidebar-heading">
-        <span><b>Filters</b></span>
-        <span>clear</span>
+        <p><b>Filters</b></p>
+        <p>clear</p>
       </div>
       <div className="filter-price">
         <h2 className="price-heading">Price</h2>
@@ -113,43 +67,39 @@ return (
           <span>2500</span>
           <span>5000</span>
         </div>
-        <input type="range" min="1" max="100" value="50" className="price-range" />
+        <input type="range" min="0" max="5000" value={productRange} className="price-range" onChange={(event) => setProductRange(event.target.value)} />{productRange}
       </div>
       <div className="filter-cat">
-        <span><b>Category</b></span>
+        <p><b>Category</b></p>
         <div className="filter-item">
-          <input type="checkbox" />
-            Men
+          <input type="radio" value="men" name="category" onChange = {HandleCategories} />
+          Men
         </div>
         <div className="filter-item">
-          <input type="checkbox" />
-            Women
+          <input type="radio" value="women" name="category" onChange = {HandleCategories} />
+          Women
+        </div>
+        <div className="filter-item">
+          <input type="radio" value="kids" name="category" onChange = {HandleCategories} />
+          Kids
         </div>
       </div>
       <div className="filter-cat">
         <span><b>Rating</b></span>
         <div className="filter-item">
-          <input type="checkbox" />
-            5stars
+          <input type="checkbox" value= "4" onClick={HandleRatings} />
+          <label>4stars and above</label>
         </div>
         <div className="filter-item">
-          <input type="checkbox" />
-          4stars & above
+          <input type="checkbox" value= "4" onClick={HandleRatings} />
+          <label>3stars and above</label>
         </div>
         <div className="filter-item">
-          <input type="checkbox" />
-          3stars & above
-        </div>
-        <div className="filter-item">
-          <input type="checkbox" />
-          2stars & above
-        </div>
-        <div className="filter-item">
-          <input type="checkbox" />
-          1star & above
+          <input type="checkbox" value="4" onClick={HandleRatings} />
+          <label>2stars and above</label>
         </div>
       </div>
-      <div className="filter-cat">
+      {/* <div className="filter-cat">
         <span><b>Sort by</b></span>
         <div className="filter-item">
           <input type="radio" />
@@ -159,15 +109,27 @@ return (
           <input type="radio" />
           Price - High to Low
         </div>
-      </div>
+      </div> */}
       </div>
       <div className="right-body-section">
         <h1 className="showing-heading">Showing all products</h1>
-            <ProductCards />
-        {/* <div className="product-flex">
-          <div className="card-container">
-          </div>
-        </div> */}
+        <div className="product-flex">
+          {productData.length > 0 && (
+            <>
+              {productData.map(product => (
+                <div className="card-container">
+                  <h4 className="card-with-badge"><i className="fas fa-heart"></i></h4>
+                  <img className="card-image" src={product.image} alt="Adidas Shoe" />
+                  <div className="description">
+                    <p className="card-heading">{product.title}</p>
+                    <p className="price">{product.price}</p>
+                    <button className="add-cart-btn" onClick={() => setAddToCart(!addToCart)}>{addToCart ? "Add to Cart" : "Added to Cart"}</button>
+                  </div>
+                </div>
+              ))}
+            </>
+          )}
+        </div>
       </div>
     </div>
   </>
