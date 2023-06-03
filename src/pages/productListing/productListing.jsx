@@ -4,102 +4,52 @@ import img1 from '../../assets/sneakers-shoes-adidas-shoes.jpg';
 import img2 from '../../assets/backpack.jpg';
 import img3 from '../../assets/cycles.png';
 
-import { useState, useEffect } from 'react';
-
-const products = [
-  {
-    _id: 1,
-    title: "You Can WIN",
-    author: "Shiv Khera",
-    price: "5000",
-    categoryName: "men",
-    image : img1
-  },
-  {
-    _id: 2,
-    title: "You are Winner",
-    author: "Junaid Qureshi",
-    price: "3000",
-    categoryName: "women",
-    image : img2
-  },
-  {
-    _id: 3,
-    title: "3",
-    author: "Shiv Khera",
-    price: "1000",
-    categoryName: "kids",
-    image : img2
-  },
-  {
-    _id: 4,
-    title: "4",
-    author: "Shiv Khera",
-    price: "1000",
-    categoryName: "kids",
-    image : img2
-  },
-  {
-    _id: 5,
-    title: "5",
-    author: "Shiv Khera",
-    price: "1000",
-    categoryName: "women",
-    image : img1
-  },
-  {
-    _id: 6,
-    title: "6",
-    author: "Shiv Khera",
-    price: "1000",
-    categoryName: "men",
-    image : img1
-  },
-  {
-    _id: 7,
-    title: "7",
-    author: "Shiv Khera",
-    price: "1000",
-    categoryName: "kids",
-    image : img3
-  },
-  {
-    _id: 8,
-    title: "8",
-    author: "Shiv Khera",
-    price: "1000",
-    categoryName: "kids",
-    image : img2
-  },
-];
-
-function ProductCards() {
-  const[addToCart, setAddToCart] = useState(true);
-  return (
-    <div className="product-flex">
-    {
-      products.map((product) => ( 
-        <>
-          <div className="card-container">
-            <h4 className="card-with-badge"><i className="fas fa-heart"></i></h4>
-            <img className="card-image" src={product.image} alt="Adidas Shoe" />
-            <div className="description">
-              <p className="card-heading">{product.author}</p>
-              <p className="price">{product.price}</p>
-              <button className="add-cart-btn" onClick={() => setAddToCart(!addToCart)}>{addToCart ? "Add to Cart" : "Added to Cart"}</button>
-            </div>
-            </div>
-          </>
-        )
-      )}
-    </div>
-  )
-}
+import { useEffect, useState} from 'react';
 
 export default function ProductListingPage (){
 
+  const[productData, setData] = useState([])
   const[productRange, setProductRange] = useState(0)
-  const [category, setCategory] = useState("men");
+  const[addToCart, setAddToCart] = useState(true)
+  const [category, setCategory] = useState("all");
+  const [rating, setRating] = useState("all");
+
+  const fetchData = async () => {
+    const response = await fetch("/api/products")
+    const data = await response.json()
+    console.log(data)
+    setData(data.products)
+  }
+
+    useEffect(() => {
+      fetchData();
+  }, []);
+
+  function HandleCategories(event) {
+    const category = event.target.value;
+    setCategory(category);
+    filterProducts(category, rating);
+  }
+
+  function HandleRatings(event) {
+    const rating = event.target.value;
+    setRating(!rating);
+    filterProducts(category, rating);
+  }
+
+  function filterProducts(category, rating) {
+    let filteredData = productData;
+    if (category !== "all") {
+      filteredData = filteredData.filter(
+        (product) => product.categoryName === category);
+    }
+    if (rating !== "all") {
+      filteredData = filteredData.filter(
+        (product) => product.rating >= Number(rating)
+      );
+    }
+    setData(filteredData);
+  }
 
 return (
   <>
@@ -122,34 +72,34 @@ return (
       <div className="filter-cat">
         <p><b>Category</b></p>
         <div className="filter-item">
-          <input type="radio" value="men" name="category" />
-          <label name="men">Men</label>
+          <input type="radio" value="men" name="category" onChange = {HandleCategories} />
+          Men
         </div>
         <div className="filter-item">
-          <input type="radio" value="women" name="category" />
-          <label for="women">Women</label>
+          <input type="radio" value="women" name="category" onChange = {HandleCategories} />
+          Women
         </div>
         <div className="filter-item">
-          <input type="radio" value="kids" name="category" />
-          <label for="women">Kids</label>
+          <input type="radio" value="kids" name="category" onChange = {HandleCategories} />
+          Kids
         </div>
       </div>
       <div className="filter-cat">
         <span><b>Rating</b></span>
         <div className="filter-item">
-          <input type="checkbox" />
-          <label>5stars</label>
-        </div>
-        <div className="filter-item">
-          <input type="checkbox" />
+          <input type="checkbox" value= "4" onClick={HandleRatings} />
           <label>4stars and above</label>
         </div>
         <div className="filter-item">
-          <input type="checkbox" />
+          <input type="checkbox" value= "4" onClick={HandleRatings} />
           <label>3stars and above</label>
         </div>
+        <div className="filter-item">
+          <input type="checkbox" value="4" onClick={HandleRatings} />
+          <label>2stars and above</label>
+        </div>
       </div>
-      <div className="filter-cat">
+      {/* <div className="filter-cat">
         <span><b>Sort by</b></span>
         <div className="filter-item">
           <input type="radio" />
@@ -159,15 +109,27 @@ return (
           <input type="radio" />
           Price - High to Low
         </div>
-      </div>
+      </div> */}
       </div>
       <div className="right-body-section">
         <h1 className="showing-heading">Showing all products</h1>
-            <ProductCards />
-        {/* <div className="product-flex">
-          <div className="card-container">
-          </div>
-        </div> */}
+        <div className="product-flex">
+          {productData.length > 0 && (
+            <>
+              {productData.map(product => (
+                <div className="card-container">
+                  <h4 className="card-with-badge"><i className="fas fa-heart"></i></h4>
+                  <img className="card-image" src={product.image} alt="Adidas Shoe" />
+                  <div className="description">
+                    <p className="card-heading">{product.title}</p>
+                    <p className="price">{product.price}</p>
+                    <button className="add-cart-btn" onClick={() => setAddToCart(!addToCart)}>{addToCart ? "Add to Cart" : "Added to Cart"}</button>
+                  </div>
+                </div>
+              ))}
+            </>
+          )}
+        </div>
       </div>
     </div>
   </>
