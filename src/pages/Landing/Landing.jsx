@@ -1,5 +1,4 @@
-import React from 'react'
-// import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
 import { Navigation } from '../../components/Navigation'
 import { Link } from 'react-router-dom'
 import img1 from '../../assets/sneakers-shoes-adidas-shoes.jpg';
@@ -9,47 +8,24 @@ import './Landing.css'
 
 export default function LandingPage() {
 
-  const categories = [
-    {
-      _id: 1,
-      categoryName: "Shoes",
-      description:
-        "literature in the form of prose, especially novels, that describes imaginary events and people",
-      image : img1
-    },
-    {
-      _id: 2,
-      categoryName: "Backpacks",
-      description:
-        "Non-fiction is writing that gives information or describes real events, rather than telling a story.",
-      image : img2
-    },
-    {
-      _id: 3,
-      categoryName: "Cycles",
-      description:
-        "Meant to cause discomfort and fear for both the character and readers, horror writers often make use of supernatural and paranormal elements in morbid stories that are sometimes a little too realistic.",
-      image : img3
-    },
-  ];
+  const[categoryData, setCategoryData] = useState([])
 
-  function Categories() {
-    return (
-      <div>
-        <h2>Categories</h2>
-        <ul>
-        {categories.map((category) => 
-          <li style={{ listStyle: "none" }}>
-            <div>
-              <a href='/'><img src={category.image} alt='img' class="shoe"></img></a>
-            </div>
-            {category.categoryName}
-            <p> {category.description} </p>
-          </li>
-        )}
-        </ul>;
-      </div>)
+  const fetchData = async () => {
+    const response = await fetch("/api/categories")
+    const data = await response.json()
+    console.log(data)
+    setCategoryData(data.categories)
   }
+
+    useEffect(() => {
+      fetchData();
+  }, []);
+
+  // function Categories() {
+  //   return (
+      
+  //   )
+  // }
 
   return (
   <>
@@ -73,26 +49,30 @@ export default function LandingPage() {
         </div>
       </section>
       <section class="hero flex">
-        <div class="image-card">
+        {/* <div class="image-card">
           <img src={img1} alt='img' class="shoe"/>
           <img src={img1} alt='img' class="shoe"/>
           <img src={img1} alt='img' class="shoe"/>
           <img src={img1} alt='img' class="shoe"/>
-          {/* <div>
-             {categories &&
-              categories.map(({ _id, categoryName, description }) => {
-                return (
-                  <div className="box" key={_id} onClick={() => categoryHandler(categoryName)}>
-                    <div className="detail-box text-center">
-                      <h4>{categoryName}</h4>
-                      <p className="paragraph-sm">{description}</p>
-                    </div>
+        </div> */}
+        <div>
+        <h2>Categories</h2>
+        <ul>
+          {categoryData.length > 0 && (
+            <>
+              {categoryData.map((category) => 
+                <li style={{ listStyle: "none" }}>
+                  <div>
+                    <a href='/'><img src={category.image} alt='img' class="shoe"></img></a>
                   </div>
-                );
-              })}
-          </div> */}
-        </div>
-        <Categories />
+                  {category.categoryName}
+                  <p> {category.description} </p>
+                </li>
+              )}
+            </>
+          )}
+        </ul>;
+      </div>
       </section>
     </>
   )
