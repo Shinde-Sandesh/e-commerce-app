@@ -61,30 +61,29 @@ return (
         <p>clear</p>
       </div>
       <div className="filter-price">
-        <h2 className="price-heading">Price</h2>
+        <h2 className="price-heading">Rating</h2>
         <div className="range">
-          <span>1000</span>
-          <span>2500</span>
-          <span>5000</span>
+          <span>0</span>
+          <span>5</span>
         </div>
-        <input type="range" min="0" max="5000" value={productRange} className="price-range" onChange={(event) => setProductRange(event.target.value)} />{productRange}
+        <input type="range" min="0" max="5" value={productRange} className="price-range" onChange={(event) => setProductRange(event.target.value)} />{productRange}
       </div>
       <div className="filter-cat">
         <p><b>Category</b></p>
         <div className="filter-item">
-          <input type="radio" value="men" name="category" onChange = {HandleCategories} />
+          <input type="checkbox" value="men" name="category" onChange = {HandleCategories} />
           Men
         </div>
         <div className="filter-item">
-          <input type="radio" value="women" name="category" onChange = {HandleCategories} />
+          <input type="checkbox" value="women" name="category" onChange = {HandleCategories} />
           Women
         </div>
         <div className="filter-item">
-          <input type="radio" value="kids" name="category" onChange = {HandleCategories} />
+          <input type="checkbox" value="kids" name="category" onChange = {HandleCategories} />
           Kids
         </div>
       </div>
-      <div className="filter-cat">
+      {/* <div className="filter-cat">
         <span><b>Rating</b></span>
         <div className="filter-item">
           <input type="checkbox" value= "4" onClick={HandleRatings} />
@@ -98,9 +97,9 @@ return (
           <input type="checkbox" value="4" onClick={HandleRatings} />
           <label>2stars and above</label>
         </div>
-      </div>
-      {/* <div className="filter-cat">
-        <span><b>Sort by</b></span>
+      </div> */}
+      <div className="filter-cat">
+        <span><b>Price</b></span>
         <div className="filter-item">
           <input type="radio" />
           Price - Low to High
@@ -109,7 +108,7 @@ return (
           <input type="radio" />
           Price - High to Low
         </div>
-      </div> */}
+      </div>
       </div>
       <div className="right-body-section">
         <h1 className="showing-heading">Showing all products</h1>
