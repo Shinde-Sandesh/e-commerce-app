@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { CartContext } from '../context/CartContext'
 
 export const Navigation = () => {
+
+      const {cart} = useContext(CartContext)
+
   return (
     <div>
       <nav class="flex nav-item">
@@ -26,7 +30,7 @@ export const Navigation = () => {
                         <i className="material-icons">favorite_border</i>
                         </a> */}
                         <Link to="/cart" className="btn round-button" type="button">Cart</Link>
-                        <span class="icon-button-badge flex center icon-xl">10</span>
+                        <span class="icon-button-badge flex center icon-xl">{cart.length}</span>
                   </button>
             </div>
       </nav>

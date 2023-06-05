@@ -4,7 +4,8 @@ import img1 from '../../assets/sneakers-shoes-adidas-shoes.jpg';
 import img2 from '../../assets/backpack.jpg';
 import img3 from '../../assets/cycles.png';
 
-import { useEffect, useState} from 'react';
+import { CartContext } from '../../context/CartContext';
+import { useContext, useEffect, useState} from 'react';
 
 export default function ProductListingPage (){
 
@@ -13,6 +14,7 @@ export default function ProductListingPage (){
   const[addToCart, setAddToCart] = useState(true)
   const [category, setCategory] = useState("all");
   const [rating, setRating] = useState("all");
+  const {handleCartUpdate}  = useContext(CartContext)
 
   const fetchData = async () => {
     const response = await fetch("/api/products")
@@ -83,21 +85,6 @@ return (
           Kids
         </div>
       </div>
-      {/* <div className="filter-cat">
-        <span><b>Rating</b></span>
-        <div className="filter-item">
-          <input type="checkbox" value= "4" onClick={HandleRatings} />
-          <label>4stars and above</label>
-        </div>
-        <div className="filter-item">
-          <input type="checkbox" value= "4" onClick={HandleRatings} />
-          <label>3stars and above</label>
-        </div>
-        <div className="filter-item">
-          <input type="checkbox" value="4" onClick={HandleRatings} />
-          <label>2stars and above</label>
-        </div>
-      </div> */}
       <div className="filter-cat">
         <span><b>Price</b></span>
         <div className="filter-item">
@@ -115,17 +102,39 @@ return (
         <div className="product-flex">
           {productData.length > 0 && (
             <>
-              {productData.map(product => (
-                <div className="card-container">
+              {productData.map((item) => {
+                const { _id, title, price } = item
+
+                function CartUpdate(){
+                  setAddToCart(!addToCart)
+                  handleCartUpdate(item)
+                }
+                
+                return(
+                <div className="card-container" key={_id}>
                   <h4 className="card-with-badge"><i className="fas fa-heart"></i></h4>
-                  <img className="card-image" src={product.image} alt="Adidas Shoe" />
+                  <img className="card-image" src="/" alt="Adidas Shoe" />
                   <div className="description">
-                    <p className="card-heading">{product.title}</p>
-                    <p className="price">{product.price}</p>
-                    <button className="add-cart-btn" onClick={() => setAddToCart(!addToCart)}>{addToCart ? "Add to Cart" : "Added to Cart"}</button>
+                    <p className="card-heading">{title}</p>
+                    <p className="price">{price}</p>
+                    <button className="add-cart-btn" onClick={CartUpdate}>{addToCart ? "Add to Cart" : "Added to Cart"}</button>
                   </div>
                 </div>
-              ))}
+                // <div
+                //   key={_id}
+                //   style={{
+                //     border: "1px solid gray",
+                //     margin: "0.5rem",
+                //     padding: "0.5rem"
+                //   }}
+                // >
+                //   <h2>
+                //     {title} <small> INR {price} </small>
+                //   </h2>
+                //   <button onClick={CartUpdate}> Add to Cart </button>
+                // </div>
+                )
+              })}
             </>
           )}
         </div>
