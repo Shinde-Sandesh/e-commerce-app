@@ -4,7 +4,7 @@ import { useContext, useState } from 'react';
 import { CartContext } from '../../context/CartContext';
 
 export default function CartManagement() {
-   const { cart, setCart } = useContext(CartContext);
+   const { cart, setCart, wishlist, handleWishlistUpdate } = useContext(CartContext);
    const [quantities, setQuantities] = useState({});
 
    // Function to update the quantity of an item in the cart
@@ -22,7 +22,14 @@ export default function CartManagement() {
 
    // Function to move an item to the wishlist
    const moveToWishlist = (_id) => {
+    const itemToMove = cart.find((item) => item._id === _id);
+    if (itemToMove) {
+      handleWishlistUpdate(itemToMove);
+      removeFromCart(_id);
    }
+  }
+
+  //  console.log("cart data",cart)
 
    return (
       <>
