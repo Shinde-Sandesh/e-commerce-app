@@ -9,7 +9,7 @@ import { CartContext } from '../../context/CartContext';
 
 
 //       return(
-            
+
 //       )
 // }
 
@@ -47,10 +47,9 @@ import { CartContext } from '../../context/CartContext';
 //       )
 // }
 
-export default function CartManagement()
-{
-      const {cart} = useContext(CartContext)
-      const[quantity, setQuantity] = useState(1)
+export default function CartManagement() {
+      const { cart } = useContext(CartContext)
+      const [quantity, setQuantity] = useState(1)
 
       const increaseQuantity = () => {
             setQuantity(quantity + 1)
@@ -61,48 +60,48 @@ export default function CartManagement()
       }
       return (
             <div>
-              {cart.length === 0 && <h3>Empty Cart</h3>}
-              {cart.map((item) => {
-                const { _id, title, price } = item;
-        
-                return (
-                  <div key={_id}>
-                        <div>
-                              <img className="cart-image" src="/" alt="" />
-                        </div>
-                        <div className="cart-description">
-                              <div className="description">
-                                    <p>{title}</p>
-                                    <h4 className="price">{price}</h4>
-                                    {/* <small className="off-price">50% off</small> */}
-                                    <div>Quantity 
-                                          <button onClick={increaseQuantity}>+</button>
-                                          <p className="number-of-items">{quantity}</p>
-                                          <button onClick={decreaseQuantity}>-</button>
+                  {cart.length === 0 && <h3>Empty Cart</h3>}
+                  {cart.map((item) => {
+                        const { _id, title, price } = item;
+
+                        return (
+                              <div key={_id}>
+                                    <div>
+                                          <img className="cart-image" src="/" alt="" />
+                                    </div>
+                                    <div className="cart-description">
+                                          <div className="description">
+                                                <p>{title}</p>
+                                                <h4 className="price">{price}</h4>
+                                                {/* <small className="off-price">50% off</small> */}
+                                                <div>Quantity
+                                                      <button onClick={increaseQuantity}>+</button>
+                                                      <p className="number-of-items">{quantity}</p>
+                                                      <button onClick={decreaseQuantity}>-</button>
+                                                </div>
+                                          </div>
+                                          <button className="btn-remove">Remove from Cart</button>
+                                          <button className="btn-wishlist">Move to Wishlist</button>
                                     </div>
                               </div>
-                              <button className="btn-remove">Remove from Cart</button>
-                              <button className="btn-wishlist">Move to Wishlist</button>
-                        </div>
-                  </div>
-                  // <div
-                  //   key={_id}
-                  //   style={{
-                  //     border: "1px solid gray",
-                  //     margin: "0.5rem",
-                  //     padding: "0.5rem"
-                  //   }}
-                  // >
-                  //   <h2>
-                  //     {title} <small> INR {price} </small>
-                  //   </h2>
-                  // </div>
-                  
-                );
-              })}
-              <h3>
-                Total Price : {cart.reduce((total, item) => (total += item.price), 0)}
-              </h3>
+                              // <div
+                              //   key={_id}
+                              //   style={{
+                              //     border: "1px solid gray",
+                              //     margin: "0.5rem",
+                              //     padding: "0.5rem"
+                              //   }}
+                              // >
+                              //   <h2>
+                              //     {title} <small> INR {price} </small>
+                              //   </h2>
+                              // </div>
+
+                        );
+                  })}
+                  <h3>
+                        Total Price : {cart.reduce((total, item) => (total += item.price), 0)}
+                  </h3>
             </div>
-          );
+      );
 }
