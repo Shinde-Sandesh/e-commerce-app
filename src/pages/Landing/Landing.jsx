@@ -8,7 +8,7 @@ import './Landing.css'
 
 export default function LandingPage() {
 
-  const[categoryData, setCategoryData] = useState([])
+  const [categoryData, setCategoryData] = useState([])
 
   const fetchData = async () => {
     const response = await fetch("/api/categories")
@@ -17,19 +17,19 @@ export default function LandingPage() {
     setCategoryData(data.categories)
   }
 
-    useEffect(() => {
-      fetchData();
+  useEffect(() => {
+    fetchData();
   }, []);
 
   // function Categories() {
   //   return (
-      
+
   //   )
   // }
 
   return (
-  <>
-    <Navigation />
+    <>
+      <Navigation />
       <section class="hero">
         <div class="body-cart flex">
           <div class="body-cart-container flex">
@@ -49,30 +49,24 @@ export default function LandingPage() {
         </div>
       </section>
       <section class="hero flex">
-        {/* <div class="image-card">
-          <img src={img1} alt='img' class="shoe"/>
-          <img src={img1} alt='img' class="shoe"/>
-          <img src={img1} alt='img' class="shoe"/>
-          <img src={img1} alt='img' class="shoe"/>
-        </div> */}
         <div>
-        <h2>Categories</h2>
-        <ul>
-          {categoryData.length > 0 && (
-            <>
-              {categoryData.map((category) => 
-                <li style={{ listStyle: "none" }}>
-                  <div>
-                    <a href='/'><img src={category.image} alt='img' class="shoe"></img></a>
-                  </div>
-                  {category.categoryName}
-                  <p> {category.description} </p>
-                </li>
-              )}
-            </>
-          )}
-        </ul>;
-      </div>
+          <h2>Categories</h2>
+          <ul>
+            {categoryData.length > 0 && (
+              <>
+                {categoryData.map((category) =>
+                  <li style={{ listStyle: "none" }} key={category._id}>
+                    <div>
+                      <a href='/'><img src={category.image} alt='img' class="shoe"></img></a>
+                    </div>
+                    {category.categoryName}
+                    <p> {category.description} </p>
+                  </li>
+                )}
+              </>
+            )}
+          </ul>;
+        </div>
       </section>
     </>
   )

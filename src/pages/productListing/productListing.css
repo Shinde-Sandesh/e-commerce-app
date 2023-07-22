@@ -104,43 +104,77 @@
       row-gap: 10px;
 }
 
+/* Product Card Container */
 .card-container {
       width: 12.5rem;
       background-color: var(--white-color);
       border: 0.5px solid var(--light-gray-colo);
       text-align: center;
       position: relative;
-  }
-
-  .card-with-badge {
-    display: inline;
-    color: var(--red-color);
-    padding: 4px;
-    position: absolute;
-    right: 10px;
-    margin: 0;
-}
-
-img {
-  height: 12.5rem;
-  width: 12.5rem;
-  margin-bottom: 0;
-  padding: 0;
-}
-
-.description {
-  background-color: rgba(128, 128, 128, 0.363);
-  padding-top: 2.2px;
-  margin: 0;
-}
-
-.add-cart-btn {
-  width: 12.5rem;
-  background-color: #3498db;
-  padding: 6px;
-  border: 0;
-  color: var(--white-color);
-}
+    }
+    
+    /* Heart icon (assuming you use Font Awesome) */
+    .card-with-badge {
+      display: inline;
+      color: var(--red-color);
+      padding: 4px;
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      margin: 0;
+    }
+    
+    /* Product Image */
+    .card-image {
+      height: 12.5rem;
+      width: 12.5rem;
+      margin-bottom: 0;
+      padding: 0;
+    }
+    
+    /* Product Description */
+    .description {
+      background-color: rgba(128, 128, 128, 0.363);
+      padding-top: 2.2px;
+      margin: 0;
+    }
+    
+    /* Product Title */
+    .card-heading {
+      margin: 0;
+      padding: 0.5rem;
+      font-size: 1.1rem;
+      position: centre;
+      height: 3rem; /* Set a fixed height */
+      display: flex; /* Use flexbox */
+      align-items: center; /* Vertically center the text */
+    }
+    
+    
+    /* Product Price */
+    .price {
+      font-weight: bolder;
+      margin: 0;
+      padding: 0.5rem;
+    }
+    
+    /* Add to Cart Button */
+    .add-cart-btn {
+      width: 100%;
+      background-color: #3498db;
+      padding: 6px;
+      border: 0;
+      color: var(--white-color);
+      cursor: pointer;
+    }
+    
+    /* Clear floats for the card container */
+    .card-container::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    
 
 .price {
   font-weight: bolder;
