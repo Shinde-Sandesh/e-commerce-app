@@ -1,0 +1,58 @@
+.nav-header {
+  background-color: #ffffff80;
+  font-size: 1.5rem;
+  padding: 0.5rem clamp(2rem, 8vw, 8rem);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 1;
+}
+
+.menu-list-items:hover {
+  background-color: transparent;
+}
+
+.menu-list-items {
+  display: block;
+}
+
+.brand-name {
+  font-weight: 700;
+}
+
+.Link-color {
+  color: var(--font-primary);
+}
+
+.brand-name {
+  text-decoration: none;
+  color: var(--font-primary);
+}
+
+.menu-button {
+  display: none;
+  user-select: none;
+}
+
+
+@media screen and (max-width:745px) {
+  .menu-list {
+      display: none;
+      position: absolute;
+      right: 1rem;
+      top: 3rem;
+      flex-direction: column;
+  }
+
+  .menu-list-items, .menu-list-items:hover {
+      background: white;
+  }
+
+  .material-icons.menu-button {
+      display: block;
+      background: transparent;
+      margin-left: auto;
+  }
+
+}
