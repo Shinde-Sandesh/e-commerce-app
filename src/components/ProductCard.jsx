@@ -3,7 +3,7 @@ import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlin
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { CartContext } from '../context/CartContext';
 
-function ProductCard({ _id, image, title, price }) {
+function ProductCard({ _id, image, title, price, rating }) {
   const [addToCart, setAddToCart] = useState(true);
   const [addToWishlist, setAddToWishlist] = useState(true)
   const { handleCartUpdate } = useContext(CartContext);
@@ -11,12 +11,12 @@ function ProductCard({ _id, image, title, price }) {
 
   function CartUpdate() {
     setAddToCart(!addToCart);
-    handleCartUpdate({ _id, image, title, price });
+    handleCartUpdate({ _id, image, title, price, rating });
   }
 
   function WishlistUpdate() {
     setAddToWishlist(!addToWishlist);
-    handleWishlistUpdate({ _id, image, title, price });
+    handleWishlistUpdate({ _id, image, title, price, rating });
   }
 
   return (
@@ -28,6 +28,7 @@ function ProductCard({ _id, image, title, price }) {
         <img className="card-image" src={image} alt={title} />
         <p className="card-heading">{title}</p>
         <p className="price">{price}</p>
+        <p className="price">{rating}</p>
         <button className="add-cart-btn" onClick={CartUpdate}>
           {addToCart ? 'Add to Cart' : 'Added to Cart'}
         </button>
