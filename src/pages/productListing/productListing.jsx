@@ -26,6 +26,11 @@ export default function ProductListingPage() {
     setCategoryData(data.categories)
   }
 
+  useEffect(() => {
+    fetchData();
+    fetchCategories();
+  }, []);
+
   const handleCategory = (event) => {
     const category = event.target.value;
     setCategory(category);
@@ -51,7 +56,7 @@ export default function ProductListingPage() {
       filteredData = filteredData.filter((product) => product.categoryName === category);
     }
     
-    if (rating !== 0) {
+    if (rating > 0) {
       filteredData = filteredData.filter(
         (product) => product.rating >= Number(rating)
       );
@@ -67,11 +72,6 @@ export default function ProductListingPage() {
 
     setFilteredProducts(filteredData);
   };
-
-  useEffect(() => {
-    fetchData();
-    fetchCategories();
-  }, []);
 
   return (
     <>
