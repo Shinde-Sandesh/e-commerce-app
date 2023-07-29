@@ -6,6 +6,7 @@ import ProductListing from './pages/productListing/productListing';
 import Wishlist from './pages/wishlistPage/Wishlist';
 import Signup from './pages/signup/signup';
 import Login from './pages/login/login';
+import ProductDetails from './pages/productDetails/ProductDetails';
 import "./App.css";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route path = "/" element = {<LandingPage />} />
         <Route path = "/cart" element = {<CartManagement />} />
         <Route path = "/product" element = {<ProductListing />} />
+        <Route path = "/product/:productId" element = {<ProductDetails />} />
         <Route path = "/wishlist" element = {<Wishlist />} />
         <Route path = "/signup" element = {<Signup />} />
         <Route path = "/login" element = {<Login />} />

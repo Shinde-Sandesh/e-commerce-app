@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { CartContext } from '../context/CartContext';
@@ -25,7 +26,9 @@ function ProductCard({ _id, image, title, price, rating }) {
         <h4 className="card-with-badge">
           <div onClick={WishlistUpdate}>{addToWishlist ? <FavoriteBorderOutlinedIcon /> : <FavoriteIcon />}</div>
         </h4>
-        <img className="card-image" src={image} alt={title} />
+        <Link to={`/product/${_id}`} >
+          <img className="card-image" src={image} alt={title} />
+        </Link>
         <p className="card-heading">{title}</p>
         <p className="price">{price}</p>
         <p className="price">{rating}</p>
