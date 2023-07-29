@@ -1,5 +1,6 @@
 import {Route, Routes} from 'react-router-dom'
 import Mockman from "mockman-js";
+
 import LandingPage from './pages/Landing/Landing'
 import CartManagement from './pages/cartManagement/cartManagement';
 import ProductListing from './pages/productListing/productListing';
@@ -7,6 +8,7 @@ import Wishlist from './pages/wishlistPage/Wishlist';
 import Signup from './pages/signup/signup';
 import Login from './pages/login/login';
 import ProductDetails from './pages/productDetails/ProductDetails';
+import SearchProducts from './pages/search/SearchProducts';
 import "./App.css";
 
 function App() {
@@ -15,6 +17,7 @@ function App() {
       <Routes>
         <Route path = "/" element = {<LandingPage />} />
         <Route path = "/cart" element = {<CartManagement />} />
+        <Route path = "/search" element = {<SearchProducts />} />
         <Route path = "/product" element = {<ProductListing />} />
         <Route path = "/product/:productId" element = {<ProductDetails />} />
         <Route path = "/wishlist" element = {<Wishlist />} />

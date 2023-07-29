@@ -35,6 +35,21 @@
   user-select: none;
 }
 
+/* .navbar {
+  height: 80px; /* Adjust this value to your desired height 
+  background-color: #333; /* Add your preferred background color 
+  padding: 5px; /* Optional: Add padding to the navbar 
+}
+
+.flex {
+  display: flex;
+  padding: 5px;
+  /* Add any other necessary flex styles here 
+}
+
+.align-center {
+  align-items: center;
+} */
 
 @media screen and (max-width:745px) {
   .menu-list {
