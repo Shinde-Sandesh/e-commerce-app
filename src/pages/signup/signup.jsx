@@ -28,7 +28,7 @@ export default function Signup() {
             </div>
             <div>
               <input type="checkbox" />
-              <span>Accept <Link to=''>terms and conditions</Link></span>
+              <span>Accept <Link to='/'>terms and conditions</Link></span>
             </div>
             <div>
               <button className="btn1 login-button" type="submit">Create New Account</button>

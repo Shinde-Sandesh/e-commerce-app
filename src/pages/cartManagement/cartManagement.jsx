@@ -4,7 +4,7 @@ import { useContext, useState } from 'react';
 import { CartContext } from '../../context/CartContext';
 
 export default function CartManagement() {
-   const { cart, setCart, wishlist, handleWishlistUpdate } = useContext(CartContext);
+   const { cart, setCart, handleWishlistUpdate } = useContext(CartContext);
    const [quantities, setQuantities] = useState({});
 
    // Function to update the quantity of an item in the cart

@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { CartContext } from '../../context/CartContext';
 import { Navigation } from '../../components/Navigation'
 import FavoriteIcon from '@mui/icons-material/Favorite';
