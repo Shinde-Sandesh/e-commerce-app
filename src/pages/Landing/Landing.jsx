@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { Navigation } from '../../components/Navigation'
 import { Link } from 'react-router-dom'
 import img1 from '../../assets/sneakers-shoes-adidas-shoes.jpg';
-import img2 from '../../assets/backpack.jpg';
-import img3 from '../../assets/cycles.png';
 import './Landing.css'
 
 export default function LandingPage() {
@@ -20,12 +18,6 @@ export default function LandingPage() {
   useEffect(() => {
     fetchData();
   }, []);
-
-  // function Categories() {
-  //   return (
-
-  //   )
-  // }
 
   return (
     <>
