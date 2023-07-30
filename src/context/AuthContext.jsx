@@ -39,7 +39,7 @@ const AuthProvider = ({ children }) => {
           setUser(foundUser);
         }
       } catch (error) {
-        console.log("Error in login user", error);
+        console.error("Error in login user", error);
       }
     }
   };
@@ -57,7 +57,7 @@ const AuthProvider = ({ children }) => {
         setUser(createdUser);
       }
     } catch (error) {
-      console.log("Error in login user", error);
+      console.error("Error in login user", error);
     }
   };
 
