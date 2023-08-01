@@ -1,14 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link, useParams } from 'react-router-dom';
-
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import WishlistUpdate from '../../components/ProductCard'
 import { Navigation } from '../../components/Navigation';
+import { CartContext } from '../../context/CartContext';
 import './ProductDetails.css'
 
 function ProductDetails() {
   const { productId } = useParams();
   const [productData, setProductData] = useState([]);
+  const [addToWishlist, setAddToWishlist] = useState(true)
+  const [addToCart, setAddToCart] = useState(true);
+  const { handleCartUpdate } = useContext(CartContext);
+  const { handleWishlistUpdate } = useContext(CartContext)
 
   const fetchData = async () => {
     const response = await fetch('/api/products');
@@ -21,6 +24,16 @@ function ProductDetails() {
   };
 
   const product = getProductData(productData, productId);
+
+  function WishlistUpdate() {
+    setAddToWishlist(!addToWishlist);
+    handleWishlistUpdate(product);
+  }
+
+  function CartUpdate() {
+    setAddToCart(!addToCart);
+    handleCartUpdate(product);
+  }
 
   useEffect(() => {
     fetchData();
@@ -43,8 +56,8 @@ function ProductDetails() {
                 <p class="product-description">Product description goes here.</p>
                 <span class="product-price">${product.price}</span>
                 <div class="product-buttons">
-                  <button class="add-to-cart">Add to Cart</button>
-                  <button class="add-to-wishlist" onClick={WishlistUpdate}>Add to Wishlist</button>
+                  <button class="add-to-cart" onClick={CartUpdate}>{!addToCart ? "Added to Cart" : "Add to Cart" }</button>
+                  <button class="add-to-wishlist" onClick={WishlistUpdate}>{!addToWishlist ? "Added to Wishlist" : "Add to Wishlist"}</button>
                 </div>
               </div>
             </div>
