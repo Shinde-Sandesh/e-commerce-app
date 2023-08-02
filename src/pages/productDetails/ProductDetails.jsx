@@ -45,19 +45,19 @@ function ProductDetails() {
       <div className='card-details-container'>
         {product ? (
           <>
-            <div class="product-card">
-              <div class="product-image">
+            <div className="product-card">
+              <div className="product-image">
                 <img src={product.image} alt={product.title} />
                 <Link to='/product' className="back-arrow">
                   <ArrowBackIcon style={{ color: "black" }} /></Link>
               </div>
-              <div class="product-info">
-                <h2 class="product-title">{product.title}</h2>
-                <p class="product-description">Product description goes here.</p>
-                <span class="product-price">${product.price}</span>
-                <div class="product-buttons">
-                  <button class="add-to-cart" onClick={CartUpdate}>{!addToCart ? "Added to Cart" : "Add to Cart" }</button>
-                  <button class="add-to-wishlist" onClick={WishlistUpdate}>{!addToWishlist ? "Added to Wishlist" : "Add to Wishlist"}</button>
+              <div className="product-info">
+                <h2 className="product-title">{product.title}</h2>
+                <p className="product-description">Product description goes here.</p>
+                <span className="product-price">${product.price}</span>
+                <div className="product-buttons">
+                  <button className="add-to-cart" onClick={CartUpdate}>{!addToCart ? "Added to Cart" : "Add to Cart" }</button>
+                  <button className="add-to-wishlist" onClick={WishlistUpdate}>{!addToWishlist ? "Added to Wishlist" : "Add to Wishlist"}</button>
                 </div>
               </div>
             </div>

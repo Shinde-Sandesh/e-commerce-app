@@ -6,8 +6,8 @@ import './productListing.css';
 
 export default function ProductListingPage() {
   const [productData, setProductData] = useState([]);
-  const [categoryData, setCategoryData] = useState([])
   const [filteredProducts, setFilteredProducts] = useState([])
+  const [categoryData, setCategoryData] = useState([])
   const [sortByPrice, setSortByPrice] = useState([])
   const [rating, setRating] = useState(0);
   const [category, setCategory] = useState(false)
@@ -24,11 +24,6 @@ export default function ProductListingPage() {
     const data = await response.json()
     setCategoryData(data.categories)
   }
-
-  useEffect(() => {
-    fetchData();
-    fetchCategories();
-  }, []);
 
   const handleCategory = (event) => {
     const category = event.target.value;
@@ -47,6 +42,8 @@ export default function ProductListingPage() {
     setSortByPrice(sortByPrice)
     filterProducts(category, rating, sortByPrice)
   }
+
+  console.log("check products",filteredProducts)
 
   const filterProducts = (category, rating, sortByPrice) => {
     let filteredData = productData;
@@ -72,13 +69,18 @@ export default function ProductListingPage() {
     setFilteredProducts(filteredData);
   };
 
+  useEffect(() => {
+    fetchData();
+    fetchCategories();
+  }, []);
+
   return (
     <>
       <Navigation />
       <div className="main-body-sec">
         <FilterComponent rating={rating} handleRating={handleRating} categoryData={categoryData} handleCategory={handleCategory} handlePriceSorting={handlePriceSorting} />
         <div className="right-body-section">
-          <h1 className="showing-heading">Showing all products</h1>
+          <p className="showing-heading"><b>Showing all products </b>({filteredProducts.length})</p>
           <div className="product-flex">
             <>
               {filteredProducts.length > 0 && filteredProducts.map((item) =>

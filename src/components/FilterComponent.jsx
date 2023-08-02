@@ -4,7 +4,7 @@ export default function FilterComponent({ rating, handleRating, categoryData, ha
   return <div className="filter-sidebar">
     <div className="filter-sidebar-heading">
       <p><b>Filters</b></p>
-      <p>clear</p>
+      <p>Clear</p>
     </div>
     <div className="filter-price">
       <h2 className="price-heading">Rating</h2>
