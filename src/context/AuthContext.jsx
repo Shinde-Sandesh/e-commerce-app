@@ -1,75 +1,80 @@
-import axios from "axios";
-import { createContext, useContext, useState, useEffect } from "react";
+import axios from 'axios';
+import { createContext, useContext, useState } from 'react';
+// import { ToastType } from '../DataReducer/constants';
+// import { LoginService } from '../Services';
+// import { SignUpService } from '../Services/services';
+// import { ToastHandler } from '../utils/utils';
 
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  const localStorageToken = JSON.parse(localStorage.getItem("login"));
+  const localStorageToken = JSON.parse(localStorage.getItem('loginItems'));
   const [token, setToken] = useState(localStorageToken?.token);
-  const localStorageUser = JSON.parse(localStorage.getItem("user"));
-  const [user, setUser] = useState(localStorageUser?.user);
+  const [currUser, setCurrUser] = useState(localStorageToken?.user);
 
-  const loginService = (email, password) => {
-    return axios.post("api/auth/login", {
-      email: email,
-      password: password,
+  const LoginService = async ({ email, password }) =>
+  axios.post('/api/auth/login', {
+    email,
+    password,
+  });
+
+  const SignUpService = async ({ email, password, firstName, lastName }) => {
+    return axios.post('/api/auth/signup', {
+      email,
+      password,
+      firstName,
+      lastName
     });
   };
 
-  const signUpService = (email, password, firstName, lastName) => {
-    return axios.post("api/auth/signup", {
-      email: email,
-      password: password,
-      firstName: firstName,
-      lastName: lastName,
-    });
-  };
 
-  const loginUser = async (email, password) => {
-    if (email && password !== "") {
-      try {
-        const {
-          data: { foundUser, encodedToken },
-          status,
-        } = await loginService(email, password);
-        if (status === 200) {
-          localStorage.setItem("login", JSON.stringify({ token: encodedToken }));
-          setToken(encodedToken);
-          localStorage.setItem("user", JSON.stringify({ user: foundUser }));
-          setUser(foundUser);
-        }
-      } catch (error) {
-        console.error("Error in login user", error);
+  const loginHandler = async (email, password) => {
+    try {
+      const {
+        data: { foundUser, encodedToken },
+        status,
+      } = await LoginService({ email, password });
+      if (status === 200 || status === 201) {
+        localStorage.setItem(
+          'loginItems',
+          JSON.stringify({ token: encodedToken, user: foundUser })
+        );
+        setCurrUser(foundUser);
+        setToken(encodedToken);
+        // ToastHandler(ToastType.Success, 'Successfully logged in');
       }
+    } catch (err) {
+      console.log(err);
     }
   };
-
-  const signUpUser = async (email, password, firstName, lastName) => {
+  const logoutHandler = () => {
+    localStorage.removeItem('loginItems');
+    setToken(null);
+    setCurrUser(null);
+  };
+  const signupHandler = async (email, password, firstName, lastName) => {
     try {
       const {
         data: { createdUser, encodedToken },
         status,
-      } = await signUpService(email, password, firstName, lastName);
-      if (status === 201) {
-        localStorage.setItem("signup", JSON.stringify({ token: encodedToken }));
+      } = await SignUpService({ email, password, firstName, lastName });
+      if (status === 200 || status === 201) {
+        localStorage.setItem(
+          'loginItems',
+          JSON.stringify({ token: encodedToken, user: createdUser })
+        );
+        setCurrUser(createdUser);
         setToken(encodedToken);
-        localStorage.setItem("user", JSON.stringify({ user: createdUser }));
-        setUser(createdUser);
+        // ToastHandler(ToastType.Success, 'Successfully signed in');
       }
-    } catch (error) {
-      console.error("Error in login user", error);
+    } catch (err) {
+      console.log(err);
     }
   };
-
-  useEffect(() => {
-    if (token) {
-      // If you need to perform any action when the token changes, you can do it here.
-      // For example, fetching user data based on the token, or any other logic you require.
-    }
-  }, [token]);
-
   return (
-    <AuthContext.Provider value={{ token, setToken, loginUser, signUpUser, user, setUser }}>
+    <AuthContext.Provider
+      value={{ token, loginHandler, currUser, signupHandler, logoutHandler }}
+    >
       {children}
     </AuthContext.Provider>
   );

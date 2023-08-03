@@ -13,7 +13,6 @@ export const products = [
     price: 5000,
     categoryName: "Men",
     image : "https://assets.adidas.com/images/w_383,h_383,f_auto,q_auto,fl_lossy,c_fill,g_auto/10533a775dfe4c60852caf8d011b6270_9366/solderrun-m.jpg",
-    id : "1"
   },
   {
     _id: uuid(),
@@ -22,7 +21,6 @@ export const products = [
     price: 3000,
     categoryName: "Men",
     image : "https://assets.adidas.com/images/w_383,h_383,f_auto,q_auto,fl_lossy,c_fill,g_auto/10533a775dfe4c60852caf8d011b6270_9366/solderrun-m.jpg",
-    id : "2"
   },
   {
     _id: uuid(),
@@ -31,7 +29,6 @@ export const products = [
     price: 2000,
     categoryName: "Women",
     image : "https://assets.adidas.com/images/w_383,h_383,f_auto,q_auto,fl_lossy,c_fill,g_auto/10533a775dfe4c60852caf8d011b6270_9366/solderrun-m.jpg",
-    id : "3"
   },
   {
     _id: uuid(),
@@ -40,7 +37,6 @@ export const products = [
     price: 3000,
     categoryName: "Kids",
     image : "https://contents.mediadecathlon.com/p1836363/09444f07e84fb37d0fc52d417e084de8/p1836363.jpg?format=auto&quality=70&f=650x0",
-    id : "4"
   },
   {
     _id: uuid(),
@@ -49,6 +45,5 @@ export const products = [
     price: 10000,
     categoryName: "Women",
     image : "https://contents.mediadecathlon.com/p2340283/e76d77a4150ad426e03e61f25581371d/p2340283.jpg?format=auto&quality=70&f=650x0",
-    id : "5"
   }
 ];

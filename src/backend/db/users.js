@@ -1,4 +1,5 @@
 import { v4 as uuid } from "uuid";
+import bcyrpt from "bcryptjs";
 import { formatDate } from "../utils/authUtils";
 /**
  * User Database can be added here.
@@ -22,6 +23,15 @@ export const users = [
     lastName: "Shinde",
     email: "shinde.shailendra@gmail.com",
     password: "test123",
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+  },
+  {
+    _id: uuid(),
+    firstName: "Johe",
+    lastName: "Doe",
+    email: "johndoe@gmail.com",
+    password: bcyrpt.hashSync("johnDoe123", 5),
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },

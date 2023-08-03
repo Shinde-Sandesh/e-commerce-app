@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import { CartContext } from '../context/CartContext'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
@@ -7,10 +7,12 @@ import LocalMallIcon from '@mui/icons-material/LocalMall';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import SearchIcon from '@mui/icons-material/Search';
+import { useAuth } from '../context/AuthContext';
 import './Navigation.css'
 
 export const Navigation = () => {
-
+  const { token } = useAuth();
+  const navigate = useNavigate();
   const { cart } = useContext(CartContext)
   const { wishlist } = useContext(CartContext)
 
@@ -38,7 +40,21 @@ export const Navigation = () => {
               <span className="icon-button-badge flex center icon-xl" style={{ display: cart.length === 0 ? "none" : "" }}>{cart.length}</span>
             </ShoppingCartIcon>
           </Link>
-          <Link to="/login" className="btn round-button" type="button"><AccountCircleIcon style={{ color: "white" }} /></Link>
+          {/* <Link to="/login" className="btn round-button" type="button"><AccountCircleIcon style={{ color: "white" }} /></Link> */}
+          {token && (
+              <li
+                className='nav-link-item'
+                onClick={() => navigate('/profile')}
+                // onClick={() => navigate('/profile/details')}
+                title='profile'
+              >
+                <div className='badge-icon nav-badge-icon'>
+                  <span className='material-icons-outlined'>
+                    account_circle
+                  </span>
+                </div>
+              </li>
+            )}
           {/* <Link to="/signup" className="btn round-button" type="button">Signup</Link> */}
         </div>
       </nav>

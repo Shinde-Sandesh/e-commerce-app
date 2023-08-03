@@ -9,6 +9,8 @@ import Signup from './pages/signup/signup';
 import Login from './pages/login/login';
 import ProductDetails from './pages/productDetails/ProductDetails';
 import SearchProducts from './pages/search/SearchProducts';
+import Logout from './pages/logout/Logout';
+import { Profile } from './pages/profile/Profile';
 import { PrivateRoute } from './components/PrivateRoute';
 import "./App.css";
 
@@ -24,6 +26,8 @@ function App() {
         <Route path = "/wishlist" element = {<PrivateRoute><Wishlist /></PrivateRoute>} />
         <Route path = "/signup" element = {<Signup />} />
         <Route path = "/login" element = {<Login />} />
+        <Route path = "/logout" element = {<Logout />} />
+        <Route path='/profile' element={<PrivateRoute><Profile /></PrivateRoute>} />
         <Route path = "/mockman" element = {<Mockman />} />
       </Routes>
     </div>

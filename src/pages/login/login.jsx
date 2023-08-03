@@ -1,71 +1,101 @@
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext";
-import { Navigation } from '../../components/Navigation'
-import './login.css'
+import { useEffect, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
+// import '../Auth.css';
 
-export default function Login() {
-  const [loginForm, setLoginForm] = useState({
-    email: "",
-    password: "",
-  });
-  const navigate = useNavigate();
-  const { token, loginUser } = useAuth();
+const Login = () => {
+  const { loginHandler, token } = useAuth();
   const location = useLocation();
-
-  useEffect(() => {
-    (async () => {
-      loginUser(loginForm.email, loginForm.password);
-    })();
-  }, [loginForm.email, loginForm.password]);
-
-  const loginHandler = () => {
-    setLoginForm((form) => ({
-      ...form,
-      email: "test@gmail.com",
-      password: "test123",
-    }));
+  const navigate = useNavigate();
+  const fixedLoginForm = {
+    email: 'johndoe@gmail.com',
+    password: 'johnDoe123',
   };
+  const [loginForm, setLoginForm] = useState({
+    email: '',
+    password: '',
+  });
 
-  if (token) {
-    // Do whatever you need to do when the user is logged in
-    // For example, redirect to a specific page.
-    navigate(location?.state?.from || "/product", { replace: true });
-  }
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+    loginHandler(loginForm.email, loginForm.password);
+  };
+  useEffect(() => {
+    if (token) {
+      navigate(location?.state?.from.pathname || '/', { replace: true });
+    }
+  }, [token]);
 
   return (
-    <>
-      <Navigation />
-      <div className="center">
-        <div className="login-container">
-          <div className="login-heading">Login</div>
-          <form action="#">
-            <div className="data">
-              <label className="input-login label-class" htmlFor="">Email Address</label>
-              <input type="text" placeholder="Enter Email ID" value={loginForm.email} onChange={(e) => setLoginForm((form) => ({ ...form, email: e.target.value }))} required />
+    <div className='login-container'>
+      <main className='login-main'>
+        <form className='login-card brd-rd-semi-sq' onSubmit={onSubmitHandler}>
+          <div className='login-card-header'>
+            <h3 className='text-align-center'>Sign In</h3>
+          </div>
+          <div className='login-card-item'>
+            <div className='input-container'>
+              <label>Email address</label>
+              <input
+                placeholder='abc@fashiFy.com'
+                className='text-input auth-input'
+                type='text'
+                required={true}
+                value={loginForm.email}
+                onChange={(e) =>
+                  setLoginForm({ ...loginForm, email: e.target.value })
+                }
+              />
             </div>
-            <div className="data">
-              <label className="input-login label-class" htmlFor="">Password</label>
-              <input type="password" placeholder="Enter your password" value={loginForm.password} onChange={(e) => setLoginForm((form) => ({ ...form, password: e.target.value }))} required />
+          </div>
+          <div className='login-card-item'>
+            <div className='input-container'>
+              <label>Password</label>
+              <input
+                placeholder='abcd1234'
+                value={loginForm.password}
+                required={true}
+                className='text-input'
+                type='password'
+                onChange={(e) =>
+                  setLoginForm({ ...loginForm, password: e.target.value })
+                }
+              />
             </div>
-            <div className="remember-me flex">
-              <div className="checkmark">
-                <input type="checkbox" />
-                <span className="span-style">Remember me</span>
-              </div>
-              <Link href="" className="forget">Forget Password</Link>
+          </div>
+
+          <div className='login-card-item'>
+            <button
+              type='submit'
+              className='btn btn-link-primary background-primary text-align-center brd-rd-semi-sq'
+            >
+              Login
+            </button>
+            <button
+              onClick={() =>
+                setLoginForm({
+                  email: fixedLoginForm.email,
+                  password: fixedLoginForm.password,
+                })
+              }
+              type='submit'
+              className='btn btn-link-primary background-primary text-align-center brd-rd-semi-sq'
+            >
+              Login As a Guest
+            </button>
+            <div className='auth-footer'>
+              <p>
+                <span>Don't have an account?</span>
+                <Link className='auth-signup' to={'/signup'}>
+                  {' '}
+                  sign up
+                </Link>
+              </p>
             </div>
-            <div>
-              <button className="btn1 login-button" onClick={() => {
-                loginHandler();
-              }}>Login</button>
-            </div>
-            <div className="create-account">
-              <Link to="/signup">Create new account <i className="fas fa-angle-right create-icon"></i></Link>
-            </div>
-          </form>
-        </div>
-      </div>
-    </>
-  )
-}
+          </div>
+        </form>
+      </main>
+    </div>
+  );
+};
+export default Login;
