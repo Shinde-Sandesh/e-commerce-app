@@ -1,9 +1,5 @@
 import axios from 'axios';
 import { createContext, useContext, useState } from 'react';
-// import { ToastType } from '../DataReducer/constants';
-// import { LoginService } from '../Services';
-// import { SignUpService } from '../Services/services';
-// import { ToastHandler } from '../utils/utils';
 
 const AuthContext = createContext();
 
@@ -15,7 +11,7 @@ const AuthProvider = ({ children }) => {
   const LoginService = async ({ email, password }) =>
   axios.post('/api/auth/login', {
     email,
-    password,
+    password
   });
 
   const SignUpService = async ({ email, password, firstName, lastName }) => {

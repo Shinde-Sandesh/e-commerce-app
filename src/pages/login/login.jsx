@@ -9,7 +9,7 @@ const Login = () => {
   const navigate = useNavigate();
   const fixedLoginForm = {
     email: 'johndoe@gmail.com',
-    password: 'johnDoe123',
+    password: 'johnDoe123'
   };
   const [loginForm, setLoginForm] = useState({
     email: '',

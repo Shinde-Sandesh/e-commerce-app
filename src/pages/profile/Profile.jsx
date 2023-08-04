@@ -11,16 +11,16 @@ export const Profile = () => {
     <div className='profile-outer-container'>
       <div className='profile-container'>
         <div className='profile-nav'>
-          <NavLink to={'/profile/details'} className={toggleActive}>
+          {/* <NavLink to={'/profile/details'} className={toggleActive}>
             Profile Information
           </NavLink>
-          {/*address management and order management will be added later on*/}
           <NavLink to={'/profile/addresses'} className={toggleActive}>
             Addresses
           </NavLink>
           <NavLink to={'/profile/orders'} className={toggleActive}>
             Order History
-          </NavLink>
+          </NavLink> */}
+          <h2>Account</h2>
         </div>
         <div className='profile-details'>
           <Outlet />

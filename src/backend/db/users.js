@@ -31,7 +31,7 @@ export const users = [
     firstName: "Johe",
     lastName: "Doe",
     email: "johndoe@gmail.com",
-    password: bcyrpt.hashSync("johnDoe123", 5),
+    password: "johnDoe123",
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },
