@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Navigation } from '../../components/Navigation'
+import { Navigation } from '../../components/Navbar/Navigation'
 import { Link } from 'react-router-dom'
 import img1 from '../../assets/sneakers-shoes-adidas-shoes.jpg';
 import './Landing.css'
@@ -34,7 +34,7 @@ export default function LandingPage() {
                 The adidas range of men's shoes has got you covered, if you're striving to be the best or you just want the best fit for your daily life. With iconic designs and high-performance technologies, you can be sure that your shoes won't let you down.
               </p>
               <div className="btn-class">
-                <Link to="product" className="btn round-button-1" type="button">Shop Now</Link>
+                <Link to="/products" className="btn round-button-1" type="button">Shop Now</Link>
               </div>
             </div>
           </div>

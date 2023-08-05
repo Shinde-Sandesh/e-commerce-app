@@ -1,5 +1,5 @@
 import './cartManagement.css'
-import { Navigation } from '../../components/Navigation'
+import { Navigation } from '../../components/Navbar/Navigation'
 import { useContext, useState } from 'react';
 import { CartContext } from '../../context/CartContext';
 
