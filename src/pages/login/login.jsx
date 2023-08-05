@@ -87,7 +87,6 @@ const Login = () => {
               <p>
                 <span>Don't have an account?</span>
                 <Link className='auth-signup' to={'/signup'}>
-                  {' '}
                   sign up
                 </Link>
               </p>

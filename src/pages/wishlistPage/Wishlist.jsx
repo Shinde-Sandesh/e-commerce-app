@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { CartContext } from '../../context/CartContext';
-import { Navigation } from '../../components/Navigation'
+import { Navigation } from '../../components/Navbar/Navigation'
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import './Wishlist.css'
 

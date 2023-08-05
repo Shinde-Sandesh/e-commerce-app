@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Navigation } from '../../components/Navigation';
+import { Navigation } from '../../components/Navbar/Navigation';
 import FilterComponent from '../../components/FilterComponent';
 import ProductCard from '../../components/ProductCard';
 import './SearchProducts.css'
