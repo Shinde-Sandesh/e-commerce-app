@@ -21,13 +21,13 @@ function App() {
         <Route path = "/" element = {<LandingPage />} />
         <Route path = "/cart" element = {<PrivateRoute><CartManagement /></PrivateRoute>} />
         <Route path = "/search" element = {<SearchProducts />} />
-        <Route path = "/product" element = {<ProductListing />} />
-        <Route path = "/product/:productId" element = {<ProductDetails />} />
+        <Route path = "/products" element = {<ProductListing />} />
+        <Route path = "/products/:productId" element = {<ProductDetails />} />
         <Route path = "/wishlist" element = {<PrivateRoute><Wishlist /></PrivateRoute>} />
         <Route path = "/signup" element = {<Signup />} />
         <Route path = "/login" element = {<Login />} />
         <Route path = "/logout" element = {<Logout />} />
-        <Route path='/profile' element={<PrivateRoute><Profile /></PrivateRoute>} />
+        <Route path='/user_profile' element={<PrivateRoute><Profile /></PrivateRoute>} />
         <Route path = "/mockman" element = {<Mockman />} />
       </Routes>
     </div>

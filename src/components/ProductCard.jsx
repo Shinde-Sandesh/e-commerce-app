@@ -26,7 +26,7 @@ function ProductCard({ _id, image, title, price, rating }) {
         <h4 className="card-with-badge">
           <div onClick={WishlistUpdate}>{addToWishlist ? <FavoriteBorderOutlinedIcon /> : <FavoriteIcon />}</div>
         </h4>
-        <Link to={`/product/${_id}`} >
+        <Link to={`/products/${_id}`} >
           <img className="card-image" src={image} alt={title} />
         </Link>
         <p className="card-heading">{title}</p>

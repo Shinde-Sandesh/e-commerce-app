@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 import { CartContext } from '../context/CartContext'
@@ -15,19 +15,92 @@ export const Navigation = () => {
   const navigate = useNavigate();
   const { cart } = useContext(CartContext)
   const { wishlist } = useContext(CartContext)
+  const [input, setInput] = useState("");
 
   return (
-    <div>
-      <nav className="flex nav-item">
-        <div className="left-nav flex">
-          <Link to="/" style={{ color: "white" }}>Sports Cart</Link>
-          <input className="search-bar" placeholder="Search" />
-          <Link to='/search'>
-            <SearchIcon style={{ color: "white" }} />
-          </Link>
+    <div className='nav-header'>
+      <ul className='navbar'>
+        <div className='navbar-main'>
+          <div className="navbar-left">
+            <Link to="/" style={{ color: "white" }}><h2>Sports Cart</h2></Link>
+          </div>
+          <div className="search-container">
+            <SearchIcon style={{ color: "#007bb5" }} />
+            <input
+              type="search"
+              name="search"
+              className="search-bar"
+              value={input}
+              placeholder="Search for product"
+              onChange={(e) => setInput(e.target.value)}
+            />
+            {/* <Link to='/search'>
+            </Link> */}
+          </div>
+
+          <ul className="navbar-right">
+            <li>
+            <div className="icon cart-badge">
+            <Link to="/products" className="btn round-button">
+              <LocalMallIcon style={{ color: "white" }} className="btn-badge badge-lg" />
+            </Link>
+            </div>
+              {/* <div className="icon cart-badge" onClick={() => navigate("/wishlist")}>
+                <i className="fa fa-heart" title="Wishlist"></i>
+                {wishlist && wishlist.length > 0 && (
+                  <div className="notification-icon flex-center">
+                    <span>{wishlist.length}</span>
+                  </div>
+                )}
+              </div> */}
+            </li>
+            <li>
+            <div className="icon cart-badge">
+            <Link to="/wishlist" className="btn round-button">
+              <FavoriteBorderOutlinedIcon style={{ color: "white" }} className="btn-badge badge-lg">
+              {wishlist && wishlist.length > 0 && (
+                  <div className="notification-icon flex-center">
+                    <span>{wishlist.length}</span>
+                  </div>
+                )}
+              </FavoriteBorderOutlinedIcon>
+            </Link>
+            </div>
+              {/* <div className="icon cart-badge" onClick={() => navigate("/wishlist")}>
+                <i className="fa fa-heart" title="Wishlist"></i>
+                {wishlist && wishlist.length > 0 && (
+                  <div className="notification-icon flex-center">
+                    <span>{wishlist.length}</span>
+                  </div>
+                )}
+              </div> */}
+            </li>
+            <li className="nav-cart">
+              <div className="icon cart-badge">
+              <Link to="/cart" className="btn round-button">
+              <ShoppingCartIcon style={{ color: "white" }} className="btn-badge badge-lg">
+              {cart && cart.length > 0 && (
+                  <div className="notification-icon flex-center">
+                    <span>{cart.length}</span>
+                  </div>
+                )}
+              </ShoppingCartIcon>
+            </Link>
+              </div>
+            </li>
+            <li>
+            {/* <li onClick={() => navigate("/user_profile")}> */}
+              {/* <img
+                src="https://github.com/rutvikpumak/pustaka-ecom/blob/dev/images/logo.png?raw=true"
+                alt="login"
+                title={token ? "User Profile" : "Sign In"}
+              /> */}
+              <Link to="/user_profile" className="btn round-button" title={token ? "User Profile" : "Sign In"} type="button"><AccountCircleIcon style={{ color: "white" }} /></Link>
+            </li>
+          </ul>
         </div>
-        <div className="right-nav flex position">
-          <Link to="/product">
+        {/* <div className="right-nav flex position">
+          <Link to="/products">
             <LocalMallIcon style={{ color: "white" }} />
           </Link>
           <Link to="/wishlist" className="btn round-button">
@@ -40,12 +113,11 @@ export const Navigation = () => {
               <span className="icon-button-badge flex center icon-xl" style={{ display: cart.length === 0 ? "none" : "" }}>{cart.length}</span>
             </ShoppingCartIcon>
           </Link>
-          {/* <Link to="/login" className="btn round-button" type="button"><AccountCircleIcon style={{ color: "white" }} /></Link> */}
+
           {token && (
               <li
                 className='nav-link-item'
                 onClick={() => navigate('/profile')}
-                // onClick={() => navigate('/profile/details')}
                 title='profile'
               >
                 <div className='badge-icon nav-badge-icon'>
@@ -55,9 +127,19 @@ export const Navigation = () => {
                 </div>
               </li>
             )}
-          {/* <Link to="/signup" className="btn round-button" type="button">Signup</Link> */}
+        </div> */}
+        <div className="search-container search-mob">
+        {/* <div className="search-container search-mob" onKeyDown={(e) => searchHandler(e)}> */}
+        <SearchIcon style={{ color: "white" }} />
+          <input
+            type="search"
+            name="search"
+            className="search-bar"
+            placeholder="Search for product"
+            id=""
+          />
         </div>
-      </nav>
+      </ul>
     </div>
   )
 }

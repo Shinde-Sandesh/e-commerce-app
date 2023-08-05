@@ -48,7 +48,7 @@ function ProductDetails() {
             <div className="product-card">
               <div className="product-image">
                 <img src={product.image} alt={product.title} />
-                <Link to='/product' className="back-arrow">
+                <Link to='/products' className="back-arrow">
                   <ArrowBackIcon style={{ color: "black" }} /></Link>
               </div>
               <div className="product-info">
