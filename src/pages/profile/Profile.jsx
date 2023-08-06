@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import './Profile.css'
 import { Navigation } from '../../components/Navbar/Navigation';
+import AddressForm from '../../components/AddressForm/AddressForm';
+import './Profile.css'
 
 export const Profile = () => {
 
@@ -11,13 +12,13 @@ export const Profile = () => {
   const navigate = useNavigate();
 
   const formValue = {
-    name: "",
-    street: "",
-    city: "",
-    state: "",
-    country: "",
-    zipCode: "",
-    mobile: "",
+    name: "Sandesh Shinde",
+    street: "Malabar Hill",
+    city: "Pune",
+    state: "Maharashtra",
+    country: "India",
+    zipCode: "54321",
+    mobile: "1234567890",
   };
   const [formDisplay, setFormDisplay] = useState(false);
   const [addressForm, setAddForm] = useState(formValue);
@@ -77,13 +78,13 @@ export const Profile = () => {
             <div className="tab"  style={{display : !check ? "" : "none"}}>
               <h3 className="details-header">My Addresses</h3>
               <div className="address-container">
-                    <p className="paragraph-md">name</p>
+                    <p className="paragraph-md">{formValue["name"]}</p>
                     <div>
                       <p className="paragraph-sm">
-                        street, city, state. zipCode
+                        {formValue["street"]}, {formValue['city']}, {formValue['state']}, {formValue['country']} {formValue['zipCode']}
                       </p>
-                      <p className="paragraph-sm">country.</p>
-                      <p className="paragraph-sm">Phone Number : mobile</p>
+                      <p className="paragraph-sm">{formValue['country.']}</p>
+                      <p className="paragraph-sm">Phone Number : {formValue['mobile']}</p>
                     </div>
                     <div className="address-btn">
                       <button className="btn1 outline-default address-edit">Edit</button>
@@ -103,13 +104,13 @@ export const Profile = () => {
           </div>
         </div>
       </div>
-      {/* <AddressForm
-        addressForm={addressForm}
-        setAddForm={setAddForm}
-        formDisplay={formDisplay}
-        setFormDisplay={setFormDisplay}
-        formValue={formValue}
-      /> */}
+      <AddressForm
+        // addressForm={addressForm}
+        // setAddForm={setAddForm}
+        // formDisplay={formDisplay}
+        // setFormDisplay={setFormDisplay}
+        // formValue={formValue}
+      />
     </div>
     </>
   );
