@@ -5,11 +5,11 @@ import LandingPage from './pages/Landing/Landing'
 import CartManagement from './pages/cartManagement/cartManagement';
 import ProductListing from './pages/productListing/productListing';
 import Wishlist from './pages/wishlistPage/Wishlist';
-import Signup from './pages/signup/signup';
-import Login from './pages/login/login';
 import ProductDetails from './pages/productDetails/ProductDetails';
 import SearchProducts from './pages/search/SearchProducts';
-import Logout from './pages/logout/Logout';
+import SignUp from './pages/Auth/signup/signup';
+import Login from './pages/Auth/login/login';
+import Logout from './pages/Auth/logout/Logout';
 import { Profile } from './pages/profile/Profile';
 import { PrivateRoute } from './components/PrivateRoute';
 import "./App.css";
@@ -24,7 +24,7 @@ function App() {
         <Route path = "/products" element = {<ProductListing />} />
         <Route path = "/products/:productId" element = {<ProductDetails />} />
         <Route path = "/wishlist" element = {<PrivateRoute><Wishlist /></PrivateRoute>} />
-        <Route path = "/signup" element = {<Signup />} />
+        <Route path = "/signup" element = {<SignUp />} />
         <Route path = "/login" element = {<Login />} />
         <Route path = "/logout" element = {<Logout />} />
         <Route path='/user_profile' element={<PrivateRoute><Profile /></PrivateRoute>} />
