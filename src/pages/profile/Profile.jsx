@@ -83,8 +83,8 @@ export const Profile = () => {
                       <p className="paragraph-sm">Phone Number : mobile</p>
                     </div>
                     <div className="address-btn">
-                      <button className="btn outlined-default address-edit">Edit</button>
-                      <button className="btn outlined-danger address-remove">Remove</button>
+                      <button className="btn1 outline-default address-edit">Edit</button>
+                      <button className="btn1 outline-danger address-remove">Remove</button>
                     </div>
                   </div>
               <button

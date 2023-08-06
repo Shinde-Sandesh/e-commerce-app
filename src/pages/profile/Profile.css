@@ -14,11 +14,55 @@
 .title{
   font-weight: var(--font-semiBold);
 }
+
 .tabs {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   width: 400px;
+}
+
+.btn,
+.link-btn {
+    border: none;
+    background-color: none;
+    outline: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    font-size: 1.1rem;
+    font-weight: var(--font-semiBold);
+    /* color: white; */
+    cursor: pointer;
+}
+
+.outline-danger {
+  background-color: white;
+  color: #dc2626;
+  border: 0.5px solid #dc2626;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.outline-danger:hover{
+  background-color: #dc2626;
+  color: white;
+}
+
+.outline-default{
+  background-color: white;
+  color: #414752;
+  border: 0.5px solid #414752;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.outline-default:hover{
+  background-color: #414752;
+  color: white;
 }
 
 .tabs label {
@@ -91,8 +135,8 @@
   font-weight: var(--font-semiBold);
 }
 
-.address-btn .btn,
-.address-form-btn .btn {
+.address-btn .btn1,
+.address-form-btn .btn1 {
   font-size: 0.9rem;
   padding: 0.2rem 0.5rem;
   margin: 1rem 0.5rem 2rem 0;
