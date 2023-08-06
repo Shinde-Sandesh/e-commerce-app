@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import './Profile.css'
+import { Navigation } from '../../components/Navbar/Navigation';
 
 export const Profile = () => {
 
@@ -26,6 +27,8 @@ export const Profile = () => {
     navigate('/logout');
   };
   return (
+    <>
+    <Navigation />
     <div className="profile-container">
       <div className="profile-main-container">
         <h2>Account</h2>
@@ -108,5 +111,6 @@ export const Profile = () => {
         formValue={formValue}
       /> */}
     </div>
+    </>
   );
 };

@@ -10,6 +10,7 @@ import SearchProducts from './pages/search/SearchProducts';
 import SignUp from './pages/Auth/signup/signup';
 import Login from './pages/Auth/login/login';
 import Logout from './pages/Auth/logout/Logout';
+import CheckoutPage from './pages/checkout/CheckoutPage';
 import { Profile } from './pages/profile/Profile';
 import { PrivateRoute } from './components/PrivateRoute';
 import "./App.css";
@@ -28,6 +29,7 @@ function App() {
         <Route path = "/login" element = {<Login />} />
         <Route path = "/logout" element = {<Logout />} />
         <Route path='/user_profile' element={<PrivateRoute><Profile /></PrivateRoute>} />
+        <Route path='/checkout' element={<PrivateRoute><CheckoutPage /></PrivateRoute>} />
         <Route path = "/mockman" element = {<Mockman />} />
       </Routes>
     </div>
