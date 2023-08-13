@@ -21,7 +21,7 @@ export default function LandingPage() {
 
   return (
     <>
-      <Navigation />
+      {/* <Navigation /> */}
       <section className="hero">
         <div className="body-cart flex">
           <div className="body-cart-container flex">

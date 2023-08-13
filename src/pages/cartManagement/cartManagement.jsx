@@ -1,15 +1,45 @@
+import axios from "axios";
+import { toast } from "react-toastify";
 import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../../context/CartContext';
+import { useAuth } from "../../context/AuthContext";
 import { Navigation } from '../../components/Navbar/Navigation'
 import './cartManagement.css'
 
 export default function CartManagement() {
   const { cart, setCart, handleWishlistUpdate } = useContext(CartContext);
   const [quantities, setQuantities] = useState({});
+  const { token } = useAuth();
 
   const updateQuantity = (_id, newQuantity) => {
     setQuantities({ ...quantities, [_id]: newQuantity });
+  }
+
+  function addToWishlist(product, toast) {
+    try {
+      axios.post(
+        "/api/user/wishlist",
+        {
+          product,
+        },
+        {
+          headers: {
+            authorization: token,
+          },
+        }
+      ).then(() => {
+        const updatedCart = cart.filter(item => item._id !== product._id);
+        setCart(updatedCart);
+        toast.success("Added In Wishlist !");
+      }).catch(error => {
+        toast.error("Something Went Wrong !");
+        console.log("Error in Add To Cart Service", error);
+      });
+    } catch (error) {
+      toast.error("Something Went Wrong !");
+      console.log("Error in Add To Cart Service", error);
+    }
   }
 
   const removeFromCart = (_id) => {
@@ -17,19 +47,21 @@ export default function CartManagement() {
     const updatedQuantities = { ...quantities };
     delete updatedQuantities[_id];
     setQuantities(updatedQuantities);
+    toast.error("Removed from cart")
   }
-
+  
   const moveToWishlist = (_id) => {
     const itemToMove = cart.find((item) => item._id === _id);
     if (itemToMove) {
       handleWishlistUpdate(itemToMove);
+      addToWishlist(itemToMove, toast)
       removeFromCart(_id);
     }
   }
 
   return (
     <>
-      <Navigation />
+      {/* <Navigation /> */}
       <p className="cart-heading"><strong>My Cart </strong>({cart.length})</p>
       <div className="cart-container">
         <div className="product-card">

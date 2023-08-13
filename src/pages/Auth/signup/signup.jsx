@@ -52,7 +52,7 @@ const SignUp = () => {
   }, [token]);
   return (
     <>
-      <Navigation />
+      {/* <Navigation /> */}
       <div className='signup-container flex-center'>
         <div className='signup-main-container flex-center'>
           <form className='signup-main'>

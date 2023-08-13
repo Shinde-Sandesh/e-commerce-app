@@ -29,7 +29,7 @@ const Login = () => {
 
   return (
     <>
-    <Navigation />
+    {/* <Navigation /> */}
     <div className="auth-container flex-center">
       <div className="auth-main-container flex-center">
         <form className="auth-main" onSubmit={onSubmitHandler}>

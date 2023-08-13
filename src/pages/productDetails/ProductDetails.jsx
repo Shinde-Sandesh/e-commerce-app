@@ -41,7 +41,7 @@ function ProductDetails() {
 
   return (
     <>
-      <Navigation />
+      {/* <Navigation /> */}
       <div className='card-details-container'>
         {product ? (
           <>

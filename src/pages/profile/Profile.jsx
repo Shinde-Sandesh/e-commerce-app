@@ -28,7 +28,7 @@ export const Profile = () => {
   };
   return (
     <>
-    <Navigation />
+    {/* <Navigation /> */}
     <div className="profile-container">
       <div className="profile-main-container">
         <h2>Account</h2>
