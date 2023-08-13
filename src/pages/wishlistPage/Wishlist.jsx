@@ -1,5 +1,8 @@
+import axios from 'axios';
+import { toast } from "react-toastify";
 import { useContext } from 'react';
 import { CartContext } from '../../context/CartContext';
+import { useAuth } from '../../context/AuthContext';
 import { Navigation } from '../../components/Navbar/Navigation'
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import './Wishlist.css'
@@ -7,23 +10,52 @@ import './Wishlist.css'
 export default function Wishlist() {
 
   const { wishlist, setWishlist, handleCartUpdate } = useContext(CartContext);
-
+  const { token } = useAuth();
   const removeFromWishlist = (_id) => {
     setWishlist(wishlist.filter(item => item._id !== _id));
   }
 
-  // Function to move an item to the wishlist
+  function addToCart(product, toast) {
+    try {
+      axios.post(
+        "/api/user/cart",
+        {
+          product,
+        },
+        {
+          headers: {
+            authorization: token,
+          },
+        }
+      ).then(response => {
+        const updatedWishlist = wishlist.filter(item => item._id !== product._id);
+        setWishlist(updatedWishlist);
+        console.log("first",response.data)
+        // handleCartUpdate(response.data); // Assuming the response contains updated cart information
+        toast.success("Added In Cart !");
+      }).catch(error => {
+        // toast.error("Something Went Wrong !");
+        console.log("Error in Add To Cart Service", error);
+      });
+    } catch (error) {
+      toast.error("Something Went Wrong !");
+      console.log("Error in Add To Cart Service", error);
+    }
+  }
+  
+
   const moveToCart = (_id) => {
     const itemToMove = wishlist.find((item) => item._id === _id);
     if (itemToMove) {
-      handleCartUpdate(itemToMove);
+      addToCart(itemToMove)
+      handleCartUpdate(itemToMove, toast);
       removeFromWishlist(_id);
     }
   }
 
   return (
     <>
-      <Navigation />
+      {/* <Navigation /> */}
       {wishlist.length === 0 &&
         <>
           <div>

@@ -43,8 +43,6 @@ export default function ProductListingPage() {
     filterProducts(category, rating, sortByPrice)
   }
 
-  console.log("check products",filteredProducts)
-
   const filterProducts = (category, rating, sortByPrice) => {
     let filteredData = productData;
 
@@ -76,7 +74,7 @@ export default function ProductListingPage() {
 
   return (
     <>
-      <Navigation />
+      {/* <Navigation /> */}
       <div className="main-body-sec">
         <FilterComponent rating={rating} handleRating={handleRating} categoryData={categoryData} handleCategory={handleCategory} handlePriceSorting={handlePriceSorting} />
         <div className="right-body-section">

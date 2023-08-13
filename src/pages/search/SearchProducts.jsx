@@ -29,7 +29,7 @@ function SearchProducts() {
 
   return (
     <>
-      <Navigation />
+      {/* <Navigation /> */}
       <div className="main-body-sec">
         <div className="right-body-section">
           <h1 className="showing-heading">Showing all products</h1>
