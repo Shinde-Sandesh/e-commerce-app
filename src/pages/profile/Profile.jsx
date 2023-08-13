@@ -12,7 +12,6 @@ export const Profile = () => {
   const navigate = useNavigate();
 
   const formValue = {
-    name: "Sandesh Shinde",
     street: "Malabar Hill",
     city: "Pune",
     state: "Maharashtra",
@@ -78,7 +77,7 @@ export const Profile = () => {
             <div className="tab"  style={{display : !check ? "" : "none"}}>
               <h3 className="details-header">My Addresses</h3>
               <div className="address-container">
-                    <p className="paragraph-md">{formValue["name"]}</p>
+                    <p className="paragraph-md">{user?.firstName} {user?.lastName}</p>
                     <div>
                       <p className="paragraph-sm">
                         {formValue["street"]}, {formValue['city']}, {formValue['state']}, {formValue['country']} {formValue['zipCode']}
@@ -104,13 +103,13 @@ export const Profile = () => {
           </div>
         </div>
       </div>
-      <AddressForm
-        // addressForm={addressForm}
-        // setAddForm={setAddForm}
-        // formDisplay={formDisplay}
-        // setFormDisplay={setFormDisplay}
-        // formValue={formValue}
-      />
+      {/* <AddressForm
+        addressForm={addressForm}
+        setAddForm={setAddForm}
+        formDisplay={formDisplay}
+        setFormDisplay={setFormDisplay}
+        formValue={formValue}
+      /> */}
     </div>
     </>
   );

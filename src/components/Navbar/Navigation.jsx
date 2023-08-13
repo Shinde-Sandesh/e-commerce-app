@@ -44,6 +44,13 @@ export const Navigation = () => {
             </li>
             <li>
               <div className="icon cart-badge">
+                <Link to="/search" className="btn round-button">
+                  <SearchIcon style={{ color: "white" }} className="btn-badge badge-lg" />
+                </Link>
+              </div>
+            </li>
+            <li>
+              <div className="icon cart-badge">
                 <Link to="/wishlist" className="btn round-button">
                   <FavoriteBorderOutlinedIcon style={{ color: "white" }} className="btn-badge badge-lg">
                     {wishlist && wishlist.length > 0 && (

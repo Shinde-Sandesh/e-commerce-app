@@ -6,9 +6,6 @@ export function CartProvider({ children }) {
   const [cart, setCart] = useState([]);
   const [wishlist, setWishlist] = useState([])
 
-  // console.log({ cart });
-  // console.log("wishlist context",{ wishlist });
-
   const handleCartUpdate = (item) => {
     setCart((cart) => [...cart, item]);
   };
