@@ -44,6 +44,13 @@ export const Navigation = () => {
             </li>
             <li>
               <div className="icon cart-badge">
+                <Link to="/search" className="btn round-button">
+                  <SearchIcon style={{ color: "white" }} className="btn-badge badge-lg" />
+                </Link>
+              </div>
+            </li>
+            <li>
+              <div className="icon cart-badge">
                 <Link to="/wishlist" className="btn round-button">
                   <FavoriteBorderOutlinedIcon style={{ color: "white" }} className="btn-badge badge-lg">
                     {wishlist && wishlist.length > 0 && (
@@ -77,37 +84,7 @@ export const Navigation = () => {
             </li>
           </ul>
         </div>
-        {/* <div className="right-nav flex position">
-          <Link to="/products">
-            <LocalMallIcon style={{ color: "white" }} />
-          </Link>
-          <Link to="/wishlist" className="btn round-button">
-            <FavoriteBorderOutlinedIcon style={{ color: "white" }} className="btn-badge badge-lg">
-              <span className="icon-button-badge flex center icon-xl" style={{ display: wishlist.length === 0 ? "none" : "" }}>{wishlist.length}</span>
-            </FavoriteBorderOutlinedIcon>
-          </Link>
-          <Link to="/cart" className="btn round-button">
-            <ShoppingCartIcon style={{ color: "white" }} className="btn-badge badge-lg">
-              <span className="icon-button-badge flex center icon-xl" style={{ display: cart.length === 0 ? "none" : "" }}>{cart.length}</span>
-            </ShoppingCartIcon>
-          </Link>
-
-          {token && (
-              <li
-                className='nav-link-item'
-                onClick={() => navigate('/profile')}
-                title='profile'
-              >
-                <div className='badge-icon nav-badge-icon'>
-                  <span className='material-icons-outlined'>
-                    account_circle
-                  </span>
-                </div>
-              </li>
-            )}
-        </div> */}
         <div className="search-container search-mob">
-          {/* <div className="search-container search-mob" onKeyDown={(e) => searchHandler(e)}> */}
           <SearchIcon style={{ color: "white" }} />
           <input
             type="search"

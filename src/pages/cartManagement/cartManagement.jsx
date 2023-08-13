@@ -1,19 +1,17 @@
-import './cartManagement.css'
 import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../../context/CartContext';
 import { Navigation } from '../../components/Navbar/Navigation'
+import './cartManagement.css'
 
 export default function CartManagement() {
   const { cart, setCart, handleWishlistUpdate } = useContext(CartContext);
   const [quantities, setQuantities] = useState({});
 
-  // Function to update the quantity of an item in the cart
   const updateQuantity = (_id, newQuantity) => {
     setQuantities({ ...quantities, [_id]: newQuantity });
   }
 
-  // Function to remove an item from the cart
   const removeFromCart = (_id) => {
     setCart(cart.filter(item => item._id !== _id));
     const updatedQuantities = { ...quantities };
@@ -21,7 +19,6 @@ export default function CartManagement() {
     setQuantities(updatedQuantities);
   }
 
-  // Function to move an item to the wishlist
   const moveToWishlist = (_id) => {
     const itemToMove = cart.find((item) => item._id === _id);
     if (itemToMove) {
@@ -30,15 +27,13 @@ export default function CartManagement() {
     }
   }
 
-  //  console.log("cart data",cart)
-
   return (
     <>
       <Navigation />
-      <h2 className="cart-heading">My Cart</h2>
+      <p className="cart-heading"><strong>My Cart </strong>({cart.length})</p>
       <div className="cart-container">
         <div className="product-card">
-          {cart.length === 0 && <h3>Empty Cart</h3>}
+          {cart.length === 0 && <h3>Your cart is empty</h3>}
           {cart.map((item) => {
             const { _id, title, price, image } = item;
             const quantity = quantities[_id] || 1;
@@ -80,14 +75,14 @@ export default function CartManagement() {
           })}
         </div>
 
-        <div className="total-price-card">
+{      cart.length > 0 && <div className="total-price-card">
           <h3 className="total-price">
             Total Price : ${cart.reduce((total, item) => (total += item.price * (quantities[item._id] || 1)), 0)}
           </h3>
           <Link to="/checkout">
-            <button className="btn-place-order">Place Order</button>
+            <button className="btn-place-order">Checkout</button>
           </Link>
-        </div>
+        </div>}
       </div>
     </>
   );
