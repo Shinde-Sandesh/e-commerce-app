@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { Navigation } from '../../components/Navbar/Navigation'
 import { Link } from 'react-router-dom'
 import img1 from '../../assets/sneakers-shoes-adidas-shoes.jpg';
 import './Landing.css'

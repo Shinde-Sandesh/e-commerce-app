@@ -4,7 +4,6 @@ import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../../context/CartContext';
 import { useAuth } from "../../context/AuthContext";
-import { Navigation } from '../../components/Navbar/Navigation'
 import './cartManagement.css'
 
 export default function CartManagement() {

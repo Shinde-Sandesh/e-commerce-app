@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { Navigation } from '../../components/Navbar/Navigation';
 import { CartContext } from '../../context/CartContext';
 import './ProductDetails.css'
 

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Navigation } from '../../components/Navbar/Navigation';
 import ProductCard from '../../components/ProductCard';
 import './SearchProducts.css'
 // import FilterComponent from '../../components/FilterComponent';

@@ -3,7 +3,6 @@ import { toast } from "react-toastify";
 import { useContext } from 'react';
 import { CartContext } from '../../context/CartContext';
 import { useAuth } from '../../context/AuthContext';
-import { Navigation } from '../../components/Navbar/Navigation'
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import './Wishlist.css'
 
