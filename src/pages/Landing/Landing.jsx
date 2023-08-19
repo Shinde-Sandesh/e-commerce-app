@@ -32,7 +32,7 @@ export default function LandingPage() {
               <p className="para-description">
                 The adidas range of men's shoes has got you covered, if you're striving to be the best or you just want the best fit for your daily life. With iconic designs and high-performance technologies, you can be sure that your shoes won't let you down.
               </p>
-              <div className="btn-class">
+              <div className="button-class">
                 <Link to="/products" className="btn round-button-1" type="button">Shop Now</Link>
               </div>
             </div>
