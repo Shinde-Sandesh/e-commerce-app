@@ -1,19 +1,10 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
 import { useAuth } from '../../context/AuthContext';
 import AddressForm from '../../components/AddressForm/AddressForm';
 import './Profile.css'
 
 export const Profile = () => {
-
-  const [check, setChecked] = useState(true);
-  const { currUser: user, logoutHandler, token } = useAuth();
-  const [show, setShow] = useState(false);
-  const [close, setClose] = useState(false);
-  // const [addressForm, setAddForm] = useState(formValue);
-  const navigate = useNavigate();
-
 
   const formValue = {
     street: "Malabar Hill",
@@ -24,17 +15,32 @@ export const Profile = () => {
     mobile: "1234567890",
   };
 
+  const [check, setChecked] = useState(true);
+  const { currUser: user, logoutHandler, token } = useAuth();
+  const [show, setShow] = useState(false);
+  const [addresses, setAddresses] = useState([formValue]);
+  const navigate = useNavigate();
+
   const handleClose = () => {
     console.log("closed")
-    setShow(false);}
+    setShow(false);
+  }
+
+  const handleRemoveAddress = (index) => {
+    const updatedAddresses = addresses.filter((_, i) => i !== index);
+    setAddresses(updatedAddresses);
+  };
+
   const handleShow = () => {
-    console.log("Address button clicked")
     setShow(true);
   }
 
-  const handleAddressForm = () => {
-    console.log("Address button clicked")
-  }
+  const handleAddressAdded = (newAddress) => {
+    setAddresses([...addresses, newAddress]);
+    handleClose(); // Close the address form modal
+  };
+
+
   const ProfileLogoutHandler = () => {
     logoutHandler();
     navigate('/logout');
@@ -88,20 +94,27 @@ export const Profile = () => {
               <label htmlFor="address">Address</label>
               <div className="tab" style={{ display: !check ? "" : "none" }}>
                 <h3 className="details-header">My Addresses</h3>
-                <div className="address-container">
-                  <p className="paragraph-md">{user?.firstName} {user?.lastName}</p>
-                  <div>
-                    <p className="paragraph-sm">
-                      {formValue["street"]}, {formValue['city']}, {formValue['state']}, {formValue['country']} {formValue['zipCode']}
-                    </p>
-                    <p className="paragraph-sm">{formValue['country.']}</p>
-                    <p className="paragraph-sm">Phone Number : {formValue['mobile']}</p>
+                {addresses.map((address, index) => (
+                  <div key={index} className="address-container">
+                    {/* Display address details here */}
+                    <p className="paragraph-md">{user?.firstName} {user?.lastName}</p>
+                    <div>
+                      <p className="paragraph-sm">
+                        {address.street}, {address.city}, {address.state}, {address.country} {address.zipCode}
+                      </p>
+                      <p className="paragraph-sm">Phone Number : {address.mobile}</p>
+                    </div>
+                    <div className="address-btn">
+                      <button className="btn1 outline-default address-edit">Edit</button>
+                      <button
+                        className="btn1 outline-danger address-remove"
+                        onClick={() => handleRemoveAddress(index)}
+                      >
+                        Remove
+                      </button>
+                    </div>
                   </div>
-                  <div className="address-btn">
-                    <button className="btn1 outline-default address-edit">Edit</button>
-                    <button className="btn1 outline-danger address-remove">Remove</button>
-                  </div>
-                </div>
+                ))}
                 <button
                   onClick={handleShow}
                   className={`btn default address-add`}
@@ -112,7 +125,7 @@ export const Profile = () => {
             </div>
           </div>
         </div>
-        <AddressForm show={show} close={handleClose} />
+        <AddressForm show={show} close={handleClose} onAddressAdded={handleAddressAdded} />
       </div>
     </>
   );
