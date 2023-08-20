@@ -1,174 +1,138 @@
+.card:hover {
+  box-shadow: rgba(90, 90, 90, 0.35) 0px 5px 15px;
+}
 
 .cart-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.cart-item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-}
-
-.cart-image {
-  height: 100px;
-  width: 80px;
-  object-fit: cover;
-  margin-right: 10px;
-}
-
-.cart-description {
   flex-grow: 1;
 }
 
-.title {
-  font-size: 18px;
-  font-weight: bold;
+.cart-main-container {
+  padding-top: 3rem;
+  flex-direction: column;
+  gap: 4rem;
 }
 
-.price {
-  font-size: 16px;
-  margin-bottom: 5px;
-}
-
-.quantity-container {
+.cart-manage {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5rem;
+}
+
+.horizontal-img {
+  width: 37%;
+  height: 12rem;
+}
+
+.horizontal-container {
+  margin-bottom: 3rem;
+  width: 30rem;
+}
+
+.horizontal-btn button {
+  font-weight: 550;
+  background-color: var(--lynxWhite);
+}
+
+.price-details {
+  display: flex;
+  flex-direction: column;
+  /* gap: 1rem; */
+  box-shadow: rgba(90, 90, 90, 0.35) 0px 5px 15px;
+  padding: 2rem;
+  height: fit-content;
+  margin-bottom: 2rem;
+  position: sticky;
+  top: 20%;
+}
+
+.price-totalAmt {
+  border-top: 1px solid var(--lightGrey);
+  border-bottom: 1px solid var(--lightGrey);
+  padding: 0.5rem 0;
+}
+
+.price-calculate {
+  border-top: 1px solid var(--lightGrey);
+  padding-top: 0.5rem;
+}
+
+.price-calculate ul {
+  margin-top: 0.5rem;
+}
+
+.price-details ul {
+  display: flex;
+  justify-content: space-between;
+  gap: 5rem;
   align-items: center;
 }
 
-.quantity-btn {
-  cursor: pointer;
-  background-color: #f0f0f0;
-  border: 1px solid #999;
-  padding: 8px 12px;
-  margin: 0 5px;
-  border-radius: 5px;
-  font-size: 14px;
-  transition: background-color 0.3s ease;
+.later-btn {
+  color: var(--darkBlue)
 }
 
-.quantity-btn:hover {
-  background-color: #999;
-  color: #fff;
+.coupon-btn {
+  background-color: inherit;
+  padding: 0.2rem 0.5rem;
+  font-size: 1rem;
 }
 
-.number-of-items {
-  width: 30px;
-  text-align: center;
-  font-size: 16px;
+.coupon {
+  padding: 0.5rem 0 1rem 0;
+  border-bottom: 1px solid var(--lightGrey);
 }
 
-.btn-remove,
-.btn-wishlist {
-  padding: 8px 12px;
-  background-color: #f0f0f0;
-  border: 1px solid #999;
-  color: #333;
-  text-align: center;
-  margin-top: 10px;
-  border-radius: 5px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+.save-msg,
+.coupon-msg {
+  color: rgb(18, 173, 18);
 }
 
-.btn-wishlist {
-  margin-left: 10px;
-}
-
-.btn-remove:hover,
-.btn-wishlist:hover {
-  background-color: #999;
-  color: #fff;
-}
-
-.total-price {
-  font-size: 18px;
-  font-weight: bold;
-  margin-top: 20px;
-  text-align: right;
-}
-
-
-.cart-container {
+.coupon-msg p {
   display: flex;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
+  gap: 0.5rem
 }
 
-.product-card {
-  flex-grow: 1;
-  padding: 10px;
-  border-radius: 5px;
-  margin-right: 20px;
+.coupon-msg img {
+  width: 17px;
 }
 
-.total-price-card {
-  flex-basis: 200px;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-}
-
-.total-price {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 10px;
-  text-align: right;
-}
-
-.btn-place-order {
-  width: 100%;
-  padding: 10px;
-  background-color: #007bff;
-  border: none;
-  color: #fff;
-  text-align: center;
-  border-radius: 5px;
-  font-size: 16px;
+.remove-coupon {
   cursor: pointer;
 }
 
-/* Responsive styles */
+.checkout-btn {
+  padding: 0
+}
 
-@media (max-width: 768px) {
-  .cart-container {
-    padding: 10px;
+
+@media screen and (max-width:500px) {
+
+  .cart-manage {
+      justify-content: center;
+      gap: 1rem;
   }
 
-  .cart-item {
-    flex-direction: column;
-    align-items: flex-start;
+  .cart-main-container {
+      gap: 2rem;
   }
 
-  .cart-image {
-    width: 100%;
-    height: auto;
-    margin-right: 0;
-    margin-bottom: 10px;
+  .horizontal-container,
+  .price-details {
+      width: 20rem;
+      margin-bottom: 2rem;
   }
 
-  .cart-description {
-    width: 100%;
-    margin-top: 10px;
+  .price-details ul {
+      gap: 0rem;
   }
 
-  .quantity-container {
-    flex-direction: row;
+  .horizontal-img {
+      width: 35%;
+      height: 10rem;
   }
 
-  .number-of-items {
-    width: 40px;
-  }
-
-  .btn-remove,
-  .btn-wishlist {
-    width: 100%;
-    margin-top: 5px;
+  .horizontal-btn {
+      justify-content: space-between;
   }
 }
