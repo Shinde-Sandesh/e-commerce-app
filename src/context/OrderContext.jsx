@@ -1,22 +1,34 @@
-import { createContext, useState } from "react";
+import { createContext, useReducer, useState } from "react";
+import { orderState, orderReducer } from "../reducer/OrderReducer";
 
 export const OrderContext = createContext();
 
-export function OrderProvider({ children }) {
-  const [cart, setCart] = useState([]);
-  const [wishlist, setWishlist] = useState([])
+export const OrderProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(orderReducer, orderState);
+  const [couponValue, setCouponValue] = useState({ couponName: "", value: 0 });
 
-  const handleCartUpdate = (item) => {
-    setCart((cart) => [...cart, item]);
+  const [order, setOrder] = useState([]);
+
+  const handleOrderUpdate = (item) => {
+    setOrder((cart) => [...cart, item]);
   };
 
-  const handleWishlistUpdate = (item) => {
-    setWishlist((wishlist) => [...wishlist, item]);
-  };
+  console.log("order",order);
 
   return (
-    <OrderContext.Provider value={{ cart, setCart, handleCartUpdate, wishlist, setWishlist, handleWishlistUpdate }}>
+    <OrderContext.Provider
+      value={{
+        priceDetails: state.priceDetails,
+        orderAddress: state.orderAddress,
+        dispatch,
+        couponValue,
+        setCouponValue,
+        order,
+        setOrder,
+        handleOrderUpdate
+      }}
+    >
       {children}
     </OrderContext.Provider>
   );
-}
+};

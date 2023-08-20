@@ -16,7 +16,7 @@ export const Profile = () => {
   };
 
   const [check, setChecked] = useState(true);
-  const { currUser: user, logoutHandler, token } = useAuth();
+  const { currUser: user, logoutHandler } = useAuth();
   const [show, setShow] = useState(false);
   const [addresses, setAddresses] = useState([formValue]);
   const navigate = useNavigate();

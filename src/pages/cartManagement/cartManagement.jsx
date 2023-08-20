@@ -3,11 +3,13 @@ import { toast } from "react-toastify";
 import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../../context/CartContext';
+import { OrderContext } from "../../context/OrderContext";
 import { useAuth } from "../../context/AuthContext";
 import './cartManagement.css'
 
 export default function CartManagement() {
   const { cart, setCart, handleWishlistUpdate } = useContext(CartContext);
+  const { order, setOrder, handleOrderUpdate } = useContext(OrderContext)
   const [quantities, setQuantities] = useState({});
   const { token } = useAuth();
 
@@ -57,6 +59,22 @@ export default function CartManagement() {
       removeFromCart(_id);
     }
   }
+
+  const checkoutHandler = (_id) => {
+    if (order.length === 0) {
+      console.log("No orders available");
+      return;
+    }
+  
+    const orderDetails = order.find((item) => item._id === _id);
+    if (orderDetails) {
+      handleOrderUpdate(orderDetails);
+      console.log("checkout clicked", orderDetails);
+    } else {
+      console.log("Order not found");
+    }
+  };
+  
 
   return (
     <>
@@ -178,7 +196,7 @@ export default function CartManagement() {
               <div className="primary-btn text-center">
                 {/* <button className="link-btn checkout-btn">Checkout</button> */}
                 <Link to="/checkout">
-                  <button className="link-btn checkout-btn">Checkout</button>
+                  <button className="link-btn checkout-btn" onClick={() => checkoutHandler()}>Checkout</button>
                 </Link>
               </div>
               {/* <div className="primary-btn text-center" onClick={() => checkoutHandler()}>
