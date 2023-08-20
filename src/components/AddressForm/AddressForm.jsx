@@ -8,7 +8,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function AddressForm({ show, close, onAddressAdded }) {
 
   const [input, setInput] = useState("");
-  const [validated, setValidated] = useState(false);
   const [addressForm, setAddressForm] = useState({
     street: "",
     city: "",
