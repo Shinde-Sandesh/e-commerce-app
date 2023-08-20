@@ -126,9 +126,12 @@ export default function CartManagement() {
                 <p>
                   <i className="fa fa-tag" aria-hidden="true"></i> Have A Coupon ?
                 </p>
-                <div className="btn outlined-default coupon-btn" onClick={() => setCouponModal(true)}>
+                <div className="btn outlined-default coupon-btn">
                   Apply
                 </div>
+                {/* <div className="btn outlined-default coupon-btn" onClick={() => setCouponModal(true)}>
+                  Apply
+                </div> */}
               </ul>
               <h4 className="text-center">PRICE DETAILS</h4>
 
@@ -172,66 +175,19 @@ export default function CartManagement() {
                 Total Price : ₹{cart.reduce((total, item) => (total += item.price * (quantities[item._id] || 1)), 0)}
               </ul>
               <p className="save-msg">You will save ₹100 on this order</p>
-              <div className="primary-btn text-center" onClick={() => checkoutHandler()}>
-                <button className="link-btn checkout-btn">Checkout</button>
+              <div className="primary-btn text-center">
+                {/* <button className="link-btn checkout-btn">Checkout</button> */}
+                <Link to="/checkout">
+                  <button className="link-btn checkout-btn">Checkout</button>
+                </Link>
               </div>
+              {/* <div className="primary-btn text-center" onClick={() => checkoutHandler()}>
+                <button className="link-btn checkout-btn">Checkout</button>
+              </div> */}
             </div>}
           </div>
         </div>
       </div>
-      {/* <div className="cart-container">
-        <div className="product-card">
-          {cart.length === 0 && <h3>Your cart is empty</h3>}
-          {cart.map((item) => {
-            const { _id, title, price, image } = item;
-            const quantity = quantities[_id] || 1;
-
-            return (
-              <div className="cart-item" key={_id}>
-                <div className="image-container">
-                  <img className="cart-image" src={image} alt={title} />
-                </div>
-                <div className="cart-description">
-                  <p className="title">{title}</p>
-                  <h4 className="price">${price}</h4>
-                  <div className="quantity-container">
-                    <button
-                      className="quantity-btn"
-                      onClick={() => updateQuantity(_id, Math.max(quantity - 1, 1))}
-                    >
-                      -
-                    </button>
-                    <p className="number-of-items">{quantity}</p>
-                    <button
-                      className="quantity-btn"
-                      onClick={() => updateQuantity(_id, quantity + 1)}
-                    >
-                      +
-                    </button>
-                  </div>
-                  <div className="button-container">
-                    <button className="btn-remove" onClick={() => removeFromCart(_id)}>
-                      Remove from Cart
-                    </button>
-                    <button className="btn-wishlist" onClick={() => moveToWishlist(_id)}>
-                      Move to Wishlist
-                    </button>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-{      cart.length > 0 && <div className="total-price-card">
-          <h3 className="total-price">
-            Total Price : ${cart.reduce((total, item) => (total += item.price * (quantities[item._id] || 1)), 0)}
-          </h3>
-          <Link to="/checkout">
-            <button className="btn-place-order">Checkout</button>
-          </Link>
-        </div>}
-      </div> */}
     </>
   );
 }
