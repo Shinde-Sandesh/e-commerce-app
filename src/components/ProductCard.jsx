@@ -21,7 +21,7 @@ function ProductCard({ _id, image, title, price, rating }) {
   }
 
   return (
-    <div>
+    <div style={{padding: '5px'}}>
       <div className="card-container" key={_id}>
         <h4 className="card-with-badge">
           <div onClick={WishlistUpdate}>{addToWishlist ? <FavoriteBorderOutlinedIcon /> : <FavoriteIcon />}</div>
@@ -29,9 +29,9 @@ function ProductCard({ _id, image, title, price, rating }) {
         <Link to={`/products/${_id}`} >
           <img className="card-image" src={image} alt={title} />
         </Link>
-        <p className="card-heading">{title}</p>
-        <p className="price">{price}</p>
-        <p className="price">{rating}</p>
+        <span className="card-heading">{title}</span>
+        <span className="price">{price}</span>
+        <span className="price">{rating}</span>
         <button className="add-cart-btn" onClick={CartUpdate}>
           {addToCart ? 'Add to Cart' : 'Added to Cart'}
         </button>

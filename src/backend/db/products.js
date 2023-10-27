@@ -45,5 +45,21 @@ export const products = [
     price: 10000,
     categoryName: "Women",
     image : "https://contents.mediadecathlon.com/p2340283/e76d77a4150ad426e03e61f25581371d/p2340283.jpg?format=auto&quality=70&f=650x0",
+  },
+  {
+    _id: uuid(),
+    title: "Cross Trainer EL520B (2022)",
+    rating: 2,
+    price: 10000,
+    categoryName: "Women",
+    image : "https://contents.mediadecathlon.com/p2340283/e76d77a4150ad426e03e61f25581371d/p2340283.jpg?format=auto&quality=70&f=650x0",
+  },
+  {
+    _id: uuid(),
+    title: "Cross Trainer EL520B (2022)",
+    rating: 2,
+    price: 10000,
+    categoryName: "Women",
+    image : "https://contents.mediadecathlon.com/p2340283/e76d77a4150ad426e03e61f25581371d/p2340283.jpg?format=auto&quality=70&f=650x0",
   }
 ];

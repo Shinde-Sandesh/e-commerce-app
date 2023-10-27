@@ -74,6 +74,10 @@
       justify-content: space-around;
 }
 
+.checkboxLabel{
+      padding: 5px;
+}
+
 .filter-cat 
 {
       padding: 0.5rem 0;
@@ -111,6 +115,7 @@
       border: 0.5px solid var(--light-gray-colo);
       text-align: center;
       position: relative;
+      display: inline-block;
     }
     
     /* Heart icon (assuming you use Font Awesome) */
@@ -144,9 +149,9 @@
       margin: 0;
       padding: 0.5rem;
       font-size: 1.1rem;
-      position: centre;
+      position: absolute;
       height: 3rem; /* Set a fixed height */
-      display: flex; /* Use flexbox */
+      display: contents; /* Use flexbox */
       align-items: center; /* Vertically center the text */
     }
     

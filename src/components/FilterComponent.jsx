@@ -6,8 +6,8 @@ export default function FilterComponent({ rating, handleRating, categoryData, ha
       <p><b>Filters</b></p>
       <p>Clear</p>
     </div>
-    <div className="filter-price">
-      <h2 className="price-heading">Rating</h2>
+    <div className="filter-cat">
+      <h4 className="price-heading">Rating</h4>
       <div className="range">
         <span>0</span>
         <span>5</span>
@@ -21,19 +21,19 @@ export default function FilterComponent({ rating, handleRating, categoryData, ha
         onChange={handleRating} />{rating}
     </div>
     <div className="filter-cat">
-      <p><b>Category</b></p>
+      <h4  className="price-heading">Category</h4>
       <div className="filter-item">
         <ul className="filter-item">
-          {categoryData.map((category) => <li style={{ listStyle: "none" }} key={category._id}>
+          {categoryData.map((category) => <li style={{ listStyle: "none", display: 'contents' }} key={category._id}>
             <input type="checkbox" value={category.categoryName} name="category" onClick={handleCategory} />
-            <label>{category.categoryName}</label>
+            <label className='checkboxLabel'>{category.categoryName}</label>
           </li>
           )}
         </ul>
       </div>
     </div>
     <div className="filter-cat">
-      <span><b>Price</b></span>
+      <h4  className="price-heading">Price</h4>
       <div className="filter-item">
         <input type="radio" value="lowToHigh" id="lowToHigh" name='priceRange' onChange={handlePriceSorting} />
         <label for="lowToHigh">Price - Low to High</label>
@@ -43,5 +43,5 @@ export default function FilterComponent({ rating, handleRating, categoryData, ha
         <label for="highToLow">Price - High to Low</label>
       </div>
     </div>
-  </div>;
+  </div>
 }
