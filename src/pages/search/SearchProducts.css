@@ -1,4 +1,4 @@
-.main-body-sec {
+/* .main-body-sec {
   height: 100%;
   overflow-y: auto;
   width: 100%;
@@ -93,7 +93,7 @@
   row-gap: 10px;
 }
 
-/* Product Card Container */
+/* Product Card Container 
 .card-container {
   width: 12.5rem;
   background-color: var(--white-color);
@@ -102,7 +102,7 @@
   position: relative;
 }
 
-/* Heart icon (assuming you use Font Awesome) */
+/* Heart icon (assuming you use Font Awesome) 
 .card-with-badge {
   display: inline;
   color: var(--red-color);
@@ -113,7 +113,7 @@
   margin: 0;
 }
 
-/* Product Image */
+/* Product Image 
 .card-image {
   height: 12.5rem;
   width: 12.5rem;
@@ -121,36 +121,36 @@
   padding: 0;
 }
 
-/* Product Description */
+/* Product Description 
 .description {
   background-color: rgba(128, 128, 128, 0.363);
   padding-top: 2.2px;
   margin: 0;
 }
 
-/* Product Title */
+/* Product Title 
 .card-heading {
   margin: 0;
   padding: 0.5rem;
   font-size: 1.1rem;
   position: centre;
   height: 3rem;
-  /* Set a fixed height */
+  /* Set a fixed height 
   display: flex;
-  /* Use flexbox */
+  /* Use flexbox 
   align-items: center;
-  /* Vertically center the text */
+  /* Vertically center the text 
 }
 
 
-/* Product Price */
+/* Product Price 
 .price {
   font-weight: bolder;
   margin: 0;
   padding: 0.5rem;
 }
 
-/* Add to Cart Button */
+/* Add to Cart Button 
 .add-cart-btn {
   width: 100%;
   background-color: #3498db;
@@ -160,7 +160,7 @@
   cursor: pointer;
 }
 
-/* Clear floats for the card container */
+/* Clear floats for the card container
 .card-container::after {
   content: "";
   display: table;
@@ -182,4 +182,4 @@ p {
   margin-block-end: 1em;
   margin-inline-start: 0px;
   margin-inline-end: 0px;
-}
+} */
