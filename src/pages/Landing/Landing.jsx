@@ -42,11 +42,11 @@ export default function LandingPage() {
       <section className="hero flex">
         <div>
           <h2>Categories</h2>
-          <ul>
+          <ul className='categories'>
             {categoryData.length > 0 && (
               <>
                 {categoryData.map((category) =>
-                  <li style={{ listStyle: "none" }} key={category._id}>
+                  <li style={{ listStyle: "none", paddingRight: '10px' }} key={category._id}>
                     <div>
                       <a href='/'><img src={category.image} alt='img' className="shoe"></img></a>
                     </div>

@@ -78,7 +78,7 @@ export const Profile = () => {
                 </div>
                 <div className="">
                   <h3 className="details-header">Account Settings</h3>
-                  <button className="btn danger setting-logout" onClick={() => ProfileLogoutHandler()}>
+                  <button className="danger" onClick={() => ProfileLogoutHandler()}>
                     Log Out
                   </button>
                 </div>
@@ -117,7 +117,7 @@ export const Profile = () => {
                 ))}
                 <button
                   onClick={handleShow}
-                  className={`btn default address-add`}
+                  className="address-add"
                 >
                   + Add New Address
                 </button>
