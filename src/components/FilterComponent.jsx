@@ -18,7 +18,7 @@ export default function FilterComponent({ rating, handleRating, categoryData, ha
         max="5"
         value={rating}
         className="price-range"
-        onChange={handleRating} />{rating}
+        onChange={handleRating} /><span style={{padding: '5px', fontSize: 'larger'}}>{rating}</span>
     </div>
     <div className="filter-cat">
       <h4  className="price-heading">Category</h4>

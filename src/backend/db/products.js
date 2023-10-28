@@ -32,6 +32,14 @@ export const products = [
   },
   {
     _id: uuid(),
+    title: "Adidas Shoes 1",
+    rating: 4,
+    price: 2000,
+    categoryName: "Women",
+    image : "https://assets.adidas.com/images/w_383,h_383,f_auto,q_auto,fl_lossy,c_fill,g_auto/10533a775dfe4c60852caf8d011b6270_9366/solderrun-m.jpg",
+  },
+  {
+    _id: uuid(),
     title: "Mountain Bike Rockrider ST50 - Black",
     rating: 2,
     price: 3000,

@@ -1,7 +1,6 @@
 .main-body-sec 
 {
       height: 100%;
-      overflow-y: auto;
       width: 100%;
       display: flex;
       background-color: var(--white-color);
@@ -45,14 +44,15 @@
 .range 
 {
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
+      /* padding: 0px 20px 0px 20px; */
       font: 1em sans-serif;
       color: rgb(92, 90, 90);
 }
 
 .price-range 
 {
-      margin-left: 2rem;
+      margin-left: 1.5rem;
       margin-top: 1rem;
       width: 80%;
 }
@@ -63,7 +63,6 @@
       padding: 1rem 2rem;
     
 }
-
     
 .filter-item {
       padding: 0.5rem 0;
