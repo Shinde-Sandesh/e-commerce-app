@@ -1,157 +1,157 @@
 /* Navbar Styles */
 .navbar {
-    flex-direction: column;
+  flex-direction: column;
 }
 
 .navbar-main {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    justify-content: space-evenly;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
 }
 
 .navbar-right {
-    gap: 2rem;
+  gap: 2rem;
 }
 
 .cart-badge {
-    font-family: 'Ubuntu', sans-serif;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 .icon {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 
 .navbar-right li span {
-    font-size: 0.6rem;
+  font-size: 0.6rem;
 }
 
 .notification-icon {
-    font-size: 0.2rem;
-    padding: 0.4rem;
-    height: 1.2rem;
-    top: -5px;
+  font-size: 0.2rem;
+  padding: 0.4rem;
+  height: 1.2rem;
+  top: -5px;
 }
 
 .navbar-right li {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .navbar-right li :hover {
-    opacity: 0.8;
+  opacity: 0.8;
 }
 
 .navbar-right li img {
-    margin-top: 5px;
+  margin-top: 5px;
 }
 
 .nav-cart {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem
+  display: flex;
+  align-items: center;
+  gap: 0.8rem
 }
 
 /* Search Bar */
 .search-container {
-    display: flex;
-    align-items: center;
-    background-color: var(--white);
-    padding: 0.4rem 0.9rem;
-    gap: 0.5rem;
-    border-radius: var(--border-sm);
-    width: 25%;
-    overflow: auto;
-    border-radius: var(--border-lg);
+  display: flex;
+  align-items: center;
+  background-color: var(--white);
+  padding: 0.4rem 0.9rem;
+  gap: 0.5rem;
+  border-radius: var(--border-sm);
+  width: 25%;
+  overflow: auto;
+  border-radius: var(--border-lg);
 }
 
 .search-bar {
-    outline: none;
-    border: none;
-    width: 100%;
+  outline: none;
+  border: none;
+  width: 100%;
 }
 
 .search-container .fa {
-    color: var(--main-color)
+  color: var(--main-color)
 }
 
 .search-bar::placeholder {
-    color: var(--lightGrey);
-    font-weight: var(--font-light);
+  color: var(--lightGrey);
+  font-weight: var(--font-light);
 }
 
 .primary-btn {
-    cursor: pointer;
-    background-color: var(--link);
-    color: var(--white);
-    padding: 0.5rem 0;
+  cursor: pointer;
+  background-color: var(--link);
+  color: var(--white);
+  padding: 0.5rem 0;
 }
 
 .login-btn {
-    font-size: 1.25rem;
-    font-weight: var(--font-semiBold);
-    letter-spacing: 0.5px;
+  font-size: 1.25rem;
+  font-weight: var(--font-semiBold);
+  letter-spacing: 0.5px;
 }
 
 .nav-header {
-    position: sticky;
-    top: 0;
-    z-index: 10;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .navbar-left h3 {
-    letter-spacing: 0.5px;
+  letter-spacing: 0.5px;
 }
 
 
 @media screen and (max-width:550px) {
 
 
-    .navbar-right {
-        gap: 1.5rem
-    }
+  .navbar-right {
+    gap: 1.5rem
+  }
 
-    .navbar {
-        justify-content: space-between;
-        padding: 0.8rem 1rem;
-        gap: 1rem
-    }
+  .navbar {
+    justify-content: space-between;
+    padding: 0.8rem 1rem;
+    gap: 1rem
+  }
 
-    .navbar-main {
-        display: flex;
-        width: 90%;
-        justify-content: space-between;
-    }
+  .navbar-main {
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+  }
 
-    .navbar-left a h2 {
-        font-size: 1.3rem;
-    }
+  .navbar-left a h2 {
+    font-size: 1.3rem;
+  }
 
 
-    .search-container {
-        display: none;
-    }
+  .search-container {
+    display: none;
+  }
 
-    .search-mob {
-        display: flex;
-        width: 90%;
-    }
+  .search-mob {
+    display: flex;
+    width: 90%;
+  }
 
-    .navbar-right li span {
-        display: block;
-    }
+  .navbar-right li span {
+    display: block;
+  }
 
-    .icon {
-        font-size: 1.3rem;
-    }
+  .icon {
+    font-size: 1.3rem;
+  }
 
-    .navbar-right img {
-        width: 30px;
-        height: 30px;
-    }
+  .navbar-right img {
+    width: 30px;
+    height: 30px;
+  }
 }
 
 @media screen and (min-width:500px) {
-    .search-mob {
-        display: none
-    }
+  .search-mob {
+    display: none
+  }
 }

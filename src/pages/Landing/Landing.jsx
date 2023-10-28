@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import img1 from '../../assets/sneakers-shoes-adidas-shoes.jpg';
+import mainImg from '../../assets/Sports-Logo-Designs-1280x720.jpg'
 import './Landing.css'
 
 export default function LandingPage() {
@@ -25,7 +26,7 @@ export default function LandingPage() {
         <div className="body-cart flex">
           <div className="body-cart-container flex">
             <div>
-              <img src={img1} alt='img' className="body-cart-image" />
+              <img src={mainImg} alt='img' className="body-cart-image" />
             </div>
             <div className="body-cart-description">
               <h4 className="body-cart-heading">SPORTING ESSENTIALS TO HELP YOU TRAIN LIKE A PRO</h4>
@@ -33,7 +34,7 @@ export default function LandingPage() {
                 The adidas range of men's shoes has got you covered, if you're striving to be the best or you just want the best fit for your daily life. With iconic designs and high-performance technologies, you can be sure that your shoes won't let you down.
               </p>
               <div className="button-class">
-                <Link to="/products" className="btn round-button-1" type="button">Shop Now</Link>
+                <Link to="/products" className="round-button-1" type="button">Shop Now</Link>
               </div>
             </div>
           </div>
@@ -46,12 +47,11 @@ export default function LandingPage() {
             {categoryData.length > 0 && (
               <>
                 {categoryData.map((category) =>
-                  <li style={{ listStyle: "none", paddingRight: '10px' }} key={category._id}>
+                  <li className='categoryCards' key={category._id}>
                     <div>
                       <a href='/'><img src={category.image} alt='img' className="shoe"></img></a>
                     </div>
-                    {category.categoryName}
-                    <p> {category.description} </p>
+                    <p style={{display: 'flex', justifyContent: 'center'}}> {category.categoryName} </p>
                   </li>
                 )}
               </>

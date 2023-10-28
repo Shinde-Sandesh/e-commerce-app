@@ -78,7 +78,7 @@ export const Profile = () => {
                 </div>
                 <div className="">
                   <h3 className="details-header">Account Settings</h3>
-                  <button className="danger" onClick={() => ProfileLogoutHandler()}>
+                  <button className="logOut" onClick={() => ProfileLogoutHandler()}>
                     Log Out
                   </button>
                 </div>

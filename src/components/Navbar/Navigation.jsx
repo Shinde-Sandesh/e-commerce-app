@@ -20,10 +20,10 @@ export const Navigation = () => {
     <div className='nav-header'>
       <ul className='navbar'>
         <div className='navbar-main'>
-          <div className="navbar-left">
+          <div className="navbar-left" style={{paddingLeft: '30px'}}>
             <Link to="/" style={{ color: "white" }}><h2>Sports Cart</h2></Link>
           </div>
-          <div className="search-container">
+          {/* <div className="search-container">
             <SearchIcon style={{ color: "#007bb5" }} />
             <input
               type="search"
@@ -33,7 +33,7 @@ export const Navigation = () => {
               placeholder="Search for product"
               onChange={(e) => setInput(e.target.value)}
             />
-          </div>
+          </div> */}
           <ul className="navbar-right">
             <li>
               <div className="icon cart-badge">

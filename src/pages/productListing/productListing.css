@@ -153,6 +153,7 @@
   font-weight: bolder;
   margin: 0;
   padding: 0.5rem;
+  justify-content: center;
 }
 
 /* Add to Cart Button */
