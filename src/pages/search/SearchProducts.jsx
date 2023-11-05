@@ -32,7 +32,7 @@ function SearchProducts() {
       <div className="main-body-sec">
         <div className="body-section">
           <div>
-            <h1>Showing all products</h1>
+            <h3>Showing all products ({filterData.length})</h3>
             <input type="text" placeholder="Search" className='searchText' onChange={handleInputText} />
           </div>
           <div className="search-flex">
