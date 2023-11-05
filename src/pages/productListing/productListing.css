@@ -112,7 +112,7 @@
 /* Heart icon (assuming you use Font Awesome) */
 .card-with-badge {
   display: inline;
-  color: var(--red-color);
+  color: red;
   padding: 4px;
   position: absolute;
   right: 10px;

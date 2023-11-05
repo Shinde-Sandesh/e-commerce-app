@@ -72,7 +72,7 @@ export default function Wishlist() {
 
             return (
               <div className="card-container" key={_id}>
-                <h4 className="card-with-badge"><FavoriteIcon onClick={() => removeFromWishlist(_id)} /></h4>
+                <h4 className="card-with-badge-wishlist"><FavoriteIcon onClick={() => removeFromWishlist(_id)} /></h4>
                 <img className="image-card" src={image} alt={title} />
                 <div className="description">
                   <p className="card-heading">{title}</p>
