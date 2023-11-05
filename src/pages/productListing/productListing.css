@@ -105,6 +105,8 @@
   text-align: center;
   position: relative;
   display: inline-block;
+  margin-left: 10px;
+  margin-bottom: 10px;
 }
 
 /* Heart icon (assuming you use Font Awesome) */
@@ -135,16 +137,16 @@
 
 /* Product Title */
 .card-heading {
-  margin: 0;
-  padding: 0.5rem;
-  font-size: 1.1rem;
-  position: absolute;
-  height: 3rem;
-  /* Set a fixed height */
-  display: contents;
-  /* Use flexbox */
-  align-items: center;
-  /* Vertically center the text */
+    /* margin: 0; */
+    /* padding: 0.5rem; */
+    font-size: 1.1rem;
+    /* position: absolute; */
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    /* text-align: center; */
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 

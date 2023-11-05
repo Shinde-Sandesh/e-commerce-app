@@ -30,17 +30,19 @@ function SearchProducts() {
     <>
       {/* <Navigation /> */}
       <div className="main-body-sec">
-        <div className="right-body-section">
-          <h1 className="showing-heading">Showing all products</h1>
-          <input type="text" placeholder="Search" onChange={handleInputText} />
-          <div className="product-flex">
-            <ul>
+        <div className="body-section">
+          <div>
+            <h1>Showing all products</h1>
+            <input type="text" placeholder="Search" className='searchText' onChange={handleInputText} />
+          </div>
+          <div className="search-flex">
+            {/* <ul className='arrangeCards'> */}
+            <div className='cardsPosition'>
               {filterData.map((product) => (
-                <>
-                  <ProductCard {...product} />
-                </>
+                <ProductCard {...product} />
               ))}
-            </ul>
+            </div>
+            {/* </ul> */}
           </div>
         </div>
       </div>
