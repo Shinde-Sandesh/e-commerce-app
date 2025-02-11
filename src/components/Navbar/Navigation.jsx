@@ -15,6 +15,11 @@ export const Navigation = () => {
   const { cart } = useContext(CartContext)
   const { wishlist } = useContext(CartContext)
   const [input, setInput] = useState("");
+  const [searchItem, setSearchItem] = useState('');
+
+  function handleInputText(event) {
+    setSearchItem(event.target.value);
+  }
 
   return (
     <div className='nav-header'>
@@ -23,17 +28,17 @@ export const Navigation = () => {
           <div className="navbar-left" style={{paddingLeft: '30px'}}>
             <Link to="/" style={{ color: "white" }}><h2>Sports Cart</h2></Link>
           </div>
-          {/* <div className="search-container">
-            <SearchIcon style={{ color: "#007bb5" }} />
-            <input
-              type="search"
-              name="search"
-              className="search-bar"
-              value={input}
-              placeholder="Search for product"
-              onChange={(e) => setInput(e.target.value)}
-            />
-          </div> */}
+          <div className="search-container search-mob">
+          <SearchIcon style={{ color: "white" }} />
+          <input
+            type="search"
+            name="search"
+            className="search-bar"
+            placeholder="Search for product"
+            onChange={handleInputText}
+            id=""
+          />
+        </div>
           <ul className="navbar-right">
             <li>
               <div className="icon cart-badge">
@@ -84,7 +89,7 @@ export const Navigation = () => {
             </li>
           </ul>
         </div>
-        <div className="search-container search-mob">
+        {/* <div className="search-container search-mob">
           <SearchIcon style={{ color: "white" }} />
           <input
             type="search"
@@ -93,7 +98,7 @@ export const Navigation = () => {
             placeholder="Search for product"
             id=""
           />
-        </div>
+        </div> */}
       </ul>
     </div>
   )

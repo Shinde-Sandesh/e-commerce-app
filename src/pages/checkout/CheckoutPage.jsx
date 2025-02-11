@@ -1,40 +1,64 @@
-import React from 'react'
-import { useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { CartContext } from '../../context/CartContext';
 import { useAuth } from "../../context/AuthContext";
 import { priceCalc } from '../../utils/priceCalc';
 import { displayRazorpay } from './razorpay';
-import { Link } from 'react-router-dom';
-import axios from "axios";
 import { toast } from "react-toastify";
-import { OrderContext } from "../../context/OrderContext";
 
 function CheckoutPage() {
-
   const { cart } = useContext(CartContext);
-  const { currUser: user, logoutHandler } = useAuth();
+  const { currUser: user } = useAuth();
   const { price, checkoutPrice } = priceCalc(cart);
-  const [order, setOrder] = useState({});
-  const totalPrice =  cart.reduce((total, item) => (total += item.price), 0)
+  const [order, setOrder] = useState(null);
+  const totalPrice = cart.reduce((total, item) => (total += item.price), 0);
+
+  const handlePayment = () => {
+    if (cart.length === 0) {
+      toast.error("Your cart is empty!");
+      return;
+    }
+    if (!user) {
+      toast.error("Please log in to proceed with checkout.");
+      return;
+    }
+    displayRazorpay(totalPrice, cart, setOrder);
+  };
 
   return (
     <div>
       <h2>Checkout</h2>
-      {
-        cart.map((item) => 
+      {order ? (
+        <div>
+          <h3>Order Placed Successfully! 🎉</h3>
+          <p>Order ID: {order.paymentId}</p>
+          <p>Total Amount: ₹{order.amount}</p>
+          <h4>Ordered Items:</h4>
+          {order.products.map((item) => (
+            <div key={item._id}>
+              <p>{item.title}</p>
+              <p>₹{item.price}</p>
+            </div>
+          ))}
+        </div>
+      ) : (
         <>
-        <p>{item.title}</p>
-        <p>{item.price}</p>
+          {cart.length > 0 ? (
+            cart.map((item) => (
+              <div key={item._id}>
+                <p>{item.title}</p>
+                <p>₹{item.price}</p>
+              </div>
+            ))
+          ) : (
+            <p>Your cart is empty!</p>
+          )}
+          <p>Total: ₹{totalPrice}</p>
+          <p className="paragraph-md">{user?.firstName} {user?.lastName}</p>
+          <button onClick={handlePayment}>Place Order</button>
         </>
-        )
-      }
-      {/* {cart.reduce((total, item) => (total += item.price * (quantities[item._id] || 1)), 0)} */}
-      <p>total: {totalPrice}</p>
-      <p className="paragraph-md">{user?.firstName} {user?.lastName}</p>
-      <button onClick={() => displayRazorpay(totalPrice, cart, setOrder)}>Place Order</button>
-
+      )}
     </div>
-  )
+  );
 }
 
-export default CheckoutPage
+export default CheckoutPage;
