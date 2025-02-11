@@ -5,65 +5,47 @@ import './productListing.css';
 
 export default function ProductListingPage() {
   const [productData, setProductData] = useState([]);
-  const [filteredProducts, setFilteredProducts] = useState([])
-  const [categoryData, setCategoryData] = useState([])
-  const [sortByPrice, setSortByPrice] = useState([])
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [categoryData, setCategoryData] = useState([]);
+  const [sortByPrice, setSortByPrice] = useState("");
   const [rating, setRating] = useState(0);
-  const [category, setCategory] = useState(false)
+  const [category, setCategory] = useState([]); // Now an array for multiple selections
 
   const fetchData = async () => {
     const response = await fetch('/api/products');
     const data = await response.json();
     setProductData(data.products);
-    setFilteredProducts(data.products)
+    setFilteredProducts(data.products);
   };
 
   const fetchCategories = async () => {
-    const response = await fetch("/api/categories")
-    const data = await response.json()
-    setCategoryData(data.categories)
-  }
+    const response = await fetch("/api/categories");
+    const data = await response.json();
+    setCategoryData(data.categories);
+  };
 
   const handleCategory = (event) => {
-    const category = event.target.value;
-    setCategory(category);
-    filterProducts(category, rating, sortByPrice);
+    const { value, checked } = event.target;
+    setCategory((prevCategories) =>
+      checked ? [...prevCategories, value] : prevCategories.filter((cat) => cat !== value)
+    );
   };
 
   const handleRating = (event) => {
-    const rating = event.target.value
-    setRating(parseInt(rating))
-    filterProducts(category, rating, sortByPrice)
-  }
+    setRating(parseInt(event.target.value));
+  };
 
   const handlePriceSorting = (event) => {
-    const sortByPrice = event.target.value
-    setSortByPrice(sortByPrice)
-    filterProducts(category, rating, sortByPrice)
-  }
+    setSortByPrice(event.target.value);
+  };
 
-  const filterProducts = (category, rating, sortByPrice) => {
-    let filteredData = productData;
-
-    if (category !== "") {
-      filteredData = filteredData.filter((product) => product.categoryName === category);
-    }
-
-    if (rating > 0) {
-      filteredData = filteredData.filter(
-        (product) => product.rating >= Number(rating)
-      );
-    }
-
-    if (sortByPrice === "lowToHigh") {
-      filteredData = filteredData.sort((a, b) => a.price - b.price)
-    }
-
-    if (sortByPrice === "highToLow") {
-      filteredData = filteredData.sort((a, b) => b.price - a.price)
-    }
-
-    setFilteredProducts(filteredData);
+  const clearFilters = () => {
+    setCategory([]);
+    setRating(0);
+    setSortByPrice("");
+    setFilteredProducts(productData);
+    document.querySelectorAll('input[type=checkbox]').forEach(el => el.checked = false);
+    document.querySelectorAll('input[type=radio]').forEach(el => el.checked = false);
   };
 
   useEffect(() => {
@@ -71,23 +53,50 @@ export default function ProductListingPage() {
     fetchCategories();
   }, []);
 
+  useEffect(() => {
+    filterProducts();
+  }, [category, rating, sortByPrice]);
+
+  const filterProducts = () => {
+    let filteredData = [...productData];
+
+    if (category.length > 0) {
+      filteredData = filteredData.filter((product) => category.includes(product.categoryName));
+    }
+
+    if (rating > 0) {
+      filteredData = filteredData.filter((product) => product.rating >= rating);
+    }
+
+    if (sortByPrice === "lowToHigh") {
+      filteredData.sort((a, b) => a.price - b.price);
+    }
+
+    if (sortByPrice === "highToLow") {
+      filteredData.sort((a, b) => b.price - a.price);
+    }
+
+    setFilteredProducts(filteredData);
+  };
+
   return (
     <>
-      {/* <Navigation /> */}
       <div className="main-body-sec">
-        <FilterComponent rating={rating} handleRating={handleRating} categoryData={categoryData} handleCategory={handleCategory} handlePriceSorting={handlePriceSorting} />
+        <FilterComponent
+          rating={rating}
+          handleRating={handleRating}
+          categoryData={categoryData}
+          handleCategory={handleCategory}
+          handlePriceSorting={handlePriceSorting}
+          clearFilters={clearFilters}
+        />
         <div className="right-body-section">
           <p className="showing-heading"><b>Showing all products </b>({filteredProducts.length})</p>
           <div className="product-flex">
-            <>
-              {filteredProducts.length > 0 && filteredProducts.map((item) =>
-                <ProductCard {...item} />
-              )
-              }
-            </>
+            {filteredProducts.length > 0 && filteredProducts.map((item) => <ProductCard key={item._id} {...item} />)}
           </div>
         </div>
       </div>
     </>
-  )
+  );
 }

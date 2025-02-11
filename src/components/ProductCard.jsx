@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { CartContext } from '../context/CartContext';
+import { toast } from "react-toastify";
 
 function ProductCard({ _id, image, title, price, rating }) {
   const [addToCart, setAddToCart] = useState(true);
@@ -13,11 +14,13 @@ function ProductCard({ _id, image, title, price, rating }) {
   function CartUpdate() {
     setAddToCart(!addToCart);
     handleCartUpdate({ _id, image, title, price, rating });
+    toast.success("Added In Cart !");
   }
-
+  
   function WishlistUpdate() {
     setAddToWishlist(!addToWishlist);
     handleWishlistUpdate({ _id, image, title, price, rating });
+    toast.success("Added In Wishlist !");
   }
 
   return (

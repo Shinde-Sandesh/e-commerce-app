@@ -24,18 +24,14 @@ function AddressForm({ show, close, onAddressAdded }) {
     setInput(event.target.value);
     console.log("Updated addressForm:", addressForm);
   }
-  
+
   function saveFormDetails(event) {
     const form = event.currentTarget;
     event.preventDefault();
+    // Pass the current addressForm to the parent component
+    onAddressAdded(addressForm);
 
-  
-      // Pass the current addressForm to the parent component
-      onAddressAdded(addressForm);
-    
   }
-  
-
 
   useEffect(() => {
 

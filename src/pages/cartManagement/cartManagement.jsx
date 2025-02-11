@@ -19,8 +19,7 @@ export default function CartManagement() {
 
   function addToWishlist(product, toast) {
     try {
-      axios.post(
-        "/api/user/wishlist",
+      axios.post("/api/user/wishlist",
         {
           product,
         },
@@ -65,7 +64,7 @@ export default function CartManagement() {
       console.log("No orders available");
       return;
     }
-  
+
     const orderDetails = order.find((item) => item._id === _id);
     if (orderDetails) {
       handleOrderUpdate(orderDetails);
@@ -74,7 +73,7 @@ export default function CartManagement() {
       console.log("Order not found");
     }
   };
-  
+
 
   return (
     <>

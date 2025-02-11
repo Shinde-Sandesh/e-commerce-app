@@ -19,7 +19,7 @@ function CheckoutPage() {
 
   return (
     <div>
-      <h2>CheckoutPage</h2>
+      <h2>Checkout</h2>
       {
         cart.map((item) => 
         <>
