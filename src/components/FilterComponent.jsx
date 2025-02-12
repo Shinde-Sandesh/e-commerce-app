@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default function FilterComponent({ rating, handleRating, categoryData, handleCategory, handlePriceSorting, clearFilters }) {
-  console.log("CategoryData", categoryData)
   return (
     <div className="filter-sidebar">
       <div className="filter-sidebar-heading">

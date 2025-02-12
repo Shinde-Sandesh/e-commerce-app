@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import { SearchContext, useSearch } from '../../context/SearchContext';
 import ProductCard from '../../components/ProductCard';
 import FilterComponent from '../../components/FilterComponent';
 import './productListing.css';
@@ -9,7 +10,17 @@ export default function ProductListingPage() {
   const [categoryData, setCategoryData] = useState([]);
   const [sortByPrice, setSortByPrice] = useState("");
   const [rating, setRating] = useState(0);
-  const [category, setCategory] = useState([]); // Now an array for multiple selections
+  const [category, setCategory] = useState([]);
+  const { searchQuery } = useContext(SearchContext);
+
+  useEffect(() => {
+    fetchData();
+    fetchCategories();
+  }, []);
+
+  useEffect(() => {
+    filterProducts();
+  }, [category, rating, sortByPrice, searchQuery]);
 
   const fetchData = async () => {
     const response = await fetch('/api/products');
@@ -26,8 +37,8 @@ export default function ProductListingPage() {
 
   const handleCategory = (event) => {
     const { value, checked } = event.target;
-    setCategory((prevCategories) =>
-      checked ? [...prevCategories, value] : prevCategories.filter((cat) => cat !== value)
+    setCategory((prev) =>
+      checked ? [...prev, value] : prev.filter((cat) => cat !== value)
     );
   };
 
@@ -48,17 +59,15 @@ export default function ProductListingPage() {
     document.querySelectorAll('input[type=radio]').forEach(el => el.checked = false);
   };
 
-  useEffect(() => {
-    fetchData();
-    fetchCategories();
-  }, []);
-
-  useEffect(() => {
-    filterProducts();
-  }, [category, rating, sortByPrice]);
-
   const filterProducts = () => {
     let filteredData = [...productData];
+
+    if (searchQuery) {
+      console.log("CHECKQUERY", searchQuery);
+      filteredData = filteredData.filter((product) =>
+        product.title.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+    }
 
     if (category.length > 0) {
       filteredData = filteredData.filter((product) => category.includes(product.categoryName));
@@ -80,23 +89,21 @@ export default function ProductListingPage() {
   };
 
   return (
-    <>
-      <div className="main-body-sec">
-        <FilterComponent
-          rating={rating}
-          handleRating={handleRating}
-          categoryData={categoryData}
-          handleCategory={handleCategory}
-          handlePriceSorting={handlePriceSorting}
-          clearFilters={clearFilters}
-        />
-        <div className="right-body-section">
-          <p className="showing-heading"><b>Showing all products </b>({filteredProducts.length})</p>
-          <div className="product-flex">
-            {filteredProducts.length > 0 && filteredProducts.map((item) => <ProductCard key={item._id} {...item} />)}
-          </div>
+    <div className="main-body-sec">
+      <FilterComponent
+        rating={rating}
+        handleRating={handleRating}
+        categoryData={categoryData}
+        handleCategory={handleCategory}
+        handlePriceSorting={handlePriceSorting}
+        clearFilters={clearFilters}
+      />
+      <div className="right-body-section">
+        <p className="showing-heading"><b>Showing all products </b>({filteredProducts.length})</p>
+        <div className="product-flex">
+          {filteredProducts.length > 0 && filteredProducts.map((item) => <ProductCard key={item._id} {...item} />)}
         </div>
       </div>
-    </>
+    </div>
   );
 }

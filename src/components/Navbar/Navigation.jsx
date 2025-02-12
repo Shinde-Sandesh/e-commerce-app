@@ -1,5 +1,5 @@
-import React, { useContext, useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext, useState, useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
 import { CartContext } from '../../context/CartContext'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
@@ -8,6 +8,7 @@ import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlin
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import SearchIcon from '@mui/icons-material/Search';
 import { useAuth } from '../../context/AuthContext';
+import { SearchContext } from '../../context/SearchContext';
 import './Navigation.css'
 
 export const Navigation = () => {
@@ -15,30 +16,40 @@ export const Navigation = () => {
   const { cart } = useContext(CartContext)
   const { wishlist } = useContext(CartContext)
   const [input, setInput] = useState("");
-  const [searchItem, setSearchItem] = useState('');
+  const { setSearchQuery } = useContext(SearchContext);
+  const navigate = useNavigate();
 
-  function handleInputText(event) {
-    setSearchItem(event.target.value);
-  }
+  useEffect(() => {
+    setSearchQuery(input);
+  }, [input, setSearchQuery]);
+  
+  const handleInputText = (event) => {
+    setInput(event.target.value);
+  };
+  
+  const handleSearch = (event) => {
+    console.log("CHECK", input);
+  };
 
   return (
     <div className='nav-header'>
       <ul className='navbar'>
         <div className='navbar-main'>
-          <div className="navbar-left" style={{paddingLeft: '30px'}}>
+          <div className="navbar-left" style={{ paddingLeft: '30px' }}>
             <Link to="/" style={{ color: "white" }}><h2>Sports Cart</h2></Link>
           </div>
           <div className="search-container search-mob">
-          <SearchIcon style={{ color: "white" }} />
-          <input
-            type="search"
-            name="search"
-            className="search-bar"
-            placeholder="Search for product"
-            onChange={handleInputText}
-            id=""
-          />
-        </div>
+            <SearchIcon style={{ color: "black" }} className="btn-badge badge-lg" />
+            <input
+              type="search"
+              name="search"
+              className="search-bar"
+              placeholder="Search for product"
+              value={input}
+              onChange={handleInputText}
+              onKeyDown={handleSearch}
+            />
+          </div>
           <ul className="navbar-right">
             <li>
               <div className="icon cart-badge">
@@ -47,13 +58,13 @@ export const Navigation = () => {
                 </Link>
               </div>
             </li>
-            <li>
+            {/* <li>
               <div className="icon cart-badge">
                 <Link to="/search" className="btn round-button">
                   <SearchIcon style={{ color: "white" }} className="btn-badge badge-lg" />
                 </Link>
               </div>
-            </li>
+            </li> */}
             <li>
               <div className="icon cart-badge">
                 <Link to="/wishlist" className="btn round-button">
@@ -89,16 +100,6 @@ export const Navigation = () => {
             </li>
           </ul>
         </div>
-        {/* <div className="search-container search-mob">
-          <SearchIcon style={{ color: "white" }} />
-          <input
-            type="search"
-            name="search"
-            className="search-bar"
-            placeholder="Search for product"
-            id=""
-          />
-        </div> */}
       </ul>
     </div>
   )
