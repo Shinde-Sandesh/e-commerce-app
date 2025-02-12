@@ -1,0 +1,110 @@
+.card-container {
+    width: 200px; /* Slightly wider for better layout */
+    background-color: var(--white-color);
+    border: 2px solid black;
+    border-radius: 8px; /* Rounded corners for a modern look */
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    margin: 10px;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .card-container:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Heart icon */
+  .card-with-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 6px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .card-with-badge:hover {
+    background: rgba(255, 255, 255, 1); 
+  }
+  
+  /* .card-with-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: red;
+    cursor: pointer;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
+  } */
+  
+  
+  /* Product Image */
+  .card-image {
+    height: 180px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+  
+  /* Product Description */
+  .description {
+    background-color: rgba(128, 128, 128, 0.1);
+    padding: 8px;
+    width: 100%;
+    font-size: 0.9rem;
+  }
+  
+  /* Product Title */
+  .card-heading {
+    font-size: 1rem;
+    font-weight: bold;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 5px;
+  }
+  
+  /* Price & Rating */
+  .price {
+    font-weight: bold;
+    margin-top: 4px;
+    display: block;
+    font-size: 1rem;
+  }
+  
+  /* Add to Cart Button */
+  .add-cart-btn {
+    width: 100%;
+    background-color: #009270;
+    padding: 8px;
+    border: none;
+    color: whitesmoke;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-top: 8px;
+    transition: background-color 0.3s;
+  }
+  
+  .add-cart-btn:hover {
+    background-color: #04604b;
+  }
+  
+  /* Responsive */
+  @media (max-width: 480px) {
+    .card-container {
+      width: 90%;
+    }
+  }
+  

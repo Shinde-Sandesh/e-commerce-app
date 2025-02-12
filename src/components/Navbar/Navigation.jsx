@@ -9,6 +9,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import SearchIcon from '@mui/icons-material/Search';
 import { useAuth } from '../../context/AuthContext';
 import { SearchContext } from '../../context/SearchContext';
+import mainImg from '../../assets/favicon-new.png'
 import './Navigation.css'
 
 export const Navigation = () => {
@@ -17,16 +18,17 @@ export const Navigation = () => {
   const { wishlist } = useContext(CartContext)
   const [input, setInput] = useState("");
   const { setSearchQuery } = useContext(SearchContext);
-  const navigate = useNavigate();
 
+  console.log("WISHLIST", wishlist);
+  
   useEffect(() => {
     setSearchQuery(input);
   }, [input, setSearchQuery]);
-  
+
   const handleInputText = (event) => {
     setInput(event.target.value);
   };
-  
+
   const handleSearch = (event) => {
     console.log("CHECK", input);
   };
@@ -36,7 +38,12 @@ export const Navigation = () => {
       <ul className='navbar'>
         <div className='navbar-main'>
           <div className="navbar-left" style={{ paddingLeft: '30px' }}>
-            <Link to="/" style={{ color: "white" }}><h2>Sports Cart</h2></Link>
+            <Link to="/" style={{ color: "white" }}>
+              <h2>
+                <span>
+                  <img src={mainImg} alt='img' className="app-logo" />
+                </span>  Sports Cart</h2>
+              </Link>
           </div>
           <div className="search-container search-mob">
             <SearchIcon style={{ color: "black" }} className="btn-badge badge-lg" />
@@ -44,7 +51,7 @@ export const Navigation = () => {
               type="search"
               name="search"
               className="search-bar"
-              placeholder="Search for product"
+              placeholder="Search for products"
               value={input}
               onChange={handleInputText}
               onKeyDown={handleSearch}

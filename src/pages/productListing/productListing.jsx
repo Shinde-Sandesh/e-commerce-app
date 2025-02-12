@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { SearchContext, useSearch } from '../../context/SearchContext';
-import ProductCard from '../../components/ProductCard';
+import ProductCard from '../../components/product-card/ProductCard';
 import FilterComponent from '../../components/FilterComponent';
 import './productListing.css';
 

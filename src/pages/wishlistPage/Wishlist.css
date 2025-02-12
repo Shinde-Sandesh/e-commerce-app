@@ -40,11 +40,11 @@ img {
     color: var(--white-color);
 }
 
-.price {
+.price-wishlist {
     font-weight: bolder;
 }
 
-.card-container {
+.card-container-wishlist {
     width: 12.5rem;
     height: 18.75rem;
     background-color: var(--white-color);
@@ -53,7 +53,7 @@ img {
     position: relative;
 }
 
-.description {
+.description-wishlist {
     background-color: var(--bg-color);
     padding-top: 2.2px;
     margin: 0;

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import img1 from '../../assets/sneakers-shoes-adidas-shoes.jpg';
 import mainImg from '../../assets/Sports-Logo-Designs-1280x720.jpg'
 import './Landing.css'
 

@@ -71,13 +71,13 @@ export default function Wishlist() {
             const { _id, title, price, image } = data
 
             return (
-              <div className="card-container" key={_id}>
+              <div className="card-container-wishlist" key={_id}>
                 <h4 className="card-with-badge-wishlist"><FavoriteIcon onClick={() => removeFromWishlist(_id)} /></h4>
-                <img className="image-card" src={image} alt={title} />
-                <div className="description">
-                  <p className="card-heading">{title}</p>
-                  <p className="price">Price: ₹{price}</p>
-                  <button className="add-cart-btn" onClick={() => moveToCart(_id)}>
+                <img className="image-card-wishlist" src={image} alt={title} />
+                <div className="description-wishlist">
+                  <p className="card-heading-wishlist">{title}</p>
+                  <p className="price-wishlist">Price: ₹{price}</p>
+                  <button className="add-cart-btn-wishlist" onClick={() => moveToCart(_id)}>
                     Move to Cart
                   </button>
                 </div>

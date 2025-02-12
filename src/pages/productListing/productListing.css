@@ -98,7 +98,7 @@
 }
 
 /* Product Card Container */
-.card-container {
+/* .card-container {
   width: 12.5rem;
   background-color: var(--white-color);
   border: 0.5px solid var(--light-gray-colo);
@@ -107,10 +107,10 @@
   display: inline-block;
   margin-left: 10px;
   margin-bottom: 10px;
-}
+} */
 
 /* Heart icon (assuming you use Font Awesome) */
-.card-with-badge {
+/* .card-with-badge {
   display: inline;
   color: red;
   padding: 4px;
@@ -118,58 +118,54 @@
   right: 10px;
   top: 10px;
   margin: 0;
-}
+} */
 
 /* Product Image */
-.card-image {
+/* .card-image {
   height: 12.5rem;
   width: 12.5rem;
   margin-bottom: 0;
   padding: 0;
-}
+} */
 
 /* Product Description */
-.description {
+/* .description {
   background-color: rgba(128, 128, 128, 0.363);
   padding-top: 2.2px;
   margin: 0;
-}
+} */
 
 /* Product Title */
-.card-heading {
-    /* margin: 0; */
-    /* padding: 0.5rem; */
+/* .card-heading {
     font-size: 1.1rem;
-    /* position: absolute; */
     height: 3rem;
     display: flex;
     align-items: center;
-    /* text-align: center; */
     flex-wrap: wrap;
     justify-content: center;
-}
+} */
 
 
 /* Product Price */
-.price {
+/* .price {
   font-weight: bolder;
   margin: 0;
   padding: 0.5rem;
   justify-content: center;
-}
+} */
 
 /* Add to Cart Button */
-.add-cart-btn {
+/* .add-cart-btn {
   width: 100%;
   background-color: #3498db;
   padding: 6px;
   border: 0;
   color: whitesmoke;
   cursor: pointer;
-}
+} */
 
 /* Clear floats for the card container */
-.card-container::after {
+/* .card-container::after {
   content: "";
   display: table;
   clear: both;
@@ -178,7 +174,7 @@
 
 .price {
   font-weight: bolder;
-}
+} */
 
 div {
   display: block;

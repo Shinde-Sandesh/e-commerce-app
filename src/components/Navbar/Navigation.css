@@ -59,10 +59,10 @@
 .search-container {
   display: flex;
   align-items: center;
-  background-color: var(--white);
+  background-color: white;
   padding: 0.4rem 0.9rem;
   gap: 0.5rem;
-  border-radius: var(--border-lg);
+  border-radius: 15px;
   width: 25%;
   overflow: hidden;
 }
@@ -100,6 +100,7 @@
   top: 0;
   z-index: 10;
   width: 100%;
+  background: #009270;
 }
 
 .navbar-left h3 {
@@ -114,7 +115,7 @@
   }
 
   .navbar-right {
-    gap: 1rem;
+    /* gap: 1rem; */
   }
 
   .navbar-left a h2 {
@@ -138,7 +139,7 @@
   }
 
   .navbar-right {
-    gap: 0.5rem;
+    /* gap: 0.5rem; */
   }
 
   .icon {
@@ -155,4 +156,10 @@
   .search-container {
     width: 30%;
   }
+}
+
+.app-logo {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
 }

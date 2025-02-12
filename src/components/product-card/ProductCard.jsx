@@ -2,7 +2,8 @@ import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { CartContext } from '../context/CartContext';
+import { CartContext } from '../../context/CartContext';
+import './ProductCard.css'
 import { toast } from "react-toastify";
 
 function ProductCard({ _id, image, title, price, rating }) {
@@ -14,13 +15,13 @@ function ProductCard({ _id, image, title, price, rating }) {
   function CartUpdate() {
     setAddToCart(!addToCart);
     handleCartUpdate({ _id, image, title, price, rating });
-    toast.success("Added In Cart !");
+    toast.success("Added to Cart !");
   }
-  
+
   function WishlistUpdate() {
     setAddToWishlist(!addToWishlist);
     handleWishlistUpdate({ _id, image, title, price, rating });
-    toast.success("Added In Wishlist !");
+    toast.success("Added to Wishlist !");
   }
 
   return (
@@ -30,11 +31,15 @@ function ProductCard({ _id, image, title, price, rating }) {
           <div onClick={WishlistUpdate}>{addToWishlist ? <FavoriteBorderOutlinedIcon /> : <FavoriteIcon />}</div>
         </h4>
         <Link to={`/products/${_id}`} >
-          <img className="card-image" src={image} alt={title} />
+          <div>
+            <img className="card-image" src={image} alt={title} />
+          </div>
+          <div>
+            <span className="card-heading">{title}</span>
+            <span className="price">{price}</span>
+            <span className="price">{rating}</span>
+          </div>
         </Link>
-        <span className="card-heading">{title}</span>
-        <span className="price">{price}</span>
-        <span className="price">{rating}</span>
         <button className="add-cart-btn" onClick={CartUpdate}>
           {addToCart ? 'Add to Cart' : 'Added to Cart'}
         </button>
