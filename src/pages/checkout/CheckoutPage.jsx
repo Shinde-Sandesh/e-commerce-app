@@ -3,6 +3,7 @@ import { CartContext } from '../../context/CartContext';
 import { useAuth } from "../../context/AuthContext";
 import { priceCalc } from '../../utils/priceCalc';
 import { displayRazorpay } from './razorpay';
+import './CheckoutPage.css'
 import { toast } from "react-toastify";
 
 function CheckoutPage() {
@@ -43,17 +44,20 @@ function CheckoutPage() {
           </div>
         ) : (
           <div style={{ textAlign: 'center' }}>
+            <div style={{ borderBottom: '1px solid rgb(114, 117, 123)' }}>
             {cart.length > 0 ? (
               cart.map((item) => (
-                <div key={item._id} style={{ borderBottom: '1px solid #e5e7eb', padding: '0.5rem 0' }}>
-                  <p style={{ color: '#1f2937', fontWeight: '600' }}>{item.title}</p>
-                  <p>₹{item.price}</p>
-                </div>
+                  <div key={item._id} style={{ paddingBottom: '0.5rem' }}>
+                    <span className='item-details'>{item.title}
+                      <span>₹{item.price}</span>
+                    </span>
+                  </div>
               ))
             ) : (
               <p>Your cart is empty!</p>
             )}
-            <p style={{ fontWeight: 'bold', marginTop: '1rem' }}>Total: ₹{totalPrice}</p>
+            </div>
+            <p style={{ marginTop: '10px' }}><span className='item-details'>Total: <span>₹{totalPrice}</span></span></p>
             <p style={{ marginTop: '0.5rem' }}>{user?.firstName} {user?.lastName}</p>
             <button style={{ marginTop: '1rem', backgroundColor: '#3b82f6', color: 'white', padding: '0.5rem 1.5rem', borderRadius: '0.5rem', boxShadow: '0 4px 12px rgba(0,0,0,0.2)', cursor: 'pointer', transition: 'background-color 0.3s' }} onClick={handlePayment}>Place Order</button>
           </div>
