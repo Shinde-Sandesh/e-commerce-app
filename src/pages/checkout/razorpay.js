@@ -1,4 +1,5 @@
 import { toast } from "react-toastify";
+import mainImg from '../../assets/favicon-new.png'
 
 const loadScript = async (url) => {
   return new Promise((resolve) => {
@@ -26,7 +27,7 @@ export const displayRazorpay = async (amount, cart, setOrder) => {
     currency: "INR",
     name: "Sports Cart",
     description: "Thank you for shopping with us",
-    image: "https://yourwebsite.com/images/sports-cart-logo.png",
+    image: mainImg,
     handler: function (response) {
       const orderData = {
         products: cart,

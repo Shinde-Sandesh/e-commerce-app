@@ -66,7 +66,7 @@ export default function CartManagement() {
     }
     const orderDetails = cart.map(item => ({ ...item, quantity: quantities[item._id] || 1 }));
     setOrder(orderDetails);
-    toast.success("Order placed successfully!");
+    // toast.success("Order placed successfully!");
   };
 
 
