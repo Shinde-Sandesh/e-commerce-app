@@ -59,19 +59,14 @@ export default function CartManagement() {
     }
   }
 
-  const checkoutHandler = (_id) => {
-    if (order.length === 0) {
-      console.log("No orders available");
+  const checkoutHandler = () => {
+    if (cart.length === 0) {
+      toast.error("Your cart is empty!");
       return;
     }
-
-    const orderDetails = order.find((item) => item._id === _id);
-    if (orderDetails) {
-      handleOrderUpdate(orderDetails);
-      console.log("checkout clicked", orderDetails);
-    } else {
-      console.log("Order not found");
-    }
+    const orderDetails = cart.map(item => ({ ...item, quantity: quantities[item._id] || 1 }));
+    setOrder(orderDetails);
+    toast.success("Order placed successfully!");
   };
 
 
@@ -79,7 +74,7 @@ export default function CartManagement() {
     <>
       <div className="cart-container">
         <div className="cart-main-container flex-center">
-          <h3>MY CART ({cart.length})</h3>
+          <h3 className="cart-heading">MY CART ({cart.length})</h3>
           <div className="cart-manage">
             <div className="cart-manage-item">
               {cart.length > 0 ? (
@@ -88,9 +83,9 @@ export default function CartManagement() {
                   const { _id, title, price, image } = product;
                   const quantity = quantities[_id] || 1;
                   return (
-                    <div key={_id} className="card horizontal-container">
+                    <div key={_id} className="card-added horizontal-container">
                       <div className="card-horizontal">
-                        <img className="card-img horizontal-img" src={image} alt={title} />
+                        <img className="card-img horizontal-img-cart" src={image} alt={title} />
                         <div className="card-info">
                           <div className="card-title">
                             <div>
@@ -98,7 +93,7 @@ export default function CartManagement() {
                               <p className="card-description">{product.author}</p>
                             </div>
                           </div>
-                          <div className="price">
+                          <div className="price-cart">
                             <p className="disc-price">₹{price}</p>
                             <p className="actual-price">₹{price}</p>
                             <p className="price-percentage">({price}% OFF)</p>
@@ -143,7 +138,7 @@ export default function CartManagement() {
                 <p>
                   <i className="fa fa-tag" aria-hidden="true"></i> Have A Coupon ?
                 </p>
-                <div className="btn outlined-default coupon-btn">
+                <div className="coupon-btn">
                   Apply
                 </div>
                 {/* <div className="btn outlined-default coupon-btn" onClick={() => setCouponModal(true)}>
@@ -195,7 +190,7 @@ export default function CartManagement() {
               <div className="primary-btn text-center">
                 {/* <button className="link-btn checkout-btn">Checkout</button> */}
                 <Link to="/checkout">
-                  <button className="link-btn checkout-btn" onClick={() => checkoutHandler()}>Checkout</button>
+                  <button className="checkout-btn" onClick={() => checkoutHandler()}>Checkout</button>
                 </Link>
               </div>
               {/* <div className="primary-btn text-center" onClick={() => checkoutHandler()}>

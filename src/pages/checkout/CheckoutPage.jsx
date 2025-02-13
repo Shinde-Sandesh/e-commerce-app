@@ -25,38 +25,40 @@ function CheckoutPage() {
   };
 
   return (
-    <div>
-      <h2>Checkout</h2>
-      {order ? (
-        <div>
-          <h3>Order Placed Successfully! 🎉</h3>
-          <p>Order ID: {order.paymentId}</p>
-          <p>Total Amount: ₹{order.amount}</p>
-          <h4>Ordered Items:</h4>
-          {order.products.map((item) => (
-            <div key={item._id}>
-              <p>{item.title}</p>
-              <p>₹{item.price}</p>
-            </div>
-          ))}
-        </div>
-      ) : (
-        <>
-          {cart.length > 0 ? (
-            cart.map((item) => (
-              <div key={item._id}>
-                <p>{item.title}</p>
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh', backgroundColor: '#f3f4f6' }}>
+      <div style={{ backgroundColor: 'white', borderRadius: '1rem', boxShadow: '0 8px 20px rgba(0,0,0,0.15)', padding: '2rem', width: '100%', maxWidth: '28rem' }}>
+        <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '1rem', textAlign: 'center' }}>Checkout</h2>
+        {order ? (
+          <div style={{ textAlign: 'center' }}>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: '600', marginBottom: '0.5rem' }}>Order Placed Successfully! 🎉</h3>
+            <p>Order ID: {order.paymentId}</p>
+            <p>Total Amount: ₹{order.amount}</p>
+            <h4 style={{ marginTop: '1rem', fontWeight: '500' }}>Ordered Items:</h4>
+            {order.products.map((item) => (
+              <div key={item._id} style={{ borderBottom: '1px solid #e5e7eb', padding: '0.5rem 0' }}>
+                <p style={{ color: '#1f2937', fontWeight: '600' }}>{item.title}</p>
                 <p>₹{item.price}</p>
               </div>
-            ))
-          ) : (
-            <p>Your cart is empty!</p>
-          )}
-          <p>Total: ₹{totalPrice}</p>
-          <p className="paragraph-md">{user?.firstName} {user?.lastName}</p>
-          <button onClick={handlePayment}>Place Order</button>
-        </>
-      )}
+            ))}
+          </div>
+        ) : (
+          <div style={{ textAlign: 'center' }}>
+            {cart.length > 0 ? (
+              cart.map((item) => (
+                <div key={item._id} style={{ borderBottom: '1px solid #e5e7eb', padding: '0.5rem 0' }}>
+                  <p style={{ color: '#1f2937', fontWeight: '600' }}>{item.title}</p>
+                  <p>₹{item.price}</p>
+                </div>
+              ))
+            ) : (
+              <p>Your cart is empty!</p>
+            )}
+            <p style={{ fontWeight: 'bold', marginTop: '1rem' }}>Total: ₹{totalPrice}</p>
+            <p style={{ marginTop: '0.5rem' }}>{user?.firstName} {user?.lastName}</p>
+            <button style={{ marginTop: '1rem', backgroundColor: '#3b82f6', color: 'white', padding: '0.5rem 1.5rem', borderRadius: '0.5rem', boxShadow: '0 4px 12px rgba(0,0,0,0.2)', cursor: 'pointer', transition: 'background-color 0.3s' }} onClick={handlePayment}>Place Order</button>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

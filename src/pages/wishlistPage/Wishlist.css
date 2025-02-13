@@ -1,29 +1,38 @@
-.wishist-cart {
+.wishlist-cart {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: center; /* Centering the cards */
     padding: 3.1rem;
+}
+
+.wishist-cart-flex {
+    flex-wrap: wrap !important;
+    display: flex;
+    justify-content: center;
 }
 
 .wishlist-heading {
     padding-top: 20px;
     font-size: 1.87rem;
+    text-align: center;
 }
 
-img {
-    height: 12.5rem;
-    width: 12.5rem;
-    margin-bottom: 0;
-    padding: 0;
+img.image-card-wishlist {
+    height: 180px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 4px;
 }
 
 .card-with-badge-wishlist {
-    display: inline;
     color: red;
     padding: 4px;
     position: absolute;
-    right: 1px;
-    top: 55px;
+    right: 10px;
+    top: 10px;
+    background-color: white;
+    border-radius: 50%;
+    cursor: pointer;
 }
 
 .center {
@@ -32,29 +41,52 @@ img {
     justify-content: center;
 }
 
-.cart-button {
-    width: 12.5rem;
-    background-color: var(--light-blue-color);
-    padding: 6px;
-    border: 0;
-    color: var(--white-color);
+.cart-button, .add-cart-btn-wishlist {
+    width: 100%;
+    background-color: #009270;
+    padding: 10px;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-size: 1rem;
+}
+
+.cart-button:hover, .add-cart-btn-wishlist:hover {
+    background-color: #04604b;
+    transform: scale(1.05);
 }
 
 .price-wishlist {
     font-weight: bolder;
+    font-size: 1rem;
+    margin-top: 5px;
 }
 
 .card-container-wishlist {
-    width: 12.5rem;
-    height: 18.75rem;
+    width: 200px;
     background-color: var(--white-color);
-    border: 0.5px solid var(--light-gray-color);
+    border: 2px solid black;
+    border-radius: 8px;
     text-align: center;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    margin: 10px;
+    transition: transform 0.2sease-in-out;
+}
+
+.card-container-wishlist:hover {
+    transform: scale(1.05);
 }
 
 .description-wishlist {
     background-color: var(--bg-color);
-    padding-top: 2.2px;
+    /* padding: 10px; */
     margin: 0;
+    border-top: 1px solid var(--light-gray-color);
 }

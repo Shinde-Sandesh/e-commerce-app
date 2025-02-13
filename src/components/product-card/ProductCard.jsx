@@ -36,8 +36,8 @@ function ProductCard({ _id, image, title, price, rating }) {
           </div>
           <div>
             <span className="card-heading">{title}</span>
-            <span className="price">{price}</span>
-            <span className="price">{rating}</span>
+            <span className="price">Price: ₹{price}</span>
+            <span className="price">Rating: {rating}</span>
           </div>
         </Link>
         <button className="add-cart-btn" onClick={CartUpdate}>

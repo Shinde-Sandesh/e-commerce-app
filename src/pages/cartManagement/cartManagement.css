@@ -1,15 +1,35 @@
-.card:hover {
+.card-added:hover {
   box-shadow: rgba(90, 90, 90, 0.35) 0px 5px 15px;
+}
+
+.card-added {
+  width: 15rem;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: rgba(90, 90, 90, 0.35) 0px 5px 15px;
+  position: relative;
 }
 
 .cart-container {
   flex-grow: 1;
 }
 
+.cart-heading {
+  padding-top: 20px;
+  font-size: 1.87rem;
+  text-align: center;
+}
+
+.card-title {
+  display: flex;
+  justify-content: space-between;
+}
+
 .cart-main-container {
   padding-top: 3rem;
   flex-direction: column;
   gap: 4rem;
+  display: flex;
 }
 
 .cart-manage {
@@ -19,19 +39,30 @@
   gap: 5rem;
 }
 
-.horizontal-img {
-  width: 37%;
-  height: 12rem;
+.horizontal-img-cart {
+  width: 35% !important;
+}
+
+.card-img {
+  border-radius: 10px 10px 0 0;
+  object-fit: cover;
 }
 
 .horizontal-container {
-  margin-bottom: 3rem;
-  width: 30rem;
+  width: 32.5rem;
 }
 
 .horizontal-btn button {
   font-weight: 550;
-  background-color: var(--lynxWhite);
+  background-color: #f8f8f8;
+}
+
+.horizontal-btn {
+  width: 100%;
+  border-top: 1px solid rgb(184, 184, 184);
+  display: flex;
+  padding: 1rem 2rem;
+  justify-content: space-evenly;
 }
 
 .price-details {
@@ -47,13 +78,13 @@
 }
 
 .price-totalAmt {
-  border-top: 1px solid var(--lightGrey);
-  border-bottom: 1px solid var(--lightGrey);
+  border-top: 1px solid #c2c2c2;
+  border-bottom: 1px solid #c2c2c2;
   padding: 0.5rem 0;
 }
 
 .price-calculate {
-  border-top: 1px solid var(--lightGrey);
+  border-top: 1px solid #c2c2c2;
   padding-top: 0.5rem;
 }
 
@@ -63,29 +94,39 @@
 
 .price-details ul {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   gap: 5rem;
   align-items: center;
 }
 
-.later-btn {
-  color: var(--darkBlue)
+.coupon-btn {
+  background-color: white;
+  color: #414752;
+  border: 0.5px solid #414752;
+  outline: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
 }
 
-.coupon-btn {
-  background-color: inherit;
-  padding: 0.2rem 0.5rem;
-  font-size: 1rem;
+.coupon-btn:hover {
+  background-color: #414752;
+  color: white;
+  cursor: pointer;
 }
 
 .coupon {
   padding: 0.5rem 0 1rem 0;
-  border-bottom: 1px solid var(--lightGrey);
+  border-bottom: 1px solid #c2c2c2;
 }
 
 .save-msg,
 .coupon-msg {
   color: rgb(18, 173, 18);
+  text-align: center;
 }
 
 .coupon-msg p {
@@ -105,34 +146,128 @@
   padding: 0
 }
 
+.card-horizontal {
+  width: 100%;
+  display: flex;
+}
+
+.card-info {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.price-cart {
+  padding: 0;
+  font-size: 1.1rem;
+  display: flex;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.disc-price {
+  display: inline;
+  padding-right: 0.45rem;
+}
+
+.actual-price {
+  text-decoration: line-through;
+  color: #c2c2c2;
+  padding-right: 0.45rem;
+}
+
+.price-percentage {
+  color: #008000;
+}
+
+.qty {
+  margin-top: 1rem;
+  display: fle;
+  flex: flex-wrap;
+  gap: 2px;
+}
+
+.minus,
+.add {
+  color: #1f1d1d;
+  outline: 1px solid #c2c2c2;
+  border-radius: 50%;
+  padding: 3px 10px;
+  background-color: #ffffff;
+  border: none;
+}
+
+.minus:hover, .add:hover {
+  background-color: rgb(243, 239, 239);
+}
+
+.qty-count {
+  outline: none;
+  width: 30px;
+  padding: 5px 10px;
+  text-align: center;
+  border-radius: 2px;
+  background-color: white;
+  border: 1px solid #c2c2c2;
+  margin: 0 5px;
+}
+
+.later-btn {
+  color: #2563eb;
+  border: none;
+}
+
+.remove-btn,
+.later-btn {
+  font-size: 1rem;
+  background-color: white;
+  font-weight: 600;
+  border: none;
+}
+
+.checkout-btn {
+  cursor: pointer;
+  background-color: #06aed8;
+  color: white;
+  padding: 0.5rem 0;
+  border: none;
+}
+
+.primary-btn {
+  cursor: pointer !important;
+  background-color: #06aed8 !important;
+  color: white !important;
+  padding: 0.5rem 0;
+}
 
 @media screen and (max-width:500px) {
 
   .cart-manage {
-      justify-content: center;
-      gap: 1rem;
+    justify-content: center;
+    gap: 1rem;
   }
 
   .cart-main-container {
-      gap: 2rem;
+    gap: 2rem;
   }
 
   .horizontal-container,
   .price-details {
-      width: 20rem;
-      margin-bottom: 2rem;
+    width: 20rem;
+    margin-bottom: 2rem;
   }
 
   .price-details ul {
-      gap: 0rem;
+    gap: 0rem;
   }
 
   .horizontal-img {
-      width: 35%;
-      height: 10rem;
+    width: 35%;
+    height: 10rem;
   }
 
   .horizontal-btn {
-      justify-content: space-between;
+    justify-content: space-between;
   }
 }

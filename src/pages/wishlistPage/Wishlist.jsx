@@ -29,7 +29,7 @@ export default function Wishlist() {
       ).then(response => {
         const updatedWishlist = wishlist.filter(item => item._id !== product._id);
         setWishlist(updatedWishlist);
-        console.log("first",response.data)
+        console.log("first", response.data)
         // handleCartUpdate(response.data); // Assuming the response contains updated cart information
         toast.success("Added In Cart !");
       }).catch(error => {
@@ -41,7 +41,7 @@ export default function Wishlist() {
       console.log("Error in Add To Cart Service", error);
     }
   }
-  
+
 
   const moveToCart = (_id) => {
     const itemToMove = wishlist.find((item) => item._id === _id);
@@ -55,17 +55,17 @@ export default function Wishlist() {
   return (
     <>
       {/* <Navigation /> */}
-      {wishlist.length === 0 &&
-        <>
           <div>
             <h1 className="wishlist-heading center">My Wishlist ({wishlist.length}) </h1>
           </div>
+      {wishlist.length === 0 &&
+        <>
           <div>
             <h2 className="wishlist-heading center">Your wishlist is empty</h2>
           </div>
         </>
       }
-      <div className="wishist-cart flex flex-wrap">
+      <div className="wishist-cart-flex">
         {
           wishlist.map((data) => {
             const { _id, title, price, image } = data
@@ -73,14 +73,16 @@ export default function Wishlist() {
             return (
               <div className="card-container-wishlist" key={_id}>
                 <h4 className="card-with-badge-wishlist"><FavoriteIcon onClick={() => removeFromWishlist(_id)} /></h4>
-                <img className="image-card-wishlist" src={image} alt={title} />
+                <div>
+                  <img className="image-card-wishlist" src={image} alt={title} />
+                </div>
                 <div className="description-wishlist">
                   <p className="card-heading-wishlist">{title}</p>
                   <p className="price-wishlist">Price: ₹{price}</p>
+                </div>
                   <button className="add-cart-btn-wishlist" onClick={() => moveToCart(_id)}>
                     Move to Cart
                   </button>
-                </div>
               </div>
             )
           })
