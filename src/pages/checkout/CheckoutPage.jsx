@@ -45,17 +45,17 @@ function CheckoutPage() {
         ) : (
           <div style={{ textAlign: 'center' }}>
             <div style={{ borderBottom: '1px solid rgb(114, 117, 123)' }}>
-            {cart.length > 0 ? (
-              cart.map((item) => (
+              {cart.length > 0 ? (
+                cart.map((item) => (
                   <div key={item._id} style={{ paddingBottom: '0.5rem' }}>
                     <span className='item-details'>{item.title}
                       <span>₹{item.price}</span>
                     </span>
                   </div>
-              ))
-            ) : (
-              <p>Your cart is empty!</p>
-            )}
+                ))
+              ) : (
+                <p>Your cart is empty!</p>
+              )}
             </div>
             <p style={{ marginTop: '10px' }}><span className='item-details'>Total: <span>₹{totalPrice}</span></span></p>
             <p style={{ marginTop: '0.5rem' }}>{user?.firstName} {user?.lastName}</p>
