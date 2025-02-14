@@ -13,8 +13,9 @@ import SignUp from './pages/Auth/signup/signup';
 import Login from './pages/Auth/login/login';
 import Logout from './pages/Auth/logout/Logout';
 import CheckoutPage from './pages/checkout/CheckoutPage';
-import Navigation from './components/navbar/Navigation';
+// import Navigation from './components/navbar/Navigation';
 
+import Navigation from './components/navbar/Navigation';
 import { Profile } from './pages/profile/Profile';
 import { PrivateRoute } from './components/PrivateRoute';
 import "./App.css";
