@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import AddressForm from '../../components/AddressForm/AddressForm';
+import AddressForm from '../../components/address-form/AddressForm';
 import './Profile.css'
 
 export const Profile = () => {

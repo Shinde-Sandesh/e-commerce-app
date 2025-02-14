@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { SearchContext, useSearch } from '../../context/SearchContext';
 import ProductCard from '../../components/product-card/ProductCard';
-import FilterComponent from '../../components/FilterComponent';
+import FilterComponent from '../../components/filter-component/FilterComponent';
 import './productListing.css';
 
 export default function ProductListingPage() {

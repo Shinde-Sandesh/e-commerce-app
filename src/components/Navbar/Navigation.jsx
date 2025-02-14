@@ -12,7 +12,7 @@ import { SearchContext } from '../../context/SearchContext';
 import mainImg from '../../assets/favicon-new.png'
 import './Navigation.css'
 
-export const Navigation = () => {
+export default function Navigation() {
   const { token } = useAuth();
   const { cart } = useContext(CartContext)
   const { wishlist } = useContext(CartContext)

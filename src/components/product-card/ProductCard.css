@@ -76,7 +76,7 @@
   
   /* Price & Rating */
   .price {
-    font-weight: bold;
+    /* font-weight: bold; */
     margin-top: 4px;
     display: block;
     font-size: 1rem;

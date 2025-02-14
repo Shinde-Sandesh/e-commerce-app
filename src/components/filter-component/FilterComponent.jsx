@@ -1,4 +1,5 @@
 import React from 'react';
+import './FilterComponent.css';
 
 export default function FilterComponent({ rating, handleRating, categoryData, handleCategory, handlePriceSorting, clearFilters }) {
   return (
@@ -25,16 +26,12 @@ export default function FilterComponent({ rating, handleRating, categoryData, ha
       </div>
       <div className="filter-cat">
         <h4 className="price-heading">Category</h4>
-        <div className="filter-item">
-          <ul className="filter-item">
-            {categoryData.map((category) => (
-              <li style={{ listStyle: "none", display: 'contents' }} key={category._id}>
-                <input type="checkbox" value={category.categoryName} name="category" onChange={handleCategory} />
-                <label className='checkboxLabel'>{category.categoryName}</label>
-              </li>
-            ))}
-          </ul>
-        </div>
+        {categoryData.map((category) => (
+          <div className="filter-item">
+            <input type="checkbox" value={category.categoryName} name="category" onChange={handleCategory} />
+            <label className='checkboxLabel'>{category.categoryName}</label>
+          </div>
+        ))}
       </div>
       <div className="filter-cat">
         <h4 className="price-heading">Price</h4>
