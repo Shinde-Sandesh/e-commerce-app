@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { CartContext } from '../../context/CartContext';
+import { toast } from "react-toastify";
 import './ProductDetails.css'
 
 function ProductDetails() {
@@ -10,7 +11,10 @@ function ProductDetails() {
   const [addToWishlist, setAddToWishlist] = useState(true)
   const [addToCart, setAddToCart] = useState(true);
   const { handleCartUpdate } = useContext(CartContext);
-  const { handleWishlistUpdate } = useContext(CartContext)
+  const { handleWishlistUpdate } = useContext(CartContext);
+  const navigate = useNavigate();
+
+  const loggedInUser = localStorage.getItem('loginItems');
 
   const fetchData = async () => {
     const response = await fetch('/api/products');
@@ -25,13 +29,25 @@ function ProductDetails() {
   const product = getProductData(productData, productId);
 
   function WishlistUpdate() {
+    if (!loggedInUser) {
+      toast.warning("Please login to add items to your wishlist.");
+      navigate('/login');
+      return;
+    }
     setAddToWishlist(!addToWishlist);
     handleWishlistUpdate(product);
+    toast.success("Added to Wishlist!");
   }
 
   function CartUpdate() {
+    if (!loggedInUser) {
+      toast.warning("Please login to add items to your cart.");
+      navigate('/login');
+      return;
+    }
     setAddToCart(!addToCart);
     handleCartUpdate(product);
+    toast.success("Added to Cart!");
   }
 
   useEffect(() => {

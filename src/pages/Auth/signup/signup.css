@@ -1,7 +1,10 @@
 .signup-container {
   flex-grow: 1;
   flex-direction: column;
-  height: calc(100vh - 71px);
+  height: calc(80vh - 71px);
+  display: flex;
+  align-items: center;
+  padding-top: 25px;
 }
 
 .signup-main-container {
@@ -28,7 +31,6 @@
   border: 2px solid #dfdfdf;
   font-size: 0.9rem;
   padding: 0.4rem 1rem;
-  cursor: pointer;
   border: 2px solid black;
 }
 

@@ -2,6 +2,9 @@
   flex-grow: 1;
   flex-direction: column;
   height: calc(80vh - 71px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .auth-main-container {
@@ -28,7 +31,6 @@
   border: 2px solid #dfdfdf;
   font-size: 0.9rem;
   padding: 0.4rem 1rem;
-  cursor: pointer;
   border: 2px solid black;
 }
 

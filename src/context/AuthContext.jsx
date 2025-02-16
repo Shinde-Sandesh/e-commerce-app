@@ -9,10 +9,10 @@ const AuthProvider = ({ children }) => {
   const [currUser, setCurrUser] = useState(localStorageToken?.user);
 
   const LoginService = async ({ email, password }) =>
-  axios.post('/api/auth/login', {
-    email,
-    password
-  });
+    axios.post('/api/auth/login', {
+      email,
+      password
+    });
 
   const SignUpService = async ({ email, password, firstName, lastName }) => {
     return axios.post('/api/auth/signup', {
@@ -31,9 +31,7 @@ const AuthProvider = ({ children }) => {
         status,
       } = await LoginService({ email, password });
       if (status === 200 || status === 201) {
-        localStorage.setItem(
-          'loginItems',
-          JSON.stringify({ token: encodedToken, user: foundUser })
+        localStorage.setItem('loginItems', JSON.stringify({ token: encodedToken, user: foundUser })
         );
         setCurrUser(foundUser);
         setToken(encodedToken);
@@ -43,11 +41,13 @@ const AuthProvider = ({ children }) => {
       console.log(err);
     }
   };
+
   const logoutHandler = () => {
     localStorage.removeItem('loginItems');
     setToken(null);
     setCurrUser(null);
   };
+  
   const signupHandler = async (email, password, firstName, lastName) => {
     try {
       const {
