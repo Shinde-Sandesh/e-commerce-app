@@ -7,6 +7,12 @@ export function CartProvider({ children }) {
   const [wishlist, setWishlist] = useState([])
 
   const handleCartUpdate = (item) => {
+
+    let itemsAddedToCart = [];
+    itemsAddedToCart.push(item._id);
+
+    localStorage.setItem('cartItems', itemsAddedToCart);
+    console.log("CHECKITEM", cart);
     setCart((cart) => [...cart, item]);
   };
 
